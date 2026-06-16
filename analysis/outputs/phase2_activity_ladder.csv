@@ -1,0 +1,61 @@
+compound_id,name,enzyme_ic50_uM,serumfree_mic_uM,serumfree_censored,serum_mic_uM,serum_censored
+PAPU-0002,Papulacandin B,2.332,1.733,False,111.06,False
+PAPU-0063,"L-687,781",0.33,2.216,False,,
+PAPU-0064,BU-4794F,0.293,0.234,False,,
+PAPU-0065,Mer-WF3010,,0.736,False,,
+PAPU-0066,Fusacandin A,19.56,2.484,False,97.802,True
+PAPU-0067,Fusacandin B,,57.315,False,114.631,True
+PAPU-0068,Saricandin,288.665,153.756,False,,
+PAPU-0069,BE-29602,7.572,0.454,False,,
+PAPU-0070,Furanocandin,,0.337,False,,
+PAPU-0071,Fusacandin analog 6a,,1.505,False,96.48,True
+PAPU-0072,Fusacandin analog 6b,,109.364,True,109.364,True
+PAPU-0073,Fusacandin analog 6c,,12.177,False,97.418,True
+PAPU-0074,Fusacandin analog 6d,,12.802,False,102.418,True
+PAPU-0075,Fusacandin analog 6e,,1.511,False,96.856,True
+PAPU-0076,Fusacandin analog 6f,,1.52,False,48.713,False
+PAPU-0077,Fusacandin analog 6g,,3.04,False,48.713,False
+PAPU-0078,Fusacandin analog 6h,,0.743,False,23.8,False
+PAPU-0079,Fusacandin analog 6i,,2.898,False,92.9,False
+PAPU-0080,Fusacandin analog 6j,,0.741,False,11.877,False
+PAPU-0081,Fusacandin analog 6k,,0.691,False,11.077,False
+PAPU-0082,Fusacandin analog 6l,,2.92,False,46.798,False
+PAPU-0083,Fusacandin analog 6m,,0.722,False,23.138,False
+PAPU-0084,Fusacandin analog 6n,,0.721,False,11.548,False
+PAPU-0085,Fusacandin analog 6o,,0.702,False,11.257,False
+PAPU-0086,Fusacandin analog 6p,,0.694,False,11.116,False
+PAPU-0087,Fusacandin analog 6q,,21.177,False,84.707,False
+PAPU-0088,Fusacandin analog 6r,,1.347,False,21.58,False
+PAPU-0089,Fusacandin analog 6s,,1.441,False,46.192,False
+PAPU-0090,Fusacandin analog 6t,,5.774,False,46.192,False
+PAPU-0091,Fusacandin analog 6u,,5.85,False,93.596,True
+PAPU-0092,Corynecandin,15.958,155.235,False,,
+PAPU-0096,F-10748 B1,0.247,2.474,False,,
+PAPU-0097,F-10748 B2,2.468,2.468,False,,
+PAPU-0098,F-10748 C1,0.122,1.824,False,,
+PAPU-0099,F-10748 C2,1.213,2.426,False,,
+PAPU-0100,F-10748 D1,0.239,0.598,False,,
+PAPU-0101,F-10748 D2,2.385,2.684,False,,
+PAPU-0102,Papulacandin D sorbic acid mimic 48,,253.726,True,,
+PAPU-0103,Papulacandin D palmitic acid mimic 49,,163.473,False,,
+PAPU-0104,Papulacandin D linoleic acid mimic 50,,177.837,False,,
+PAPU-0105,Papulacandin D all-trans-retinoic acid mimic 51,,172.324,True,,
+PAPU-0106,"4-formyl-2-methoxyphenyl 2,3,4,6-tetra-O-acetyl-beta-D-glucopyranoside 6",,518.519,True,,
+PAPU-0107,"3-formylphenyl 2,3,4,6-tetra-O-acetyl-beta-D-glucopyranoside 7",,442.349,False,,
+PAPU-0108,4-formyl-2-methoxyphenyl beta-D-glucopyranoside 8,,795.924,True,,
+PAPU-0109,3-formylphenyl beta-D-glucopyranoside 9,,880.004,True,,
+PAPU-0110,"4-formyl-2-methoxyphenyl 4,6-O-benzylidene-beta-D-glucopyranoside 10",,621.687,True,,
+PAPU-0111,"3-formylphenyl 4,6-O-benzylidene-beta-D-glucopyranoside 11",,671.825,True,,
+PAPU-0112,"4-formyl-2-methoxyphenyl 3-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 12",,390.405,True,,
+PAPU-0113,"4-formyl-2-methoxyphenyl 2-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 13",,390.405,True,,
+PAPU-0114,"4-formyl-2-methoxyphenyl 2,3-di-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 14",,284.547,True,,
+PAPU-0115,"3-formylphenyl 3-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 15",,409.601,True,,
+PAPU-0116,"3-formylphenyl 2-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 16",,409.601,True,,
+PAPU-0117,"3-formylphenyl 2,3-di-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 17",,294.61,True,,
+PAPU-0118,4-formyl-2-methoxyphenyl 3-O-palmitoyl-beta-D-glucopyranoside 18,,452.628,True,,
+PAPU-0119,4-formyl-2-methoxyphenyl 2-O-palmitoyl-beta-D-glucopyranoside 19,,452.628,True,,
+PAPU-0120,"4-formyl-2-methoxyphenyl 2,3-di-O-palmitoyl-beta-D-glucopyranoside 20",,316.232,True,,
+PAPU-0121,3-formylphenyl 3-O-palmitoyl-beta-D-glucopyranoside 21,,478.634,True,,
+PAPU-0122,3-formylphenyl 2-O-palmitoyl-beta-D-glucopyranoside 22,,478.634,True,,
+PAPU-0123,"3-formylphenyl 2,3-di-O-palmitoyl-beta-D-glucopyranoside 23",,262.968,False,,
+PAPU-0124,Pestiocandin,,306.806,True,,

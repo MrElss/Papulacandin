@@ -17,3 +17,5 @@ python3 -m pip install pandas numpy rdkit scikit-learn
 ## Outputs
 - `outputs/serum_gap_pairs.csv` — matched pairs + serum shift per compound
 - `outputs/serum_gap_summary.txt` — human-readable summary
+- `outputs/phase1_descriptor_stats.csv` + `phase1_*.png` — serum-shift SAR
+- `outputs/phase2_activity_ladder.csv` + `phase2_*.png` — activity ladder / attrition
