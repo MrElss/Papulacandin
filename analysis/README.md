@@ -81,3 +81,19 @@ Equivalent CLI: `crest input.xyz --gfn2//gfnff --alpb water --ewin 6 --quick -T 
 ### Phase 6 outputs (once real CREST/Gaussian data is supplied)
 - `outputs/phase6_qm_descriptors.csv` — per-compound Boltzmann-weighted 3D descriptors
 - `outputs/qm_runs_gaussian/<candidate>/*.gjf` — DFT inputs for populated conformers
+
+### Submitting the 12 CREST screening jobs
+`outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
+per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required
+for `phase6_qm_layer.py`'s ensemble parser). `outputs/qm_runs/run_crest.sbatch`
+is your cluster script, defaulted to the fast screening tier
+(`--gfn2//gfnff --quick -ewin 6`). Submit up to 5 at a time (your queue limit):
+```
+cd outputs/qm_runs/cand01_quinolinecarbonyl && sbatch -J cand01 ../run_crest.sbatch
+```
+For the 1-3 funnel finalists, rerun with the thorough settings:
+```
+METHOD_FLAG=--gfn2 EXTRA_OPTS="-ewin 10" sbatch -J cand01_final ../run_crest.sbatch
+```
+CREST writes `crest_conformers.xyz` into each candidate's own folder, which is
+exactly what `run_qm_layer()` expects.
