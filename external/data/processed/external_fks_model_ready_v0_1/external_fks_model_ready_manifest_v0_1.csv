@@ -1,0 +1,5 @@
+dataset_version,artifact,path,rows,columns,notes
+external_fks_model_ready_v0_1,external_model_ready_fks_v0_1.csv,data\processed\external_fks_model_ready_v0_1\external_model_ready_fks_v0_1.csv,321,74,compound-level external FKS/glucan-synthase model-ready table
+external_fks_model_ready_v0_1,external_fks_descriptor_matrix_v0_1.csv,data\processed\external_fks_model_ready_v0_1\external_fks_descriptor_matrix_v0_1.csv,321,32,RDKit 2D descriptor matrix with compound metadata
+external_fks_model_ready_v0_1,external_fks_ecfp4_matrix_v0_1.npz,data\processed\external_fks_model_ready_v0_1\external_fks_ecfp4_matrix_v0_1.npz,321,2048,"dense uint8 Morgan/ECFP4 radius=2, nBits=2048"
+external_fks_model_ready_v0_1,external_model_ready_fks_v0_1_zh.md,results\external_fks_inhibitors\external_model_ready_fks_v0_1_zh.md,1,1,Chinese model-ready dataset report

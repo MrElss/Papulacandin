@@ -1,0 +1,6 @@
+artifact,path,rows,columns,notes
+fks_pretraining_dataset_v0_1.csv,data\processed\pretraining_v0_1\fks_pretraining_dataset_v0_1.csv,818,44,compound-level FKS-like pretraining dataset
+fks_pretraining_descriptor_matrix_v0_1.csv,data\processed\pretraining_v0_1\fks_pretraining_descriptor_matrix_v0_1.csv,818,34,RDKit descriptor matrix with labels and metadata
+fks_pretraining_ecfp4_matrix_v0_1.npz,data\processed\pretraining_v0_1\fks_pretraining_ecfp4_matrix_v0_1.npz,818,2048,"ECFP4/Morgan radius=2, nBits=2048"
+pretraining_chembl_background_decoys_v0_1.csv,data\external\fks_inhibitors\source_exports\pretraining_chembl_background_decoys_v0_1.csv,321,34,raw accepted ChEMBL background decoys
+fks_pretraining_dataset_v0_1_zh.md,results\modeling\fks_pretraining_dataset_v0_1_zh.md,1,1,Chinese pretraining dataset report

@@ -1,0 +1,3 @@
+compound_id,qc_flag,manual_decision,effect_on_stereochemistry_status,review_date,reviewer,notes
+*,unassigned_atom_stereochemistry,accepted_literature_undefined,keep_partial,2026-06-10,user,User confirmed remaining undefined atom stereochemistry is undefined in the source literature; retain partial stereochemistry and do not treat as a drawing error.
+PAPU-0057,unassigned_double_bond_stereochemistry,accepted_no_drawing_error,ignore_warning,2026-06-10,user,User confirmed the PAPU-0057 double bond drawing has no problem; treat the RDKit warning as non-blocking.
