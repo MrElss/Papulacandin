@@ -21,3 +21,9 @@ python3 -m pip install pandas numpy rdkit scikit-learn
 - `outputs/phase2_activity_ladder.csv` + `phase2_*.png` — activity ladder / attrition
 - `outputs/phase3a_*` — external FKS model, CV metrics, papulacandin scores, joblib
 - `outputs/phase3b_*` — within-series serum-tolerance model, LOO predictions, coeffs
+
+## Phase 4 outputs
+- `outputs/table_phase4_existing_leads.csv` — best observed serum-active leads
+- `outputs/table_phase4_candidate_ranking.csv` — heuristic design-score ranking
+- `outputs/design_rules.md` — distilled, source-attributed design rules
+- `outputs/fig_phase4_*.png` — presentation figures
