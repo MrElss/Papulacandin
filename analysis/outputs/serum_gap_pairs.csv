@@ -1,0 +1,25 @@
+compound_id,name,compound_class,parent_scaffold,serumfree_mic_ugml,serumfree_n,serum_mic_ugml,serum_n,serum_shift_fold,shift_confidence,serum_active,clogp,long_acyl_chain_length,modification_summary
+PAPU-0080,Fusacandin analog 6j,fusacandin_derivative,Fusacandin A,=0.78,5,=12.5,5,16.03,exact,yes,1.3921,,biphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0081,Fusacandin analog 6k,fusacandin_derivative,Fusacandin A,=0.78,5,=12.5,5,16.03,exact,yes,3.0591,,terphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0084,Fusacandin analog 6n,fusacandin_derivative,Fusacandin A,=0.78,5,=12.5,5,16.03,exact,yes,1.4007,,methoxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0085,Fusacandin analog 6o,fusacandin_derivative,Fusacandin A,=0.78,5,=12.5,5,16.03,exact,yes,2.1809,,propoxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0086,Fusacandin analog 6p,fusacandin_derivative,Fusacandin A,=0.78,5,=12.5,5,16.03,exact,yes,2.5694,,isopropoxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0078,Fusacandin analog 6h,fusacandin_derivative,Fusacandin A,=0.78,5,=25,5,32.05,exact,yes,1.3725,,tricyclic fused aromatic C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0083,Fusacandin analog 6m,fusacandin_derivative,Fusacandin A,=0.78,5,=25,5,32.05,exact,yes,1.9545,,ethylbiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0088,Fusacandin analog 6r,fusacandin_derivative,Fusacandin A,=1.56,5,=25,5,16.03,exact,yes,2.9711,,benzyloxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0076,Fusacandin analog 6f,fusacandin_derivative,Fusacandin A,=1.56,5,=50,5,32.05,exact,yes,0.8783,,naphthoyl-type fused aromatic C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0077,Fusacandin analog 6g,fusacandin_derivative,Fusacandin A,=3.12,5,=50,5,16.03,exact,yes,0.8783,,methyl-naphthoyl-type fused aromatic C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0082,Fusacandin analog 6l,fusacandin_derivative,Fusacandin A,=3.12,5,=50,5,16.03,exact,yes,1.5174,,phenoxyphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0089,Fusacandin analog 6s,fusacandin_derivative,Fusacandin A,=1.56,5,=50,5,32.05,exact,yes,1.4007,,methoxybiphenylcarbonyl regioisomer C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0090,Fusacandin analog 6t,fusacandin_derivative,Fusacandin A,=6.25,5,=50,5,8.0,exact,yes,1.4007,,methoxybiphenylcarbonyl regioisomer C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0002,Papulacandin B,papulacandin,PapB,=1.56,26,=100,11,64.1,exact,no,2.8123,16,main natural component
+PAPU-0066,Fusacandin A,papulacandin_class_natural_product,fusacandin,=2.54,18,>100,10,39.37,lower_bound,no,1.1040,,natural fusacandin trisaccharide analog with C-1 ether and two lipophilic side chains
+PAPU-0067,Fusacandin B,papulacandin_class_natural_product,fusacandin,=50,14,>100,5,2.0,lower_bound,no,-2.1396,,natural Fusacandin B congener lacking the C-6' side chain relative to Fusacandin A
+PAPU-0071,Fusacandin analog 6a,fusacandin_derivative,Fusacandin A,=1.56,5,>100,5,64.1,lower_bound,no,1.4941,,"E,E-decadienoyl C-6' ester; Fusacandin A C-3 side chain retained"
+PAPU-0072,Fusacandin analog 6b,fusacandin_derivative,Fusacandin A,>100,5,>100,5,1.0,lower_bound,no,-1.5688,,acetyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0073,Fusacandin analog 6c,fusacandin_derivative,Fusacandin A,=12.5,5,>100,5,8.0,lower_bound,no,1.5520,,decanoyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0074,Fusacandin analog 6d,fusacandin_derivative,Fusacandin A,=12.5,5,>100,5,8.0,lower_bound,no,-0.2749,,benzoyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0075,Fusacandin analog 6e,fusacandin_derivative,Fusacandin A,=1.56,5,>100,5,64.1,lower_bound,no,1.0677,,p-butylbenzoyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0079,Fusacandin analog 6i,fusacandin_derivative,Fusacandin A,=3.12,5,=100,5,32.05,exact,no,2.0315,,extended tricyclic aromatic C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0087,Fusacandin analog 6q,fusacandin_derivative,Fusacandin A,=25,5,=100,5,4.0,exact,no,4.1314,,octyloxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0091,Fusacandin analog 6u,fusacandin_derivative,Fusacandin A,=6.25,5,>100,5,16.0,lower_bound,no,1.0977,,hydroxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain retained

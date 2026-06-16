@@ -1,0 +1,27 @@
+SERUM GAP ANALYSIS — Candida albicans whole-cell MIC
+============================================================
+Compounds with matched serum-free AND serum MIC pairs : 24
+  of which retain measurable serum activity (MIC<=50): 13
+  of which are fully serum-inactivated (serum MIC >X) : 8
+
+Interpretation
+------------------------------------------------------------
+The matched-pair signal lives almost entirely in two reference series
+(Yeung 1996 fusacandin analogs; Jackson 1995). For most compounds the
+serum-free MIC is potent but the serum MIC is censored at '>100' — i.e.
+serum abolishes activity. A small minority retain partial serum activity
+(MIC 12.5-50 ug/mL). These partial-retainers are the SAR anchors for the
+whole project: they are the only positive examples of 'serum-tolerant'
+chemistry we currently have.
+
+Top serum-tolerant compounds (the leads to learn from):
+  PAPU-0080  Fusacandin analog 6j                    free   =0.78 -> serum   =12.5  shift 16.03 (exact)
+  PAPU-0081  Fusacandin analog 6k                    free   =0.78 -> serum   =12.5  shift 16.03 (exact)
+  PAPU-0084  Fusacandin analog 6n                    free   =0.78 -> serum   =12.5  shift 16.03 (exact)
+  PAPU-0085  Fusacandin analog 6o                    free   =0.78 -> serum   =12.5  shift 16.03 (exact)
+  PAPU-0086  Fusacandin analog 6p                    free   =0.78 -> serum   =12.5  shift 16.03 (exact)
+  PAPU-0078  Fusacandin analog 6h                    free   =0.78 -> serum     =25  shift 32.05 (exact)
+  PAPU-0083  Fusacandin analog 6m                    free   =0.78 -> serum     =25  shift 32.05 (exact)
+  PAPU-0088  Fusacandin analog 6r                    free   =1.56 -> serum     =25  shift 16.03 (exact)
+
+Full table: analysis/outputs/serum_gap_pairs.csv
