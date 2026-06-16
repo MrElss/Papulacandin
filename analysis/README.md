@@ -43,3 +43,41 @@ Requires SA_Score from RDKit Contrib (bundled with rdkit).
 - `outputs/phase5_crest_commands.sh` — per-candidate CREST/xTB command template (run on QM infra)
 - `outputs/phase5_retrospective.png` — design-rule score vs observed serum MIC
 - `outputs/phase5_score_distributions.png` — library drug-likeness / SA / novelty
+
+## Phase 6 — QM integration layer (Tier 4 funnel)
+`phase6_qm_layer.py` — parses CREST conformer ensembles (`crest_conformers.xyz`),
+computes Boltzmann-weighted 3D descriptors that 2D rules cannot see: hydrophobic
+vs polar SASA (in-house vectorized Shrake-Rupley, no external SASA dependency —
+`freesasa` failed to build in this environment), ensemble SASA spread (a genuine
+3D flexibility metric), radius of gyration, and asphericity. Also generates
+Gaussian DFT single-point inputs (B3LYP/6-31G(d), PCM water, Pop=MK) for the
+Boltzmann-populated conformer subset, and parses returned Gaussian logs for SCF
+energy / dipole / ESP charges.
+
+Motivation: Phase 5 found QED/Ro5 saturate near zero for this bRo5 chemotype
+(uninformative) and flat 2D design rules only weakly track serum MIC
+retrospectively (Spearman rho=0.32, n.s.). Both point to a 3D/conformational
+gap that only ensemble QM descriptors can close.
+
+Running `python3 phase6_qm_layer.py` executes a **self-test** on a synthetic
+RDKit-generated ensemble (clearly not real QM data) to validate the full
+parse -> descriptor -> Gaussian-input path before any real CREST output exists.
+To run on real data, drop each candidate's `crest_conformers.xyz` under
+`outputs/qm_runs/<candidate_name>/` (names match `phase5_top_candidates.sdf`,
+e.g. `cand01_quinolinecarbonyl`) and call `run_qm_layer(...)` — see the
+`__main__` block for the exact call signature.
+
+### Recommended CREST settings (fast screening tier, 12 candidates)
+Full GFN2 (`QUICK=no`, `EWIN=10`) does not scale to these ~140-atom, 30+
+rotatable-bond glycolipids (~10 days/compound observed). Use the composite
+search for screening, and reserve full settings for the 1-3 funnel finalists:
+```
+METHOD="gfn2//gfnff"   # GFN-FF search, GFN2 refine on survivors
+EWIN="6"               # CREST default, not 10
+QUICK="yes"
+```
+Equivalent CLI: `crest input.xyz --gfn2//gfnff --alpb water --ewin 6 --quick -T 52`
+
+### Phase 6 outputs (once real CREST/Gaussian data is supplied)
+- `outputs/phase6_qm_descriptors.csv` — per-compound Boltzmann-weighted 3D descriptors
+- `outputs/qm_runs_gaussian/<candidate>/*.gjf` — DFT inputs for populated conformers
