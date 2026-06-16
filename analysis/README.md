@@ -19,3 +19,5 @@ python3 -m pip install pandas numpy rdkit scikit-learn
 - `outputs/serum_gap_summary.txt` — human-readable summary
 - `outputs/phase1_descriptor_stats.csv` + `phase1_*.png` — serum-shift SAR
 - `outputs/phase2_activity_ladder.csv` + `phase2_*.png` — activity ladder / attrition
+- `outputs/phase3a_*` — external FKS model, CV metrics, papulacandin scores, joblib
+- `outputs/phase3b_*` — within-series serum-tolerance model, LOO predictions, coeffs

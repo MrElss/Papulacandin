@@ -1,0 +1,7 @@
+descriptor,std_coefficient,direction
+tpsa,0.1297,higher -> WORSE serum (higher MIC)
+mw_exact,-0.1277,higher -> BETTER serum (lower MIC)
+hba,-0.1068,higher -> BETTER serum (lower MIC)
+rotb,0.1048,higher -> WORSE serum (higher MIC)
+fsp3,0.0726,higher -> WORSE serum (higher MIC)
+clogp,-0.0363,higher -> BETTER serum (lower MIC)

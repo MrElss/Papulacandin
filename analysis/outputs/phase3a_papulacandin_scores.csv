@@ -1,0 +1,138 @@
+compound_id,name,compound_class,fks_likeness_score
+PAPU-0087,Fusacandin analog 6q,fusacandin_derivative,0.392
+PAPU-0085,Fusacandin analog 6o,fusacandin_derivative,0.3402
+PAPU-0029,Papulacandin B 11-NHCOCH3 derivative,papulacandin_derivative,0.3397
+PAPU-0082,Fusacandin analog 6l,fusacandin_derivative,0.3316
+PAPU-0068,Saricandin,papulacandin_family_natural_product,0.3279
+PAPU-0053,Papulacandin B 11-NH2 10-OCH3 derivative,papulacandin_derivative,0.3216
+PAPU-0028,Papulacandin B 11-NHCOCH3 12-OCH3 derivative,papulacandin_derivative,0.3207
+PAPU-0033,Papulacandin B 12-OCH2CH2CH2I derivative,papulacandin_derivative,0.3201
+PAPU-0030,Papulacandin B 11-NHCOCH2NH2 derivative,papulacandin_derivative,0.3188
+PAPU-0055,Papulacandin B 11-amino-imidazolidone derivative,papulacandin_derivative,0.3161
+PAPU-0018,Papulacandin B 12-OCH2CH2CH3 derivative,papulacandin_derivative,0.3144
+PAPU-0054,Papulacandin B 11-NHSO2CH3 derivative,papulacandin_derivative,0.3138
+PAPU-0035,Papulacandin B 12-OCH2COCH3 derivative,papulacandin_derivative,0.3132
+PAPU-0040,"Papulacandin B 10,12-di-OCH2COCH3 derivative",papulacandin_derivative,0.307
+PAPU-0038,"Papulacandin B 10,12-di-OCH2CH2CH2I derivative",papulacandin_derivative,0.3061
+PAPU-0019,"Papulacandin B 10,12-di-OCH2CH2CH3 derivative",papulacandin_derivative,0.3028
+PAPU-0088,Fusacandin analog 6r,fusacandin_derivative,0.3006
+PAPU-0130,Pestiorosin D,papulacandin_family_natural_product,0.2967
+PAPU-0131,Pestiorosin E,papulacandin_family_natural_product,0.2967
+PAPU-0137,"3-formylphenyl 2,3-di-O-[3-[(E-4-allyloxycinnamoyl)amino]benzoyl]-beta-D-glucopyranoside 20b",papulacandin_d_related_synthetic_analog,0.2938
+PAPU-0021,Papulacandin B 12-OCH2COOH derivative,papulacandin_derivative,0.2936
+PAPU-0034,Papulacandin B 12-p-nitrobenzyl ether,papulacandin_derivative,0.2921
+PAPU-0041,"Papulacandin B 10,12-di-OCH2COOH derivative",papulacandin_derivative,0.2915
+PAPU-0020,Papulacandin B 10-OCH2COCH3 derivative,papulacandin_derivative,0.2884
+PAPU-0039,"Papulacandin B 10,12-di-p-nitrobenzyl ether",papulacandin_derivative,0.2872
+PAPU-0031,Papulacandin B 12-OCH2CH3 derivative,papulacandin_derivative,0.2862
+PAPU-0049,"Papulacandin B 11,13-dimorpholinomethylene derivative",papulacandin_derivative,0.2857
+PAPU-0086,Fusacandin analog 6p,fusacandin_derivative,0.285
+PAPU-0036,Papulacandin B 12-OCH2COOCH3 derivative,papulacandin_derivative,0.2815
+PAPU-0089,Fusacandin analog 6s,fusacandin_derivative,0.28
+PAPU-0044,Papulacandin B 10-OCH2COOCH2CH3 derivative,papulacandin_derivative,0.2793
+PAPU-0134,Papulacandin F,papulacandin_family_natural_product,0.2783
+PAPU-0084,Fusacandin analog 6n,fusacandin_derivative,0.2782
+PAPU-0127,Pestiorosin A,papulacandin_family_natural_product,0.276
+PAPU-0124,Pestiocandin,papulacandin_family_natural_product,0.276
+PAPU-0016,Papulacandin B 12-OCH3 derivative,papulacandin_derivative,0.2736
+PAPU-0026,Papulacandin B 11-CH2-piperazine-like derivative,papulacandin_derivative,0.2732
+PAPU-0022,Papulacandin B 10-OCH2COOH derivative,papulacandin_derivative,0.2732
+PAPU-0042,"Papulacandin B 10,12-di-OCH2COOCH3 derivative",papulacandin_derivative,0.2725
+PAPU-0076,Fusacandin analog 6f,fusacandin_derivative,0.2715
+PAPU-0136,"4-formyl-2-methoxyphenyl 2,3-di-O-[3-[(E-4-allyloxycinnamoyl)amino]benzoyl]-beta-D-glucopyranoside 19b",papulacandin_d_related_synthetic_analog,0.2694
+PAPU-0126,4-formyl-2-methoxyphenyl 3-O-[3-[(E-3-allyloxycinnamoyl)amino]benzoyl]-beta-D-glucopyranoside 2,papulacandin_d_related_synthetic_analog,0.2694
+PAPU-0079,Fusacandin analog 6i,fusacandin_derivative,0.2682
+PAPU-0056,Papulacandin B 6-tosyl derivative,papulacandin_derivative,0.2673
+PAPU-0048,Papulacandin B 10-OCH2CO-thienyl derivative,papulacandin_derivative,0.2671
+PAPU-0074,Fusacandin analog 6d,fusacandin_derivative,0.2661
+PAPU-0024,Papulacandin B 10-OCH2COOCH2CH(OH)CH2OH derivative,papulacandin_derivative,0.2653
+PAPU-0081,Fusacandin analog 6k,fusacandin_derivative,0.2628
+PAPU-0080,Fusacandin analog 6j,fusacandin_derivative,0.2628
+PAPU-0133,Papulacandin G (Agudelo-Restrepo 2026),papulacandin_family_natural_product,0.2624
+PAPU-0046,Papulacandin B 10-OCH2CONHCH3 derivative,papulacandin_derivative,0.2618
+PAPU-0051,Papulacandin B 11-morpholinomethylene derivative,papulacandin_derivative,0.2616
+PAPU-0091,Fusacandin analog 6u,fusacandin_derivative,0.2598
+PAPU-0047,Papulacandin B 10-OCH2CON(CH3)2 derivative,papulacandin_derivative,0.2598
+PAPU-0001,Papulacandin A,papulacandin,0.2589
+PAPU-0017,"Papulacandin B 10,12-OCH3 derivative",papulacandin_derivative,0.2574
+PAPU-0070,Furanocandin,papulacandin_family_natural_product,0.2571
+PAPU-0071,Fusacandin analog 6a,fusacandin_derivative,0.2571
+PAPU-0075,Fusacandin analog 6e,fusacandin_derivative,0.2565
+PAPU-0045,Papulacandin B 10-OCH2CONH2 derivative,papulacandin_derivative,0.2565
+PAPU-0083,Fusacandin analog 6m,fusacandin_derivative,0.2561
+PAPU-0052,Papulacandin B 11-piperidinomethylene derivative,papulacandin_derivative,0.2558
+PAPU-0128,Pestiorosin B,papulacandin_family_natural_product,0.2555
+PAPU-0003,Papulacandin C,papulacandin,0.2555
+PAPU-0002,Papulacandin B,papulacandin,0.2555
+PAPU-0067,Fusacandin B,papulacandin_class_natural_product,0.2553
+PAPU-0023,Papulacandin B 10-OCH2COOCH3 derivative,papulacandin_derivative,0.2544
+PAPU-0125,4-formyl-2-methoxyphenyl 3-O-[3-[(E-4-allyloxycinnamoyl)amino]benzoyl]-beta-D-glucopyranoside 1,papulacandin_d_related_synthetic_analog,0.2544
+PAPU-0072,Fusacandin analog 6b,fusacandin_derivative,0.2543
+PAPU-0078,Fusacandin analog 6h,fusacandin_derivative,0.254
+PAPU-0066,Fusacandin A,papulacandin_class_natural_product,0.2529
+PAPU-0073,Fusacandin analog 6c,fusacandin_derivative,0.2526
+PAPU-0132,Pestiorosin F,papulacandin_family_natural_product,0.2465
+PAPU-0139,"4-formyl-2-methoxyphenyl 2-O-[3-[(E-4-allyloxycinnamoyl)amino]benzoyl]-4,6-O-benzylidene-beta-D-glucopyranoside 8.1",papulacandin_d_related_synthetic_intermediate,0.2458
+PAPU-0050,Papulacandin B 11-dimethylaminomethylene 12-OCH3 derivative,papulacandin_derivative,0.2445
+PAPU-0069,BE-29602,papulacandin_family_natural_product,0.2436
+PAPU-0140,"4-formyl-2-methoxyphenyl 2,3-di-O-[3-[(E-4-allyloxycinnamoyl)amino]benzoyl]-4,6-O-benzylidene-beta-D-glucopyranoside 8.2",papulacandin_d_related_synthetic_intermediate,0.2432
+PAPU-0138,"4-formyl-2-methoxyphenyl 3-O-[3-[(E-4-allyloxycinnamoyl)amino]benzoyl]-4,6-O-benzylidene-beta-D-glucopyranoside 8",papulacandin_d_related_synthetic_intermediate,0.2431
+PAPU-0025,Papulacandin B 11-CH2-morpholine 12-OCH3 derivative,papulacandin_derivative,0.2392
+PAPU-0027,Papulacandin B 11-NH2 12-OCH3 derivative,papulacandin_derivative,0.2379
+PAPU-0077,Fusacandin analog 6g,fusacandin_derivative,0.235
+PAPU-0013,Papulacandin B 6-Br derivative,papulacandin_derivative,0.235
+PAPU-0098,F-10748 C1,papulacandin_family_natural_product,0.2346
+PAPU-0014,Papulacandin B 6-OCH2COCH3 derivative,papulacandin_derivative,0.2345
+PAPU-0043,Papulacandin B 10-OCH3 derivative,papulacandin_derivative,0.2341
+PAPU-0090,Fusacandin analog 6t,fusacandin_derivative,0.2336
+PAPU-0100,F-10748 D1,papulacandin_family_natural_product,0.2333
+PAPU-0062,Papulacandin B 6-succinyl derivative,papulacandin_derivative,0.2319
+PAPU-0135,Papulacandin G (Wu 2025),papulacandin_family_natural_product,0.2314
+PAPU-0057,Papulacandin B 6-azido derivative,papulacandin_derivative,0.2308
+PAPU-0009,Papulacandin B degradation product I,papulacandin_derivative,0.2308
+PAPU-0059,Papulacandin B 6-N-formylpiperazinyl derivative,papulacandin_derivative,0.2307
+PAPU-0015,Papulacandin B 6-CH2-morpholine derivative,papulacandin_derivative,0.2297
+PAPU-0061,Papulacandin B 6-acetyl derivative,papulacandin_derivative,0.2294
+PAPU-0129,Pestiorosin C,papulacandin_family_natural_product,0.2286
+PAPU-0065,Mer-WF3010,papulacandin_family_natural_product,0.2269
+PAPU-0012,Papulacandin B 6-I derivative,papulacandin_derivative,0.2263
+PAPU-0058,Papulacandin B 6-N-methylpiperazinyl derivative,papulacandin_derivative,0.2246
+PAPU-0063,"L-687,781",papulacandin_family_natural_product,0.2232
+PAPU-0064,BU-4794F,papulacandin_family_natural_product,0.222
+PAPU-0060,Papulacandin B 6-N-methylthiotetrazolinyl derivative,papulacandin_derivative,0.2208
+PAPU-0008,Papulacandin B nona-acetate,papulacandin_derivative,0.217
+PAPU-0099,F-10748 C2,papulacandin_family_natural_product,0.2148
+PAPU-0101,F-10748 D2,papulacandin_family_natural_product,0.2129
+PAPU-0094,F-10748 A1,papulacandin_family_natural_product,0.2111
+PAPU-0092,Corynecandin,papulacandin_family_natural_product,0.1967
+PAPU-0096,F-10748 B1,papulacandin_family_natural_product,0.1911
+PAPU-0093,Saricandin Papulacandin D analog 1,papulacandin_d_derivative,0.1887
+PAPU-0006,Tetradecahydropapulacandin B,papulacandin_derivative,0.1879
+PAPU-0095,F-10748 A2,papulacandin_family_natural_product,0.1854
+PAPU-0105,Papulacandin D all-trans-retinoic acid mimic 51,papulacandin_d_derivative,0.1851
+PAPU-0097,F-10748 B2,papulacandin_family_natural_product,0.1758
+PAPU-0116,"3-formylphenyl 2-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 16",papulacandin_d_related_synthetic_intermediate,0.1714
+PAPU-0115,"3-formylphenyl 3-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 15",papulacandin_d_related_synthetic_intermediate,0.1706
+PAPU-0004,Papulacandin D,papulacandin,0.165
+PAPU-0122,3-formylphenyl 2-O-palmitoyl-beta-D-glucopyranoside 22,papulacandin_d_related_neoglycolipid,0.1615
+PAPU-0123,"3-formylphenyl 2,3-di-O-palmitoyl-beta-D-glucopyranoside 23",papulacandin_d_related_neoglycolipid,0.1575
+PAPU-0121,3-formylphenyl 3-O-palmitoyl-beta-D-glucopyranoside 21,papulacandin_d_related_neoglycolipid,0.1575
+PAPU-0117,"3-formylphenyl 2,3-di-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 17",papulacandin_d_related_synthetic_intermediate,0.1567
+PAPU-0113,"4-formyl-2-methoxyphenyl 2-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 13",papulacandin_d_related_synthetic_intermediate,0.1502
+PAPU-0112,"4-formyl-2-methoxyphenyl 3-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 12",papulacandin_d_related_synthetic_intermediate,0.1494
+PAPU-0119,4-formyl-2-methoxyphenyl 2-O-palmitoyl-beta-D-glucopyranoside 19,papulacandin_d_related_neoglycolipid,0.147
+PAPU-0118,4-formyl-2-methoxyphenyl 3-O-palmitoyl-beta-D-glucopyranoside 18,papulacandin_d_related_neoglycolipid,0.1439
+PAPU-0120,"4-formyl-2-methoxyphenyl 2,3-di-O-palmitoyl-beta-D-glucopyranoside 20",papulacandin_d_related_neoglycolipid,0.1439
+PAPU-0114,"4-formyl-2-methoxyphenyl 2,3-di-O-palmitoyl-4,6-O-benzylidene-beta-D-glucopyranoside 14",papulacandin_d_related_synthetic_intermediate,0.1422
+PAPU-0010,Papulacandin B degradation product II,papulacandin_derivative,0.1334
+PAPU-0111,"3-formylphenyl 4,6-O-benzylidene-beta-D-glucopyranoside 11",papulacandin_d_related_synthetic_intermediate,0.1312
+PAPU-0109,3-formylphenyl beta-D-glucopyranoside 9,papulacandin_d_related_synthetic_intermediate,0.1252
+PAPU-0102,Papulacandin D sorbic acid mimic 48,papulacandin_d_derivative,0.1205
+PAPU-0107,"3-formylphenyl 2,3,4,6-tetra-O-acetyl-beta-D-glucopyranoside 7",papulacandin_d_related_synthetic_intermediate,0.1145
+PAPU-0104,Papulacandin D linoleic acid mimic 50,papulacandin_d_derivative,0.1141
+PAPU-0007,Octahydropapulacandin D,papulacandin_d_derivative,0.1127
+PAPU-0103,Papulacandin D palmitic acid mimic 49,papulacandin_d_derivative,0.1026
+PAPU-0110,"4-formyl-2-methoxyphenyl 4,6-O-benzylidene-beta-D-glucopyranoside 10",papulacandin_d_related_synthetic_intermediate,0.101
+PAPU-0108,4-formyl-2-methoxyphenyl beta-D-glucopyranoside 8,papulacandin_d_related_synthetic_intermediate,0.0989
+PAPU-0106,"4-formyl-2-methoxyphenyl 2,3,4,6-tetra-O-acetyl-beta-D-glucopyranoside 6",papulacandin_d_related_synthetic_intermediate,0.0942
+PAPU-0011,Papulacandin B degradation product III,papulacandin_derivative,0.0462
