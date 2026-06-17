@@ -38,15 +38,25 @@ fi
 OUT=${OUT:-run.log}
 
 # ========== 3) 计算参数 ==========
-# FAST SCREENING TIER (12 funnel candidates): GFN-FF search, GFN2 refine on
-# survivors only ("gfn2//gfnff" composite) -- the prior pure-GFN2/QUICK=no/
-# EWIN=10 setup was projected at ~10 days/compound for these ~140-atom,
-# 30+ rotatable-bond glycolipids, i.e. ~120 days serial for the funnel.
-# Reserve pure --gfn2 (QUICK=no, EWIN=10) for the 1-3 finalists that survive
-# this screening tier, by overriding METHOD_FLAG/EXTRA_OPTS at submission time:
-#   METHOD_FLAG=--gfn2 EXTRA_OPTS="-ewin 10" sbatch -J <name> run_crest.sbatch
-METHOD_FLAG=${METHOD_FLAG:---gfn2//gfnff}      # screening default; finalists: --gfn2
-SOLV_FLAG=${SOLV_FLAG:---gbsa water}           # 不用溶剂：SOLV_FLAG=""
+# FAST SCREENING TIER (12 funnel candidates): run the conformer SEARCH at
+# GFN-FF. The method is the dominant cost lever -- for these ~140-atom,
+# 30+ rotatable-bond glycolipids GFN-FF gradients are orders of magnitude
+# cheaper than GFN2, which was projected at ~10 days/compound (~120 days
+# serial for the funnel).
+#
+# NOTE: this CREST build ("new calculator") no longer accepts the old
+# "--gfn2//gfnff" composite syntax, hence GFN-FF is selected directly.
+# GFN-FF requires ALPB solvation (--alpb), not the GFN1/2-only --gbsa.
+#
+# Reserve pure --gfn2 (EWIN=10) for the 1-3 finalists that survive screening,
+# by overriding at submission time:
+#   METHOD_FLAG=--gfn2 SOLV_FLAG="--alpb water" EXTRA_OPTS="-ewin 10" \
+#     sbatch -J <name>_final ../run_crest.sbatch
+# Optional middle tier -- refine the GFN-FF ensemble at GFN2 without redoing
+# the search (cheap, GFN2-quality ranking):
+#   crest --screen crest_conformers.xyz --gfn2 --alpb water -ewin 6 --T 52
+METHOD_FLAG=${METHOD_FLAG:---gfnff}            # screening default; finalists: --gfn2
+SOLV_FLAG=${SOLV_FLAG:---alpb water}           # GFN-FF needs ALPB; 不用溶剂：SOLV_FLAG=""
 CHARGE=${CHARGE:-0}
 UHF=${UHF:-0}
 EXTRA_OPTS=${EXTRA_OPTS:---quick -ewin 6}      # screening default; finalists: "-ewin 10"
