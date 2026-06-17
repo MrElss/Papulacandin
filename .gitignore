@@ -4,6 +4,10 @@ analysis/outputs/_selftest_*
 # phase7 known-set MMFF ensembles: deterministically regenerable from
 # phase7_retrospective_qm.py (fixed seed); results captured in the CSVs
 analysis/outputs/qm_runs_known_rdkit/
-# GFN2 finalist staging folders: exact copies of committed crest_conformers.xyz
-# created on demand by qm_runs/promote_finalists.sh
-analysis/outputs/qm_runs/*_gfn2/
+# NOTE: qm_runs/*_gfn2/ finalist re-rank folders ARE tracked (input pool +
+# run_gfn2_rerank.sbatch) so they can be pulled and submitted on the cluster.
+# Their post-run CREST outputs are scratch and stay ignored:
+analysis/outputs/qm_runs/*_gfn2/pool_gfnff.xyz
+analysis/outputs/qm_runs/*_gfn2/crest_ensemble.xyz
+analysis/outputs/qm_runs/*_gfn2/*.out
+analysis/outputs/qm_runs/*_gfn2/rerank.log
