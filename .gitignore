@@ -1,1 +1,3 @@
 __pycache__/
+# phase6 self-test scratch (regenerated on every run, not real QM data)
+analysis/outputs/_selftest_*
