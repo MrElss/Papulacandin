@@ -1,0 +1,4 @@
+compound,n_conformers__gfnff,n_conformers__gfn2,hydrophobic_sasa_mean__gfnff,hydrophobic_sasa_mean__gfn2,hydrophobic_sasa_std__gfnff,hydrophobic_sasa_std__gfn2,polar_sasa_mean__gfnff,polar_sasa_mean__gfn2,hydrophobic_fraction_mean__gfnff,hydrophobic_fraction_mean__gfn2,rg_mean__gfnff,rg_mean__gfn2
+cand01_quinolinecarbonyl,150,112,653.3,687.8,19.4,24.7,404.8,435.8,0.617,0.612,5.57,5.73
+cand02_naphthoyl_6OH,505,309,614.8,610.0,12.0,19.3,446.4,480.5,0.579,0.559,5.56,5.68
+cand03_pyridylphenyl,141,110,662.9,677.2,6.3,14.8,381.2,405.3,0.635,0.626,5.57,5.66
