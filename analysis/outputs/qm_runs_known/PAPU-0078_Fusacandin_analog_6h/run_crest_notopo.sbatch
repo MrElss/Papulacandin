@@ -28,7 +28,7 @@ WORKDIR="${SLURM_SUBMIT_DIR:-$PWD}"
 cd "$WORKDIR"
 
 # 显式指定或自动寻找输入（优先 .pdb）
-INP=${INP:-PAPU-0078_Fusacandin_analog_6h_preopt.xyz}  # CREST option A: start from GFN-FF-preoptimized geom (self-consistent biphenylene topology)
+INP=${INP:-PAPU-0078_Fusacandin_analog_6h_preopt.xyz}  # start from GFN-FF-preoptimized biphenylene geometry
 if [[ -z "$INP" ]]; then
   INP=$(ls -1 *.pdb 2>/dev/null | head -n1 || true)
   [[ -n "$INP" ]] || INP=$(ls -1 *.xyz 2>/dev/null | head -n1 || true)
@@ -59,7 +59,7 @@ METHOD_FLAG=${METHOD_FLAG:---gfnff}            # screening default; finalists: -
 SOLV_FLAG=${SOLV_FLAG:---alpb water}           # GFN-FF needs ALPB; 不用溶剂：SOLV_FLAG=""
 CHARGE=${CHARGE:-0}
 UHF=${UHF:-0}
-EXTRA_OPTS=${EXTRA_OPTS:--ewin 6 --noreftopo}  # 6h preopt restart: full search, noreftopo for the biphenylene ring
+EXTRA_OPTS=${EXTRA_OPTS:--ewin 6 --noreftopo --notopo}  # --notopo: disable CREGEN topology filter (biphenylene bond-perception fluctuates across MTD snapshots -> else ALL conformers removed)
 
 # 把可选参数安全地累加到一个数组（即使为空也不会报错）
 opts=()
