@@ -4,8 +4,7 @@
 #SBATCH -n 1
 #SBATCH --cpus-per-task=52
 #SBATCH --mem=64G
-#SBATCH -t 48:00:00
-#SBATCH -J jobname_gfn2rerank
+#SBATCH -J cand03_gfn2rerank
 #SBATCH -o %x.%j.out
 #SBATCH -e %x.%j.err
 #

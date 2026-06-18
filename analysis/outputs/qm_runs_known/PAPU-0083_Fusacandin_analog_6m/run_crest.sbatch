@@ -1,11 +1,10 @@
 #!/bin/bash
-#SBATCH -p cpu-256G
+#SBATCH -p fat-1024G
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --cpus-per-task=52
+#SBATCH --cpus-per-task=30
 #SBATCH --mem=64G
-#SBATCH -t 48:00:00
-#SBATCH -J jobname_crest
+#SBATCH -J PAPU-0083_Fusacandin_analog_6m
 #SBATCH -o %x.%j.out
 #SBATCH -e %x.%j.err
 

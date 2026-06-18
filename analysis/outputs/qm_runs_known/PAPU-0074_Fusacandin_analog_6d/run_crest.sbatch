@@ -5,7 +5,7 @@
 #SBATCH --cpus-per-task=52
 #SBATCH --mem=64G
 #SBATCH -t 48:00:00
-#SBATCH -J jobname_crest
+#SBATCH -J PAPU-0074_Fusacandin_analog_6d
 #SBATCH -o %x.%j.out
 #SBATCH -e %x.%j.err
 
