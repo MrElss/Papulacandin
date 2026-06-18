@@ -5,9 +5,9 @@ analysis/outputs/_selftest_*
 # phase7_retrospective_qm.py (fixed seed); results captured in the CSVs
 analysis/outputs/qm_runs_known_rdkit/
 # NOTE: qm_runs/*_gfn2/ finalist re-rank folders ARE tracked (input pool +
-# run_gfn2_rerank.sbatch) so they can be pulled and submitted on the cluster.
-# Their post-run CREST outputs are scratch and stay ignored:
+# run_gfn2_rerank.sbatch + the GFN2 results crest_ensemble.xyz / crest_best.xyz
+# / rerank.log). Only CREST scratch in those folders is ignored:
 analysis/outputs/qm_runs/*_gfn2/pool_gfnff.xyz
-analysis/outputs/qm_runs/*_gfn2/crest_ensemble.xyz
+analysis/outputs/qm_runs/*_gfn2/crest.restart
+analysis/outputs/qm_runs/*_gfn2/crestopt.log
 analysis/outputs/qm_runs/*_gfn2/*.out
-analysis/outputs/qm_runs/*_gfn2/rerank.log
