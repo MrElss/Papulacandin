@@ -108,6 +108,38 @@ positive result justifies CREST-ing the known set for confirmation.
 - `outputs/phase7_retrospective_qm.png` — best 3D descriptor vs serum MIC, with
   the 2D baseline |rho| for scale
 
+## Phase 8 — real CREST confirmation (the result that matters)
+`phase8_known_crest_descriptors.py` — re-runs the phase6 descriptor engine on the
+REAL CREST/GFN-FF ensembles of the 24 known compounds
+(`outputs/qm_runs_known/PAPU-*/crest_conformers.xyz`) and repeats the Phase-7
+correlations at QM quality, plus the decisive confound analysis (partial
+correlation controlling for serum-free potency, and correlation vs the pure serum
+SHIFT). Reads the cached descriptor CSV if present (delete it to recompute SASA).
+
+**Finding:** the Phase-7 MMFF-proxy signal does NOT survive. Hydrophobic SASA
+weakens to rho=-0.33 (p=0.12, n.s.) and, controlling for serum-free MIC (which
+alone tracks serum MIC at rho=0.77), collapses to partial rho=0.03 — a pure
+potency artifact. No ensemble SASA/shape descriptor predicts the serum shift
+(all p>0.13); the only coherent, non-confounded trend is "expose polar not
+hydrophobic surface" (polar SASA vs shift rho=-0.32), which needs more data.
+Full writeup: `outputs/phase8_findings.md`.
+
+`phase8b_finalist_gfn2.py` — recomputes the 3 finalists' descriptors from their
+GFN2-reranked ensembles (`qm_runs/cand0*_gfn2/crest_ensemble.xyz`) and
+regenerates their Gaussian inputs from the GFN2 populations
+(`outputs/qm_runs_gaussian_gfn2/<cand>/*.gjf`). The rerank moved populations
+materially (e.g. cand02 GFN-FF's flat 5-conformer set -> one GFN2 conformer at
+68%), so the GFN2 DFT set differs from the GFN-FF one.
+
+### Phase 8 outputs
+- `outputs/phase8_known_crest_descriptors.csv` — real-CREST 3D descriptors (cache)
+- `outputs/phase8_retrospective_crest.csv` — descriptors + serum data
+- `outputs/phase8_confound_analysis.csv` — partial + shift correlations
+- `outputs/phase8_retrospective_crest.png` — descriptor vs serum MIC; |rho| vs proxy & 2D
+- `outputs/phase8_findings.md` — full interpretation
+- `outputs/phase8b_finalist_gfn2_descriptors.csv`, `phase8b_gfnff_vs_gfn2.csv`
+- `outputs/qm_runs_gaussian_gfn2/<cand>/*.gjf` — finalist DFT inputs (GFN2 pops)
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required
