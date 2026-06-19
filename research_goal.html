@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: "WenQuanYi Zen Hei", "Microsoft YaHei", sans-serif;
+    background:#ffffff;
+  }
+  #canvas {
+    width:1180px;
+    padding:26px 32px 34px;
+    background:#ffffff;
+  }
+  h1.title {
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+    color:#1a2a4a;
+    letter-spacing:2px;
+    margin-bottom:6px;
+  }
+  .subtitle {
+    text-align:center;
+    font-size:14px;
+    color:#7a4a00;
+    font-weight:bold;
+    margin-bottom:20px;
+  }
+
+  /* challenge bar */
+  .challenge {
+    display:flex; justify-content:center; gap:14px;
+    margin-bottom:22px;
+  }
+  .chip {
+    background:#fff3e6; border:1.5px solid #f0b46a;
+    color:#9a4a00; font-size:14px; font-weight:bold;
+    padding:8px 18px; border-radius:22px;
+  }
+
+  /* strategy banner */
+  .strategy {
+    display:flex; align-items:stretch; justify-content:center;
+    gap:0; margin-bottom:26px;
+  }
+  .stage {
+    flex:1;
+    background:linear-gradient(180deg,#eef4ff,#dbe7fb);
+    border:2px solid #4a73c4;
+    border-radius:12px;
+    padding:14px 10px;
+    text-align:center;
+    box-shadow:0 3px 6px rgba(0,0,0,.08);
+  }
+  .stage .num { display:inline-block; width:26px; height:26px; line-height:26px;
+    background:#2f56a6; color:#fff; border-radius:50%; font-size:14px; font-weight:bold; margin-bottom:6px;}
+  .stage .t { font-size:17px; font-weight:bold; color:#1a2a4a; }
+  .stage .d { font-size:12px; color:#445; margin-top:4px; }
+  .arrow {
+    display:flex; align-items:center; font-size:30px; color:#7a93c4; padding:0 10px;
+  }
+
+  /* three pillars */
+  .pillars { display:flex; gap:18px; margin-bottom:26px; }
+  .pillar {
+    flex:1; border-radius:12px; overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    display:flex; flex-direction:column;
+  }
+  .pillar .head {
+    padding:11px 12px; color:#fff; font-weight:bold; font-size:16px; text-align:center;
+  }
+  .pillar .body { padding:14px 14px 8px; flex:1; }
+  .pillar ol { margin-left:18px; }
+  .pillar li { font-size:13px; color:#333; margin-bottom:9px; line-height:1.4; }
+  .goal {
+    margin:6px 12px 14px; padding:9px 12px; border-radius:8px;
+    font-size:13px; font-weight:bold; display:flex; align-items:center; gap:6px;
+  }
+  .goal .star { font-size:15px; }
+
+  .p1 { background:#fdeef0; }
+  .p1 .head { background:linear-gradient(180deg,#e96a7a,#d9485c); }
+  .p1 .goal { background:#fad7dd; color:#a01e34; }
+
+  .p2 { background:#eef7ef; }
+  .p2 .head { background:linear-gradient(180deg,#4fae6a,#3a9456); }
+  .p2 .goal { background:#d6efdb; color:#1f6b38; }
+
+  .p3 { background:#eef3fb; }
+  .p3 .head { background:linear-gradient(180deg,#4a86c8,#2f63ad); }
+  .p3 .goal { background:#d6e6f7; color:#1c4a82; }
+
+  /* pipeline */
+  .syslabel { text-align:center; font-size:15px; font-weight:bold; color:#1a2a4a; margin-bottom:12px; }
+  .pipeline { display:flex; align-items:center; justify-content:center; gap:0; }
+  .pstep {
+    background:#fff; border:2px solid #7a93c4; border-radius:10px;
+    padding:12px 8px; text-align:center; font-size:13.5px; font-weight:bold; color:#23406e;
+    min-width:128px; box-shadow:0 2px 5px rgba(0,0,0,.06);
+  }
+  .parrow { font-size:24px; color:#7a93c4; padding:0 7px; }
+  .outcome {
+    margin-top:22px; text-align:center;
+    background:linear-gradient(90deg,#fff7ec,#fdeef0,#eef3fb);
+    border:1.5px dashed #c79a4a; border-radius:10px;
+    padding:13px 20px; font-size:14px; font-weight:bold; color:#5a3a10;
+  }
+</style>
+</head>
+<body>
+<div id="canvas">
+  <h1 class="title">研究目标</h1>
+  <div class="subtitle">侵袭性深部真菌感染原创候选药物创制 —— 新结构创制 · 新机制解析 · 成药性评估</div>
+
+  <div class="challenge">
+    <div class="chip">发病率持续攀升</div>
+    <div class="chip">耐药菌株快速扩散</div>
+    <div class="chip">现有药物稀缺、副作用大</div>
+  </div>
+
+  <div class="strategy">
+    <div class="stage"><div class="num">1</div><div class="t">新结构抗真菌药物创制</div><div class="d">机器学习 / 生成网络指导的创制</div></div>
+    <div class="arrow">→</div>
+    <div class="stage"><div class="num">2</div><div class="t">新靶标发现与新机制解析</div><div class="d">化学遗传学 · 功能基因组学</div></div>
+    <div class="arrow">→</div>
+    <div class="stage"><div class="num">3</div><div class="t">成药性评估</div><div class="d">系统性临床前研究</div></div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar p1">
+      <div class="head">一、新结构抗真菌药物创制</div>
+      <div class="body">
+        <ol>
+          <li>以两性霉素B、棘白菌素等临床药物结构改造为核心</li>
+          <li>整合其他结构类型抗真菌分子</li>
+          <li>机器学习/生成网络指导的合成生物创制与定向衍生化策略</li>
+          <li>靶向耐药白色念珠菌、曲霉等重要病原真菌</li>
+        </ol>
+      </div>
+      <div class="goal"><span class="star">★</span>培育 4–5 个具成药潜力候选化合物</div>
+    </div>
+
+    <div class="pillar p2">
+      <div class="head">二、新靶标发现与新机制解析</div>
+      <div class="body">
+        <ol>
+          <li>综合运用化学遗传学、功能基因组学及宿主微生态策略</li>
+          <li>发现并验证 1–2 个区别于现有药物的新型抗真菌靶标</li>
+          <li>阐明真菌代谢物与宿主的免疫互作机制</li>
+          <li>解析病原真菌抵御天然产物胁迫的分子逻辑</li>
+        </ol>
+      </div>
+      <div class="goal"><span class="star">★</span>推动发现 2–3 个全新作用机制药物</div>
+    </div>
+
+    <div class="pillar p3">
+      <div class="head">三、成药性评估与临床前研究</div>
+      <div class="body">
+        <ol>
+          <li>开展体内外药效学研究</li>
+          <li>系统毒理学评价</li>
+          <li>药代动力学研究</li>
+          <li>对优选候选化合物进行系统性临床前评价</li>
+        </ol>
+      </div>
+      <div class="goal"><span class="star">★</span>完成 1–2 个候选药物临床前评价</div>
+    </div>
+  </div>
+
+  <div class="syslabel">建立"天然产物发现—新结构创制—新机理解析—候选药物优化—临床前评价"完整研发体系</div>
+  <div class="pipeline">
+    <div class="pstep">天然产物发现</div><div class="parrow">→</div>
+    <div class="pstep">新结构创制</div><div class="parrow">→</div>
+    <div class="pstep">新机理解析</div><div class="parrow">→</div>
+    <div class="pstep">候选药物优化</div><div class="parrow">→</div>
+    <div class="pstep">临床前评价</div>
+  </div>
+
+  <div class="outcome">形成具有自主知识产权的原创侵袭性真菌感染候选药物系列，切实解决药物种类少、副作用大、耐药上升及侵袭性感染疗效差等临床难题</div>
+</div>
+</body>
+</html>
