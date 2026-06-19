@@ -11,3 +11,9 @@ analysis/outputs/qm_runs/*_gfn2/pool_gfnff.xyz
 analysis/outputs/qm_runs/*_gfn2/crest.restart
 analysis/outputs/qm_runs/*_gfn2/crestopt.log
 analysis/outputs/qm_runs/*_gfn2/*.out
+# Phase 9 xtb namespace scratch (keep *.out results, *.charges, inputs, sbatch)
+analysis/outputs/qm_runs_known_xtb/**/*.xtbtopo.mol
+analysis/outputs/qm_runs_known_xtb/**/*.xtbrestart
+analysis/outputs/qm_runs_known_xtb/**/*.wbo
+analysis/outputs/qm_runs_known_xtb/xtb_elec.*.out
+analysis/outputs/qm_runs_known_xtb/xtb_elec.*.err

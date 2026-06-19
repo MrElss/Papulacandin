@@ -140,6 +140,29 @@ materially (e.g. cand02 GFN-FF's flat 5-conformer set -> one GFN2 conformer at
 - `outputs/phase8b_finalist_gfn2_descriptors.csv`, `phase8b_gfnff_vs_gfn2.csv`
 - `outputs/qm_runs_gaussian_gfn2/<cand>/*.gjf` — finalist DFT inputs (GFN2 pops)
 
+## Phase 9 — electronic / solvation descriptors
+`gen_known_xtb_inputs.py` selects each known compound's Boltzmann-populated CREST
+conformers and emits GFN2-xTB single-point inputs in water + octanol
+(`outputs/qm_runs_known_xtb/`, one cluster sbatch). `phase9_electronic.py` parses
+them for dipole, HOMO-LUMO gap, polarizability α(0), aqueous G_solv and a QM logP
+= (G_solv,water − G_solv,oct)/2.303RT, Boltzmann-averages, and runs the same
+Phase-8 statistics (vs serum MIC, partial controlling serum-free potency, vs serum
+shift).
+
+**Finding:** electronics also fails to give a p<0.05 serum-tolerance predictor on
+this n=24/censored set, but it converges with shape. Polarizability α(0) is the
+strongest raw serum-MIC correlate (ρ=−0.54, p=0.01) yet is a size/potency proxy
+(tracks Rg, hydrophobic SASA, serum-free MIC; shift ρ=−0.02). QM logP tracks
+hydrophobic SASA (ρ=+0.76) and gives serum-shift ρ=+0.30 — independently
+corroborating Phase-8's polar-surface lead (polar SASA shift ρ=−0.33). The
+defensible, cross-validated design hypothesis: among equipotent analogs, bias the
+exposed surface toward polar/H-bonding (lower QM logP) to cut serum loss. Full
+writeup: `outputs/phase9_findings.md`.
+
+### Phase 9 outputs
+- `outputs/phase9_electronic_descriptors.csv`, `phase9_electronic_stats.csv`
+- `outputs/phase9_electronic.png`, `outputs/phase9_findings.md`
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required
