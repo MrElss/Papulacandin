@@ -17,3 +17,10 @@ analysis/outputs/qm_runs_known_xtb/**/*.xtbrestart
 analysis/outputs/qm_runs_known_xtb/**/*.wbo
 analysis/outputs/qm_runs_known_xtb/xtb_elec.*.out
 analysis/outputs/qm_runs_known_xtb/xtb_elec.*.err
+# Phase 10 docking: bulky regenerable artifacts (receptor/ligand pdbqt, raw PDB)
+analysis/outputs/phase10_docking/1AO6.pdb
+analysis/outputs/phase10_docking/hsa_chainA.pdb
+analysis/outputs/phase10_docking/hsa_receptor.pdbqt
+analysis/outputs/phase10_docking/ligands/
+analysis/outputs/phase10_docking/*.log
+analysis/outputs/phase10_docking/test_*.pdbqt

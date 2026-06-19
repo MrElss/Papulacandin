@@ -163,6 +163,29 @@ writeup: `outputs/phase9_findings.md`.
 - `outputs/phase9_electronic_descriptors.csv`, `phase9_electronic_stats.csv`
 - `outputs/phase9_electronic.png`, `outputs/phase9_findings.md`
 
+## Phase 10 — explicit HSA docking
+`phase10_dock_hsa.py` docks each compound to human serum albumin (PDB 1AO6) and
+correlates binding with the serum shift. Whole-molecule docking of these 1000-1200
+Da, ~38-rotatable-bond glycolipids is at/beyond docking's reliable regime (rigid
+pocket docking clashes at +42 kcal/mol; 38-torsion flexible docking is intractable),
+so the method is RIGID ENSEMBLE SURFACE DOCKING: rigid HSA + the top Boltzmann QM
+conformers kept rigid + large boxes over both Sudlow regions; score = best Vina
+affinity over conformers x sites.
+
+**Finding (null):** HSA binding does not predict the serum shift (ρ=+0.22, p=0.30;
+sign even opposite to the sequestration hypothesis), and the result is flat under
+potency- and size-controls. The docking score is not a mere size proxy
+(vs polarizability ρ=−0.15), so the method captured real surface association — it
+just doesn't track serum tolerance. Caveat: Vina is not parameterized for ligands
+this large/amphiphilic, so a null cannot exclude albumin sequestration; it needs an
+experimental HSA-binding assay. Full writeup: `outputs/phase10_findings.md`.
+Bulky docking artifacts (receptor/ligand pdbqt, 1AO6.pdb) are gitignored
+(regenerable via the script).
+
+### Phase 10 outputs
+- `outputs/phase10_docking/phase10_hsa_scores.csv`, `phase10_hsa_per_compound.csv`
+- `outputs/phase10_hsa.png`, `outputs/phase10_findings.md`
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required
