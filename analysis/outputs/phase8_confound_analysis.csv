@@ -1,6 +1,6 @@
 descriptor,partial_rho_vs_serumMIC,partial_p,rho_vs_shift,shift_p
-hydrophobic_sasa_mean,0.03,0.889,0.27,0.214
-hydrophobic_fraction_mean,0.19,0.388,0.28,0.193
-hydrophobic_sasa_std,0.0,0.984,-0.06,0.777
-polar_sasa_mean,-0.31,0.144,-0.32,0.133
-rg_mean,-0.23,0.286,-0.03,0.877
+hydrophobic_sasa_mean,0.02,0.916,0.24,0.25
+hydrophobic_fraction_mean,0.19,0.383,0.28,0.192
+hydrophobic_sasa_std,-0.01,0.978,-0.11,0.608
+polar_sasa_mean,-0.31,0.134,-0.33,0.118
+rg_mean,-0.23,0.28,-0.05,0.804

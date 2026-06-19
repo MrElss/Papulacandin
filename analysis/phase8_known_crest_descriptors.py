@@ -183,12 +183,15 @@ def main():
     m.to_csv(os.path.join(OUT, "phase8_retrospective_crest.csv"), index=False)
 
     clean = m[~m["degenerate"]].copy()
+    n_deg = int(m["degenerate"].sum())
+    primary_label = ("PRIMARY: all ensembles (none degenerate)" if n_deg == 0
+                     else f"PRIMARY: healthy ensembles only (excl. {n_deg} degenerate)")
     print("\n" + "=" * 70)
     print("RETROSPECTIVE vs log10(serum MIC) — real CREST ensembles")
     print(f"benchmarks: 2D baseline rho={BASELINE_RHO:+.2f} (n.s.); "
           f"Phase-7 MMFF proxy hydrophobic_sasa_mean rho={PROXY_RHO:+.2f}")
     print("=" * 70)
-    res_primary = spearman_block(clean, "PRIMARY: healthy ensembles only (excl. 6h single-conf)")
+    res_primary = spearman_block(clean, primary_label)
     res_all = spearman_block(m, "SECONDARY: all compounds (6h as single-point)")
     confound_analysis(clean)
 
