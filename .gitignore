@@ -24,3 +24,4 @@ analysis/outputs/phase10_docking/hsa_receptor.pdbqt
 analysis/outputs/phase10_docking/ligands/
 analysis/outputs/phase10_docking/*.log
 analysis/outputs/phase10_docking/test_*.pdbqt
+analysis/outputs/deck_assets/
