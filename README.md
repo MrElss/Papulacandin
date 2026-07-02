@@ -9,7 +9,7 @@ built around one question:
 > compute a rule to design serum-tolerant analogs?**
 
 **Answer, in one line** (full version in
-[`analysis/outputs/SYNTHESIS_phases1-11.md`](analysis/outputs/SYNTHESIS_phases1-11.md)):
+[`analysis/outputs/SYNTHESIS_phases1-12.md`](analysis/outputs/SYNTHESIS_phases1-12.md)):
 serum *potency* is governed by intrinsic potency × molecular size/lipophilicity;
 serum *tolerance* (the free→serum MIC shift) has at most a weak, non-significant
 association with exposing **polar rather than hydrophobic** surface — a lead that
@@ -28,8 +28,8 @@ antifungal drug candidates for invasive fungal infections.
 |---|---|
 | [`curated/`](curated/) | Clean, human-QC'd source data: `compounds_master.csv` (138 compounds), `activity_table.csv` (1042 MIC/assay records), enzyme assays, synthesis-feasibility notes, and structure files (SDF/MOL/CDX). Packaged "data-only" so a downstream tool can re-derive SAR independently. |
 | [`external/`](external/) | External FKS / glucan-synthase inhibitor datasets (source exports, curation notes, processed model-ready + pretraining matrices). |
-| [`analysis/`](analysis/) | The pipeline: self-contained, ordered Python scripts `phase1…phase11` writing to `analysis/outputs/`. See [`analysis/README.md`](analysis/README.md) for the phase-by-phase narrative. |
-| [`analysis/outputs/`](analysis/outputs/) | Results: CSVs, figures, QM run artifacts, per-phase `*_findings.md`, the cross-phase [`SYNTHESIS_phases1-11.md`](analysis/outputs/SYNTHESIS_phases1-11.md), and slide decks. |
+| [`analysis/`](analysis/) | The pipeline: self-contained, ordered Python scripts `phase1…phase12` writing to `analysis/outputs/`. See [`analysis/README.md`](analysis/README.md) for the phase-by-phase narrative. |
+| [`analysis/outputs/`](analysis/outputs/) | Results: CSVs, figures, QM run artifacts, per-phase `*_findings.md`, the cross-phase [`SYNTHESIS_phases1-12.md`](analysis/outputs/SYNTHESIS_phases1-12.md), and slide decks. |
 | [`tests/`](tests/) | Smoke tests (curated-data integrity + fast pipeline entry points). |
 | [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md) | Data sources, curation dates, toolchain versions, endpoint/censoring conventions. |
 
@@ -43,7 +43,9 @@ SASA, Boltzmann weighting, Gaussian DFT I/O) → **7–8** retrospective validat
 (MMFF proxy → real CREST + confound analysis) → **9** GFN2-xTB electronics →
 **10** explicit HSA docking → **11** echinocandin cross-chemotype read-across
 (reuses the `external/` FKS corpus to reframe the endpoint via the free-drug
-hypothesis and stress-test the polar-surface lead against a second chemotype).
+hypothesis and stress-test the polar-surface lead against a second chemotype) →
+**12** serum-tolerance-biased generative design (rewards 3D exposed polar surface;
+emits a discriminating series + an ibrexafungerp-inspired tail-free branch).
 
 Phases 0–9 run on a normal workstation. Phases that generate raw QM/docking data
 need external binaries (CREST, xtb, Gaussian, AutoDock Vina); the Python scripts
@@ -71,11 +73,12 @@ The full run order and every output is documented in
 
 ## Reading order for the science
 
-1. [`analysis/outputs/SYNTHESIS_phases1-11.md`](analysis/outputs/SYNTHESIS_phases1-11.md) — the payoff: the whole story and the honest limitations.
+1. [`analysis/outputs/SYNTHESIS_phases1-12.md`](analysis/outputs/SYNTHESIS_phases1-12.md) — the payoff: the whole story and the honest limitations.
 2. `analysis/outputs/serum_gap_summary.txt` — the dependent variable and the serum-tolerant leads.
 3. `analysis/outputs/phase8_findings.md` … `phase10_findings.md` — the decisive confound analysis and null results.
 4. `analysis/outputs/phase11_findings.md` — the echinocandin cross-chemotype read-across and free-drug reframe.
-5. [`analysis/README.md`](analysis/README.md) — how each phase was run (incl. the real CREST/xtb settings used).
+5. `analysis/outputs/phase12_findings.md` — the serum-tolerance-biased generator, its validated reward, and the discriminating series.
+6. [`analysis/README.md`](analysis/README.md) — how each phase was run (incl. the real CREST/xtb settings used).
 
 ## Limitations (in one breath)
 

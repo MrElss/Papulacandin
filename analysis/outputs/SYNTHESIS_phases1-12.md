@@ -1,4 +1,4 @@
-# Papulacandin / Fusacandin serum gap — cross-phase synthesis (Phases 1–11)
+# Papulacandin / Fusacandin serum gap — cross-phase synthesis (Phases 1–12)
 
 *Question:* why do a few papulacandin-class FKS1 inhibitors keep antifungal
 activity in serum while structurally close analogs lose it — and can we compute a
@@ -38,6 +38,7 @@ methods — and the right endpoint is **free-drug** exposure, not raw serum MIC.
 | **9** | GFN2-xTB **electronic / solvation** descriptors (dipole, gap, polarizability, QM logP) | Polarizability is the biggest raw serum-MIC correlate (ρ = −0.54, p = 0.01) but is a **size proxy** (shift ρ = −0.02). **QM logP** tracks hydrophobic SASA (ρ = +0.76) and gives **shift ρ = +0.30** — independently corroborating the polar-surface lead. Two descriptor families converge; neither significant. |
 | **10** | Explicit **HSA docking** (rigid ensemble surface docking; whole-molecule flexible docking is intractable at ~38 torsions) | **Null:** HSA affinity vs serum shift **ρ = +0.22 (p = 0.30)**, sign opposite to sequestration; flat under potency/size controls. Not a size proxy, so the model captured real surface association that simply doesn't track tolerance. |
 | **11** | **Echinocandin cross-chemotype read-across** (in-repo external FKS corpus): serum-shift folds ± 50% serum, PPB/Fu, on a shared endpoint + RDKit descriptor axis | Same phenomenon, robust C. albicans ordering **caspofungin ×2 < anidulafungin ×16 < micafungin ×64** — yet all are front-line drugs dosed to a **free-drug** target (~96–99.8% bound). **Honest null:** *bulk* 2D polarity/lipophilicity does **not** explain the ordering (micafungin most polar yet shifts most). This **refines** (not refutes) the Phase 8–9 lead → it is about **locally exposed** surface, which bulk TPSA cannot see; and echoes the Phase-10 null (echinocandins’ known *direct* serum effect on glucan synthase). Existence proof: ibrexafungerp/enfumafungin hit the target with **no lipopeptide tail**. |
+| **12** | **Serum-tolerance-biased generative design** (Track A: transparent scaffold-constrained generator with a physics-grounded reward) | Reward = 3D **exposed polar surface fraction** (ETKDG + RDKit rdFreeSASA) — the operational form of the Phase 8/9/11 lead; QED/Ro5/clogP dropped. Reward **validated** on the 24 knowns (exposed polar frac vs serum shift **ρ = −0.33, p = 0.11** — reproduces the Phase-8 CREST value with a fast proxy). Generated 28 novel analogs across an **ester** and an ibrexafungerp-inspired **tail-free (notail)** branch; the notail branch dominates the predicted-tolerant, high-novelty region at MW ~700–810 (ibrexafungerp's regime). Deliverable: a **discriminating series** on one scaffold spanning exposed polarity, built to *test* the lead in a serum assay, not assume it. |
 
 ## 3. The convergent, defensible finding (updated by Phase 11)
 Four independent computational families — 3D shape (polar SASA), QM solvation
@@ -91,16 +92,20 @@ active glucan-synthase inhibitor). Do **not** rank on bulk TPSA/clogP/QED.
   hypothesis, not assume it.
 
 ## 6. Recommended next steps
-**A. Generative design of candidate serum-tolerant structures (the immediate goal).**
-Run a serum-tolerance-biased generation (Phase 12) whose objective is the
-Phase-8/9/11 physics — maximize *locally exposed* polar SASA / minimize QM logP on
-the variable region, **preserve** the FKS-engaging pharmacophore and intrinsic
-potency, reward novelty — and which opens a **tail-truncation/replacement** branch
-(ibrexafungerp-inspired) rather than only decorating the C-6′ ester. Critically,
-emit a **discriminating series**: designs matched on scaffold/potency that *span*
-the polar-exposed-surface axis, so the downstream assay can actually test the lead
-instead of only confirming it. Funnel winners through the existing Phase-6/8/9 QM
-pipeline (polar SASA, QM logP) to confirm the 3D property before synthesis.
+**A. Generative design of candidate serum-tolerant structures — DELIVERED as
+Phase 12 (Track A).** `phase12_generate_serum_tolerant.py` runs a
+serum-tolerance-biased generator whose reward IS the Phase-8/9/11 physics —
+maximize *locally exposed* polar SASA (3D ETKDG + rdFreeSASA), preserve the
+FKS-engaging pharmacophore by construction, reward novelty, drop the uninformative
+QED/Ro5/clogP terms — with an ibrexafungerp-inspired **tail-free** branch alongside
+C-6′ decoration. The reward is validated on the 24 knowns (exposed polar frac vs
+serum shift **ρ = −0.33, p = 0.11**, reproducing the Phase-8 CREST value). Output:
+28 novel analogs + a **discriminating series** on one scaffold spanning exposed
+polarity (built to *test* the lead in a serum assay, not assume it). *Next within
+this thread:* funnel `phase12_top_candidates.sdf` through the Phase-6/8/9 QM
+pipeline to confirm the property at QM quality, then **Track B** — an RL/CLM
+generative network (REINVENT-style) on the external FKS pretraining set reusing
+this same reward, once wet-lab shifts (B) anchor it.
 
 **B. Experimental grounding (the single biggest lever, in parallel).**
 - Acquire **uncensored serum MICs** on more analogs — ideally a second chemotype —
@@ -124,5 +129,8 @@ decision-grade, until B lands.
 - Electronics: `gen_known_xtb_inputs.py`, `phase9_electronic.py`, `outputs/phase9_*`
 - Docking: `phase10_dock_hsa.py`, `outputs/phase10_*`
 - Cross-chemotype: `phase11_echinocandin_readacross.py`, `outputs/phase11_*`
-- Per-phase write-ups: `outputs/phase7_findings.md` … `phase11_findings.md`; this
-  file: `outputs/SYNTHESIS_phases1-11.md` (supersedes `SYNTHESIS_phases1-10.md`).
+- Generative (serum-tolerance-biased): `phase12_generate_serum_tolerant.py`,
+  `outputs/phase12_*` (generated library, discriminating series, reward validation,
+  CREST-ready SDF)
+- Per-phase write-ups: `outputs/phase7_findings.md` … `phase12_findings.md`; this
+  file: `outputs/SYNTHESIS_phases1-12.md` (supersedes `SYNTHESIS_phases1-10.md`).

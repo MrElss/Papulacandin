@@ -219,6 +219,45 @@ a tail-truncation/replacement design branch. Full writeup: `outputs/phase11_find
   harmonized papulacandin + echinocandin table and within-papulacandin stats
 - `outputs/phase11_crosschemotype.png`, `outputs/phase11_findings.md`
 
+## Phase 12 — serum-tolerance-biased generative design (Track A)
+`phase12_generate_serum_tolerant.py` — the AI-design step. Off the serum-active
+lead PAPU-0080 it generates novel analogs and scores them by the **operational
+form of the Phase 8/9/11 lead**: the mean **exposed polar surface fraction** over a
+small ETKDG conformer ensemble (RDKit `rdFreeSASA` — the built-in, not the
+`freesasa` pip package that failed in Phase 6). QED/Ro5/clogP are dropped (Phases
+5/11 showed them uninformative). The FKS-engaging pharmacophore is preserved by
+construction (re-esterifying onto the conserved core). Three branches: **ester**
+(C-6′ handle, Phase-5 chemistry), **polaraxis** (designed acyls spanning
+hydrophobic→polar), and **notail** (fatty-tail deacylation → ibrexafungerp-inspired
+tail-free analogs). CPU-only; a SASA cache (`phase12_sasa_cache.csv`) makes reruns
+instant.
+
+**Honest framing:** there is no validated serum-tolerance oracle, so the reward is
+the polar-surface *hypothesis*. The reward is validated retrospectively on the 24
+knowns (exposed polar frac vs serum shift **ρ = −0.33, p = 0.11** — reproduces the
+Phase-8 CREST value with a fast proxy). The headline deliverable is a
+**discriminating series**: novel analogs on a single scaffold spanning exposed
+polarity, built so a serum assay can *falsify or confirm* the lead, not just
+confirm it. The tail-free branch dominates the predicted-tolerant, high-novelty
+region at MW ~700–810 (ibrexafungerp's regime). Track B (an RL/CLM generative
+network on the external FKS pretraining set reusing this reward) is the follow-on
+once wet-lab shifts anchor the reward. Full writeup: `outputs/phase12_findings.md`.
+
+Run it (first pass ~90 s on CPU; cached thereafter):
+```
+python3 analysis/phase12_generate_serum_tolerant.py
+# quicker: PHASE12_N_CONF=1 python3 analysis/phase12_generate_serum_tolerant.py
+```
+
+### Phase 12 outputs
+- `outputs/phase12_generated_library.csv` — all generated analogs + reward components
+- `outputs/phase12_discriminating_series.csv` — matched single-scaffold series
+  spanning exposed polarity (the set to synthesize/assay)
+- `outputs/phase12_top_candidates.sdf` — 3D structures of the top novel analogs (CREST-ready)
+- `outputs/phase12_crest_commands.sh` — per-candidate CREST command template
+- `outputs/phase12_reward_validation.png`, `outputs/phase12_findings.md`
+- `outputs/phase12_sasa_cache.csv` — InChIKey→exposed-polar-fraction cache
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required

@@ -2,7 +2,7 @@
 """Smoke tests for the Papulacandin / FKS1 serum-gap pipeline.
 
 These are intentionally lightweight: they protect the *negative* scientific
-result (documented in analysis/outputs/SYNTHESIS_phases1-11.md) against silent
+result (documented in analysis/outputs/SYNTHESIS_phases1-12.md) against silent
 bit-rot from dependency upgrades or data edits. They do NOT re-validate the
 science — only that the curated data is well-formed and the fast, dependency-
 light entry points of the pipeline still run end to end and emit the expected
@@ -158,6 +158,50 @@ def test_phase11_echinocandin_readacross():
     assert "papulacandin" in chemotypes and "echinocandin" in chemotypes
     # 24 papulacandin rows should survive into the harmonized table.
     assert sum(r["chemotype"] == "papulacandin" for r in combined) == N_MATCHED_PAIRS
+
+
+def test_phase12_core_functions():
+    """Phase 12's generator is too slow for CI to run end to end (~90s of 3D
+    embedding), so exercise its load-bearing pieces directly: the tail-removal
+    branch must excise a fatty tail from the template, re-esterification must
+    yield a valid molecule, and the exposed-polar-surface reward must return a
+    fraction in (0, 1)."""
+    import importlib
+
+    from rdkit import Chem
+
+    if str(ANALYSIS) not in sys.path:
+        sys.path.insert(0, str(ANALYSIS))
+    p12 = importlib.import_module("phase12_generate_serum_tolerant")
+
+    # fragment library (designed + polar-axis) is non-empty
+    lib = p12.build_acyl_library()
+    assert len(lib) >= 12, f"acyl library too small: {len(lib)}"
+
+    # tail-removal branch: template -> smaller de-tailed molecule
+    cm = _read_csv(CORE / "compounds_master.csv")
+    tmpl_smiles = next(r["smiles_canonical"] for r in cm
+                       if r["compound_id"] == p12.SERUM_TOLERANT_TEMPLATE)
+    tmpl = Chem.MolFromSmiles(tmpl_smiles)
+    detailed = p12.deacylate_longest_tail(tmpl)
+    assert detailed is not None, "tail removal failed on the template"
+    assert detailed.GetNumAtoms() < tmpl.GetNumAtoms(), "deacylation did not shrink the molecule"
+
+    # reward returns a valid polar fraction on a small molecule (fast)
+    frac, total, n_ok = p12.exposed_polar_fraction(Chem.MolFromSmiles("OCC(N)C(=O)O"), n_conf=1)
+    assert n_ok >= 1 and 0.0 < frac < 1.0, f"exposed_polar_fraction out of range: {frac}"
+
+
+def test_phase12_outputs_if_present():
+    """If the committed Phase 12 outputs exist, guard their shape: the
+    discriminating series must span >1 polarity bin on a single scaffold."""
+    series_path = OUT / "phase12_discriminating_series.csv"
+    if not series_path.exists():
+        return  # outputs are a slow, optional artifact; skip if not generated
+    series = _read_csv(series_path)
+    assert series, "discriminating series is empty"
+    assert len({r["polar_bin"] for r in series}) >= 2, "series does not span the polar axis"
+    assert len({r["branch"] for r in series}) == 1, "series should hold one scaffold constant"
 
 
 if __name__ == "__main__":

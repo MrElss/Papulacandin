@@ -1,5 +1,5 @@
 > **SUPERSEDED.** This is the Phases 1–10 snapshot. The current master narrative
-> is [`SYNTHESIS_phases1-11.md`](SYNTHESIS_phases1-11.md), which folds in the
+> is [`SYNTHESIS_phases1-12.md`](SYNTHESIS_phases1-12.md), which folds in the
 > Phase 11 echinocandin cross-chemotype read-across and updates the convergent
 > finding, endpoint framing, and next steps. Kept for history / the Phases 1–10
 > slide decks.
