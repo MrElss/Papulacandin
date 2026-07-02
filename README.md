@@ -28,7 +28,7 @@ antifungal drug candidates for invasive fungal infections.
 |---|---|
 | [`curated/`](curated/) | Clean, human-QC'd source data: `compounds_master.csv` (138 compounds), `activity_table.csv` (1042 MIC/assay records), enzyme assays, synthesis-feasibility notes, and structure files (SDF/MOL/CDX). Packaged "data-only" so a downstream tool can re-derive SAR independently. |
 | [`external/`](external/) | External FKS / glucan-synthase inhibitor datasets (source exports, curation notes, processed model-ready + pretraining matrices). |
-| [`analysis/`](analysis/) | The pipeline: self-contained, ordered Python scripts `phase1…phase12` writing to `analysis/outputs/`. See [`analysis/README.md`](analysis/README.md) for the phase-by-phase narrative. |
+| [`analysis/`](analysis/) | The pipeline: self-contained, ordered Python scripts `phase1…phase13` writing to `analysis/outputs/`. See [`analysis/README.md`](analysis/README.md) for the phase-by-phase narrative. |
 | [`analysis/outputs/`](analysis/outputs/) | Results: CSVs, figures, QM run artifacts, per-phase `*_findings.md`, the cross-phase [`SYNTHESIS_phases1-12.md`](analysis/outputs/SYNTHESIS_phases1-12.md), and slide decks. |
 | [`tests/`](tests/) | Smoke tests (curated-data integrity + fast pipeline entry points). |
 | [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md) | Data sources, curation dates, toolchain versions, endpoint/censoring conventions. |
@@ -45,7 +45,9 @@ SASA, Boltzmann weighting, Gaussian DFT I/O) → **7–8** retrospective validat
 (reuses the `external/` FKS corpus to reframe the endpoint via the free-drug
 hypothesis and stress-test the polar-surface lead against a second chemotype) →
 **12** serum-tolerance-biased generative design (rewards 3D exposed polar surface;
-emits a discriminating series + an ibrexafungerp-inspired tail-free branch).
+emits a discriminating series + an ibrexafungerp-inspired tail-free branch) →
+**13** round-1 campaign: fatty-tail optimization with the core frozen, plus the
+exact CREST/xtb cluster protocol to confirm the designs.
 
 Phases 0–9 run on a normal workstation. Phases that generate raw QM/docking data
 need external binaries (CREST, xtb, Gaussian, AutoDock Vina); the Python scripts

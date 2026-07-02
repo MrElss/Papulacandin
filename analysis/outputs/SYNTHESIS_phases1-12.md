@@ -107,6 +107,16 @@ pipeline to confirm the property at QM quality, then **Track B** — an RL/CLM
 generative network (REINVENT-style) on the external FKS pretraining set reusing
 this same reward, once wet-lab shifts (B) anchor it.
 
+> **Round 1 in progress — Phase 13 (`phase13_fatty_tail_optimization.py`).** First
+> campaign scopes the design to the **long-chain fatty acid only**, freezing the
+> sugar/spiroketal core and the aromatic C-6′ acyl (cleanest one-variable test:
+> the tail is the exposed-hydrophobic-surface driver, and freezing the core holds
+> the FKS pharmacophore/potency roughly constant). It emits a fixed-core tail
+> series spanning exposed polarity plus **CREST-ready inputs and the exact cluster
+> protocol** (`phase13_qm_runs/SUBMIT.md`) for the QM confirmation the user runs on
+> their platform, feeding the existing Phase-6 descriptor engine. See
+> `phase13_findings.md`.
+
 **B. Experimental grounding (the single biggest lever, in parallel).**
 - Acquire **uncensored serum MICs** on more analogs — ideally a second chemotype —
   so the polar-surface lead can be tested at adequate power.

@@ -258,6 +258,57 @@ python3 analysis/phase12_generate_serum_tolerant.py
 - `outputs/phase12_reward_validation.png`, `outputs/phase12_findings.md`
 - `outputs/phase12_sasa_cache.csv` — InChIKey→exposed-polar-fraction cache
 
+## Phase 13 — round-1 campaign: fatty-tail optimization (core fixed)
+`phase13_fatty_tail_optimization.py` — the first design round. It freezes the
+sugar / spiroketal core **and** the aromatic C-6′ acyl of the serum-active lead
+PAPU-0080, cleaves ONLY the longest aliphatic fatty-acyl ester (the native C16
+polyene tail), and re-esterifies that one position with a designed **tail
+library** spanning the axis the Phase-8/9/11 lead implicates: chain length,
+saturation, terminal polar caps (OH/COOH/NH₂/CONH₂), heteroatom/oxa insertion,
+charged heads (sulfonate, phosphocholine-like), branching, fluorination. The
+native tail is kept as the control/baseline. Reuses Phase 12's validated reward
+(exposed polar surface fraction; ρ=−0.33 on the 24 knowns) and its SASA cache.
+Because the core is identical across variants, changes in the reward — and in the
+absolute exposed hydrophobic SASA — are attributable to the tail alone.
+
+**Result (fast proxy, to be confirmed by CREST):** native baseline exposed polar
+fraction ≈0.27 (hydrophobic SASA ≈930 Å²); the short / terminally-capped /
+heteroatom-broken tails (C8-sulfonate, oxa-PEG, mid-chain diol, ω-amide/-acid)
+raise polar exposure and cut hydrophobic SASA to ~776–843 Å² — the Phase-8
+direction. The reward is not fooled by a charged head alone (the long
+phosphocholine chain still exposes hydrophobe → no gain).
+
+This phase writes **CREST-ready inputs and the exact cluster protocol** for the
+compute-intensive confirmation you run yourself, laid out so the existing Phase-6
+descriptor engine parses the returned ensembles directly. Full protocol:
+`outputs/phase13_qm_runs/SUBMIT.md` and `outputs/phase13_findings.md`.
+
+Run the generator (CPU, ~20 s with warm cache):
+```
+python3 analysis/phase13_fatty_tail_optimization.py
+```
+
+### Phase 13 outputs
+- `outputs/phase13_fatty_tail_library.csv` — every tail variant + reward + tail descriptors
+- `outputs/phase13_discriminating_series.csv` — fixed core, tails spanning exposed polarity
+- `outputs/phase13_top_candidates.sdf` — 3D structures (names match the QM dirs)
+- `outputs/phase13_qm_runs/<cand>/<cand>.xyz` — CREST starting geometries
+- `outputs/phase13_qm_runs/run_crest.sbatch`, `outputs/phase13_qm_runs/SUBMIT.md`
+  — cluster job + step-by-step protocol
+- `outputs/phase13_findings.md`
+
+### Round-1 cluster protocol (CPU; CREST/xtb are not GPU codes)
+1. **CREST ensembles** — for each `phase13_qm_runs/<cand>/<cand>.xyz`, GFN-FF /
+   ALPB water / `--quick -ewin 6` on 52 cores → `crest_conformers.xyz`
+   (`sbatch -J <cand> ../run_crest.sbatch` from inside each dir; full-GFN2 search
+   is intractable at this size — screening tier only).
+2. **Upload** each `crest_conformers.xyz` back to the repo.
+3. **Parse at QM quality** with the existing Phase-6 engine (exact command in
+   `SUBMIT.md`) → `phase13_qm_descriptors.csv`; compare polar/hydrophobic SASA vs
+   the native tail.
+4. **Finalists only** — GFN2 re-rank (`crest --screen … --gfn2`) + Phase-9 xtb
+   electronics (QM logP, water/octanol) before synthesis.
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required

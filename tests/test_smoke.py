@@ -192,6 +192,50 @@ def test_phase12_core_functions():
     assert n_ok >= 1 and 0.0 < frac < 1.0, f"exposed_polar_fraction out of range: {frac}"
 
 
+def test_phase13_fatty_tail_cleave():
+    """Phase 13 must cleave the fatty tail (not the aromatic C-6' acyl) from the
+    lead, leaving a core with fewer atoms and a genuinely aliphatic native tail."""
+    import importlib
+
+    from rdkit import Chem
+
+    if str(ANALYSIS) not in sys.path:
+        sys.path.insert(0, str(ANALYSIS))
+    p13 = importlib.import_module("phase13_fatty_tail_optimization")
+
+    cm = _read_csv(CORE / "compounds_master.csv")
+    tmpl_smiles = next(r["smiles_canonical"] for r in cm
+                       if r["compound_id"] == p13.TEMPLATE)
+    tmpl = Chem.MolFromSmiles(tmpl_smiles)
+    core, native = p13.cleave_longest_fatty_tail(tmpl)
+    assert core is not None and native is not None, "fatty-tail cleavage failed"
+    assert core.GetNumAtoms() < tmpl.GetNumAtoms()
+    d = p13.tail_descriptors(native)
+    # the native tail is a long aliphatic acyl with no aromatic ring
+    assert d["tail_n_carbon"] >= 8, f"native tail too short: {d}"
+    from rdkit.Chem import rdMolDescriptors
+    assert rdMolDescriptors.CalcNumAromaticRings(native) == 0, "cleaved an aromatic acyl, not the fatty tail"
+    # tail library builds and includes the native control
+    acyls = p13.build_tail_acyls(native)
+    assert "native_C16_polyene" in acyls and len(acyls) >= 10
+
+
+def test_phase13_outputs_if_present():
+    """If Phase 13 outputs exist, the discriminating series must span >1 polarity
+    bin, and every QM-input dir must carry a starting geometry the parser needs."""
+    series_path = OUT / "phase13_discriminating_series.csv"
+    if not series_path.exists():
+        return
+    series = _read_csv(series_path)
+    assert series and len({r["polar_bin"] for r in series}) >= 2
+    qm = OUT / "phase13_qm_runs"
+    if qm.exists():
+        cand_dirs = [d for d in qm.iterdir() if d.is_dir() and d.name.startswith("t")]
+        assert cand_dirs, "no candidate QM dirs written"
+        for d in cand_dirs:
+            assert list(d.glob("*.xyz")), f"{d.name} missing its .xyz starting geometry"
+
+
 def test_phase12_outputs_if_present():
     """If the committed Phase 12 outputs exist, guard their shape: the
     discriminating series must span >1 polarity bin on a single scaffold."""
