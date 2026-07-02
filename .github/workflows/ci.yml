@@ -1,0 +1,32 @@
+name: CI
+
+# Smoke-tests the serum-gap pipeline: curated-data integrity plus the fast,
+# dependency-light analysis entry points. Heavy QM/docking phases (CREST, xtb,
+# Gaussian, Vina) need external binaries and are out of scope here.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install core dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Run smoke tests
+        run: python -m pytest tests/ -q
+
+      - name: Phase 6 QM-parser self-test (synthetic ensemble)
+        run: python analysis/phase6_qm_layer.py

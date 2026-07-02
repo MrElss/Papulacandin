@@ -186,6 +186,129 @@ Bulky docking artifacts (receptor/ligand pdbqt, 1AO6.pdb) are gitignored
 - `outputs/phase10_docking/phase10_hsa_scores.csv`, `phase10_hsa_per_compound.csv`
 - `outputs/phase10_hsa.png`, `outputs/phase10_findings.md`
 
+## Phase 11 — echinocandin cross-chemotype read-across
+`phase11_echinocandin_readacross.py` — the synthesis named a second, independent
+chemotype as the only way past the n=24 single-series ceiling. The echinocandins
+(cyclic-lipopeptide Fks1/glucan-synthase inhibitors) are that chemotype, and our
+own `external/` FKS corpus already carries their serum data: MIC-shift ratios in
+±50% serum (the SAME endpoint direction as `serum_shift_fold`, confirmed from the
+source quotes: MIC in 50% serum ÷ MIC in serum-free medium) plus PPB/Fu. The
+script harmonizes those with the 24 papulacandins on `log2(serum-shift fold)` and
+a consistently-recomputed RDKit 2D descriptor set, then (Q1) reframes our endpoint
+via the free-drug hypothesis and (Q2) stress-tests the polar-surface lead across
+scaffolds. No external binaries; RDKit only.
+
+**Finding:** echinocandins show the same phenomenon and the robust, most
+comparable (C. albicans) ordering is **caspofungin ×2 < anidulafungin ×16 <
+micafungin ×64** — yet all three are front-line drugs, dosed to a *free*-drug
+target (~96–99.8% protein bound). Reframe: the goal is serum-tolerant *free
+exposure*, not a serum-invariant MIC. Honest null: **bulk** 2D descriptors do NOT
+explain the ordering (micafungin is the most polar yet shifts most; papulacandin
+within-series MolLogP ρ=+0.15, TPSA/heavy-atom ρ=−0.25, both n.s.). This refines
+rather than refutes the Phase 8–9 lead — that lead was about *locally exposed*
+polar surface (polar SASA / QM logP), which bulk TPSA cannot see — and it flags
+the echinocandins' known direct serum effect on glucan synthase (cf. the Phase 10
+docking null). Existence proof carried alongside: ibrexafungerp/enfumafungin hit
+the same target with **no lipopeptide tail** (ibrexafungerp is oral), legitimizing
+a tail-truncation/replacement design branch. Full writeup: `outputs/phase11_findings.md`.
+
+### Phase 11 outputs
+- `outputs/phase11_echinocandin_serum_shift.csv` — per-compound echinocandin
+  serum-shift (C. albicans + all-species medians), PPB/Fu, RDKit descriptors
+- `outputs/phase11_crosschemotype.csv` + `phase11_crosschemotype_stats.csv` —
+  harmonized papulacandin + echinocandin table and within-papulacandin stats
+- `outputs/phase11_crosschemotype.png`, `outputs/phase11_findings.md`
+
+## Phase 12 — serum-tolerance-biased generative design (Track A)
+`phase12_generate_serum_tolerant.py` — the AI-design step. Off the serum-active
+lead PAPU-0080 it generates novel analogs and scores them by the **operational
+form of the Phase 8/9/11 lead**: the mean **exposed polar surface fraction** over a
+small ETKDG conformer ensemble (RDKit `rdFreeSASA` — the built-in, not the
+`freesasa` pip package that failed in Phase 6). QED/Ro5/clogP are dropped (Phases
+5/11 showed them uninformative). The FKS-engaging pharmacophore is preserved by
+construction (re-esterifying onto the conserved core). Three branches: **ester**
+(C-6′ handle, Phase-5 chemistry), **polaraxis** (designed acyls spanning
+hydrophobic→polar), and **notail** (fatty-tail deacylation → ibrexafungerp-inspired
+tail-free analogs). CPU-only; a SASA cache (`phase12_sasa_cache.csv`) makes reruns
+instant.
+
+**Honest framing:** there is no validated serum-tolerance oracle, so the reward is
+the polar-surface *hypothesis*. The reward is validated retrospectively on the 24
+knowns (exposed polar frac vs serum shift **ρ = −0.33, p = 0.11** — reproduces the
+Phase-8 CREST value with a fast proxy). The headline deliverable is a
+**discriminating series**: novel analogs on a single scaffold spanning exposed
+polarity, built so a serum assay can *falsify or confirm* the lead, not just
+confirm it. The tail-free branch dominates the predicted-tolerant, high-novelty
+region at MW ~700–810 (ibrexafungerp's regime). Track B (an RL/CLM generative
+network on the external FKS pretraining set reusing this reward) is the follow-on
+once wet-lab shifts anchor the reward. Full writeup: `outputs/phase12_findings.md`.
+
+Run it (first pass ~90 s on CPU; cached thereafter):
+```
+python3 analysis/phase12_generate_serum_tolerant.py
+# quicker: PHASE12_N_CONF=1 python3 analysis/phase12_generate_serum_tolerant.py
+```
+
+### Phase 12 outputs
+- `outputs/phase12_generated_library.csv` — all generated analogs + reward components
+- `outputs/phase12_discriminating_series.csv` — matched single-scaffold series
+  spanning exposed polarity (the set to synthesize/assay)
+- `outputs/phase12_top_candidates.sdf` — 3D structures of the top novel analogs (CREST-ready)
+- `outputs/phase12_crest_commands.sh` — per-candidate CREST command template
+- `outputs/phase12_reward_validation.png`, `outputs/phase12_findings.md`
+- `outputs/phase12_sasa_cache.csv` — InChIKey→exposed-polar-fraction cache
+
+## Phase 13 — round-1 campaign: fatty-tail optimization (core fixed)
+`phase13_fatty_tail_optimization.py` — the first design round. It freezes the
+sugar / spiroketal core **and** the aromatic C-6′ acyl of the serum-active lead
+PAPU-0080, cleaves ONLY the longest aliphatic fatty-acyl ester (the native C16
+polyene tail), and re-esterifies that one position with a designed **tail
+library** spanning the axis the Phase-8/9/11 lead implicates: chain length,
+saturation, terminal polar caps (OH/COOH/NH₂/CONH₂), heteroatom/oxa insertion,
+charged heads (sulfonate, phosphocholine-like), branching, fluorination. The
+native tail is kept as the control/baseline. Reuses Phase 12's validated reward
+(exposed polar surface fraction; ρ=−0.33 on the 24 knowns) and its SASA cache.
+Because the core is identical across variants, changes in the reward — and in the
+absolute exposed hydrophobic SASA — are attributable to the tail alone.
+
+**Result (fast proxy, to be confirmed by CREST):** native baseline exposed polar
+fraction ≈0.27 (hydrophobic SASA ≈930 Å²); the short / terminally-capped /
+heteroatom-broken tails (C8-sulfonate, oxa-PEG, mid-chain diol, ω-amide/-acid)
+raise polar exposure and cut hydrophobic SASA to ~776–843 Å² — the Phase-8
+direction. The reward is not fooled by a charged head alone (the long
+phosphocholine chain still exposes hydrophobe → no gain).
+
+This phase writes **CREST-ready inputs and the exact cluster protocol** for the
+compute-intensive confirmation you run yourself, laid out so the existing Phase-6
+descriptor engine parses the returned ensembles directly. Full protocol:
+`outputs/phase13_qm_runs/SUBMIT.md` and `outputs/phase13_findings.md`.
+
+Run the generator (CPU, ~20 s with warm cache):
+```
+python3 analysis/phase13_fatty_tail_optimization.py
+```
+
+### Phase 13 outputs
+- `outputs/phase13_fatty_tail_library.csv` — every tail variant + reward + tail descriptors
+- `outputs/phase13_discriminating_series.csv` — fixed core, tails spanning exposed polarity
+- `outputs/phase13_top_candidates.sdf` — 3D structures (names match the QM dirs)
+- `outputs/phase13_qm_runs/<cand>/<cand>.xyz` — CREST starting geometries
+- `outputs/phase13_qm_runs/run_crest.sbatch`, `outputs/phase13_qm_runs/SUBMIT.md`
+  — cluster job + step-by-step protocol
+- `outputs/phase13_findings.md`
+
+### Round-1 cluster protocol (CPU; CREST/xtb are not GPU codes)
+1. **CREST ensembles** — for each `phase13_qm_runs/<cand>/<cand>.xyz`, GFN-FF /
+   ALPB water / `--quick -ewin 6` on 52 cores → `crest_conformers.xyz`
+   (`sbatch -J <cand> ../run_crest.sbatch` from inside each dir; full-GFN2 search
+   is intractable at this size — screening tier only).
+2. **Upload** each `crest_conformers.xyz` back to the repo.
+3. **Parse at QM quality** with the existing Phase-6 engine (exact command in
+   `SUBMIT.md`) → `phase13_qm_descriptors.csv`; compare polar/hydrophobic SASA vs
+   the native tail.
+4. **Finalists only** — GFN2 re-rank (`crest --screen … --gfn2`) + Phase-9 xtb
+   electronics (QM logP, water/octanol) before synthesis.
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required
