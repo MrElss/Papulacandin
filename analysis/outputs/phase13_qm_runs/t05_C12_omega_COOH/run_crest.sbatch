@@ -4,8 +4,7 @@
 #SBATCH -n 1
 #SBATCH --cpus-per-task=25
 #SBATCH --mem=64G
-#SBATCH -t 48:00:00
-#SBATCH -J p13_crest
+#SBATCH -J t05
 #SBATCH -o %x.%j.out
 #SBATCH -e %x.%j.err
 # Phase 13 fatty-tail candidates — GFN-FF screening tier (same settings as the

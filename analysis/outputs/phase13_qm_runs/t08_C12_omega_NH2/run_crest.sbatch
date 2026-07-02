@@ -2,22 +2,21 @@
 #SBATCH -p cpu-256G
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --cpus-per-task=25
+#SBATCH --cpus-per-task=52
 #SBATCH --mem=64G
-#SBATCH -t 48:00:00
-#SBATCH -J p13_crest
+#SBATCH -J t08
 #SBATCH -o %x.%j.out
 #SBATCH -e %x.%j.err
 # Phase 13 fatty-tail candidates — GFN-FF screening tier (same settings as the
 # validated Phase 6 funnel). Run from inside each candidate directory:
 #   cd phase13_qm_runs/t01_<tail> && sbatch -J t01 ../run_crest.sbatch
 # Finalists only, re-rank at GFN2 (cheap, no re-search):
-#   crest --screen crest_conformers.xyz --gfn2 --alpb water -ewin 6 --T 25
+#   crest --screen crest_conformers.xyz --gfn2 --alpb water -ewin 6 --T 52
 set -euo pipefail
 ulimit -s unlimited
 APPS=/home/duxiaonan/share/duxiaonan/apps
 source "$APPS/bin/use-crest"
-export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-25}
+export OMP_NUM_THREADS=${SLURM_CPUS_PER_TASK:-52}
 export OPENBLAS_NUM_THREADS=$OMP_NUM_THREADS
 export MKL_NUM_THREADS=$OMP_NUM_THREADS
 cd "${SLURM_SUBMIT_DIR:-$PWD}"
