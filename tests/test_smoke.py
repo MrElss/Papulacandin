@@ -2,7 +2,7 @@
 """Smoke tests for the Papulacandin / FKS1 serum-gap pipeline.
 
 These are intentionally lightweight: they protect the *negative* scientific
-result (documented in analysis/outputs/SYNTHESIS_phases1-10.md) against silent
+result (documented in analysis/outputs/SYNTHESIS_phases1-11.md) against silent
 bit-rot from dependency upgrades or data edits. They do NOT re-validate the
 science — only that the curated data is well-formed and the fast, dependency-
 light entry points of the pipeline still run end to end and emit the expected
