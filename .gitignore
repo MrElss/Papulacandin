@@ -1,4 +1,12 @@
 __pycache__/
+*.pyc
+.pytest_cache/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
 # phase6 self-test scratch (regenerated on every run, not real QM data)
 analysis/outputs/_selftest_*
 # phase7 known-set MMFF ensembles: deterministically regenerable from

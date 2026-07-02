@@ -1,0 +1,22 @@
+# Optional extras for the parts of the pipeline that need external QM/docking
+# engines or generate the presentation decks. Install on top of the core stack:
+#
+#   python3 -m pip install -r requirements.txt -r requirements-optional.txt
+
+# --- Phase 10: explicit HSA docking (analysis/phase10_dock_hsa.py) -----------
+# These Python wrappers still require the AutoDock Vina engine to be available.
+meeko>=0.5
+vina>=1.2.5
+
+# --- Slide decks (analysis/make_full_deck.py, make_synthesis_deck.py,
+#     export_assets.py) --------------------------------------------------------
+python-pptx>=0.6.23
+
+# --- External binaries — NOT installable from PyPI ---------------------------
+# The QM funnel shells out to command-line tools that must be provided by the
+# HPC environment (conda-forge / module system), not pip:
+#   * crest   (conformer ensemble search; GFN-FF / GFN2)   -> conda-forge crest
+#   * xtb     (GFN2-xTB single points, phase 9)            -> conda-forge xtb
+#   * Gaussian (B3LYP/6-31G(d) DFT single points)          -> licensed, site install
+# The analysis scripts only PARSE the outputs of these tools, so phases 0-9 run
+# without them; only regenerating raw QM data requires them.
