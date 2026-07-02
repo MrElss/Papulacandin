@@ -140,6 +140,26 @@ def test_phase1_serum_shift_sar():
     assert stats[0]["n_tolerant"] == "13" and stats[0]["n_killed"] == "11"
 
 
+def test_phase11_echinocandin_readacross():
+    """Cross-chemotype read-across: the echinocandin serum-shift ordering pulled
+    from the external FKS corpus must stay caspofungin < anidulafungin < micafungin
+    (the robust, literature-consistent signal this phase rests on)."""
+    _run_phase("phase11_echinocandin_readacross.py")
+    ech = {r["compound"]: r for r in _read_csv(OUT / "phase11_echinocandin_serum_shift.csv")}
+    for name in ("CASPOFUNGIN", "ANIDULAFUNGIN", "MICAFUNGIN"):
+        assert name in ech, f"{name} missing from echinocandin read-across"
+    folds = {n: float(ech[n]["serum_shift_fold"]) for n in ("CASPOFUNGIN", "ANIDULAFUNGIN", "MICAFUNGIN")}
+    assert folds["CASPOFUNGIN"] < folds["ANIDULAFUNGIN"] <= folds["MICAFUNGIN"], (
+        f"echinocandin serum-shift ordering changed: {folds}"
+    )
+    # The harmonized cross-chemotype table must carry both chemotypes.
+    combined = _read_csv(OUT / "phase11_crosschemotype.csv")
+    chemotypes = {r["chemotype"] for r in combined}
+    assert "papulacandin" in chemotypes and "echinocandin" in chemotypes
+    # 24 papulacandin rows should survive into the harmonized table.
+    assert sum(r["chemotype"] == "papulacandin" for r in combined) == N_MATCHED_PAIRS
+
+
 if __name__ == "__main__":
     # Allow running without pytest installed.
     failures = 0

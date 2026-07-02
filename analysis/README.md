@@ -186,6 +186,39 @@ Bulky docking artifacts (receptor/ligand pdbqt, 1AO6.pdb) are gitignored
 - `outputs/phase10_docking/phase10_hsa_scores.csv`, `phase10_hsa_per_compound.csv`
 - `outputs/phase10_hsa.png`, `outputs/phase10_findings.md`
 
+## Phase 11 — echinocandin cross-chemotype read-across
+`phase11_echinocandin_readacross.py` — the synthesis named a second, independent
+chemotype as the only way past the n=24 single-series ceiling. The echinocandins
+(cyclic-lipopeptide Fks1/glucan-synthase inhibitors) are that chemotype, and our
+own `external/` FKS corpus already carries their serum data: MIC-shift ratios in
+±50% serum (the SAME endpoint direction as `serum_shift_fold`, confirmed from the
+source quotes: MIC in 50% serum ÷ MIC in serum-free medium) plus PPB/Fu. The
+script harmonizes those with the 24 papulacandins on `log2(serum-shift fold)` and
+a consistently-recomputed RDKit 2D descriptor set, then (Q1) reframes our endpoint
+via the free-drug hypothesis and (Q2) stress-tests the polar-surface lead across
+scaffolds. No external binaries; RDKit only.
+
+**Finding:** echinocandins show the same phenomenon and the robust, most
+comparable (C. albicans) ordering is **caspofungin ×2 < anidulafungin ×16 <
+micafungin ×64** — yet all three are front-line drugs, dosed to a *free*-drug
+target (~96–99.8% protein bound). Reframe: the goal is serum-tolerant *free
+exposure*, not a serum-invariant MIC. Honest null: **bulk** 2D descriptors do NOT
+explain the ordering (micafungin is the most polar yet shifts most; papulacandin
+within-series MolLogP ρ=+0.15, TPSA/heavy-atom ρ=−0.25, both n.s.). This refines
+rather than refutes the Phase 8–9 lead — that lead was about *locally exposed*
+polar surface (polar SASA / QM logP), which bulk TPSA cannot see — and it flags
+the echinocandins' known direct serum effect on glucan synthase (cf. the Phase 10
+docking null). Existence proof carried alongside: ibrexafungerp/enfumafungin hit
+the same target with **no lipopeptide tail** (ibrexafungerp is oral), legitimizing
+a tail-truncation/replacement design branch. Full writeup: `outputs/phase11_findings.md`.
+
+### Phase 11 outputs
+- `outputs/phase11_echinocandin_serum_shift.csv` — per-compound echinocandin
+  serum-shift (C. albicans + all-species medians), PPB/Fu, RDKit descriptors
+- `outputs/phase11_crosschemotype.csv` + `phase11_crosschemotype_stats.csv` —
+  harmonized papulacandin + echinocandin table and within-papulacandin stats
+- `outputs/phase11_crosschemotype.png`, `outputs/phase11_findings.md`
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required

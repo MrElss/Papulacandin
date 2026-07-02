@@ -79,6 +79,21 @@ and the `tests/` smoke suite pass against these versions:
 > unchanged under the pinned build. If a future upgrade changes a descriptor,
 > that test fails first.
 
+## External FKS corpus (used by Phase 11)
+
+`external/data/external/fks_inhibitors/source_exports/` holds ChEMBL/PubChem-
+curated activity for other β-1,3-glucan-synthase inhibitors, including a deep
+echinocandin set (caspofungin, anidulafungin, micafungin, cilofungin, echinocandin
+B, aculeacin A, pneumocandin) and the tail-free triterpenoids ibrexafungerp /
+enfumafungin. Phase 11 mines the **serum-context** rows — `Ratio` endpoints whose
+`source_quote` reads "MIC in 50% (human/mouse) serum **to** MIC in serum-free
+medium/RPMI 1640", i.e. a serum-shift fold in the same direction as
+`serum_shift_fold` — plus `PPB` (plasma protein binding) and `Fu` (fraction
+unbound) rows. Serum-shift folds are taken on standard reference isolates (not the
+FKS-hotspot-mutant strains, which appear only under plain `MIC` endpoints) and
+aggregated per compound by median. Descriptors for both chemotypes are recomputed
+from SMILES with the same RDKit build so the read-across is method-consistent.
+
 ### External QM / docking binaries (not pip-installable)
 
 Regenerating raw QM/docking data — not required for phases 0–9, which only parse

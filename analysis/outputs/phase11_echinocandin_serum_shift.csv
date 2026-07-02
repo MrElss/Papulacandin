@@ -1,0 +1,7 @@
+chemotype,compound,name,organism,serum_shift_fold,log2_serum_shift,shift_confidence,albicans_folds,allspecies_median,allspecies_n,ppb_percent,fu_percent,mollogp,tpsa,mw,heavy_atoms,tpsa_per_heavy_atom,mollogp_per_heavy_atom
+echinocandin,ANIDULAFUNGIN,Anidulafungin,Candida albicans,16.0,4.0,median-of-isolates,16.0;256.0,32.0,33,84.0,0.01,-0.927,377.42,1140.25,82,4.603,-0.0113
+echinocandin,CASPOFUNGIN,Caspofungin,Candida albicans,2.0,1.0,median-of-isolates,1.0;2.0;8.0,4.0,19,,,-3.312,412.03,1093.33,77,5.351,-0.043
+echinocandin,CILOFUNGIN,Cilofungin,n/a,,,no serum-shift row,,,0,,,-3.091,377.42,1030.14,73,5.17,-0.0423
+glucan-synthase (no lipid tail),ENFUMAFUNGIN,Enfumafungin,n/a,,,no serum-shift row,,,0,,,3.01,192.44,708.89,50,3.849,0.0602
+glucan-synthase (no lipid tail),IBREXAFUNGERP,Ibrexafungerp,n/a,,,no serum-shift row,,,0,,,8.618,125.38,730.05,53,2.366,0.1626
+echinocandin,MICAFUNGIN,Micafungin,Candida albicans,64.0,6.0,median-of-isolates,64.0;128.0,128.0,33,,,-3.902,510.14,1270.29,89,5.732,-0.0438

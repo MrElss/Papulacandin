@@ -41,7 +41,9 @@ ladder → **3** external FKS model + within-series serum-tolerance model →
 (12 novel candidates) → **6** QM funnel (CREST ensembles, in-house Shrake–Rupley
 SASA, Boltzmann weighting, Gaussian DFT I/O) → **7–8** retrospective validation
 (MMFF proxy → real CREST + confound analysis) → **9** GFN2-xTB electronics →
-**10** explicit HSA docking.
+**10** explicit HSA docking → **11** echinocandin cross-chemotype read-across
+(reuses the `external/` FKS corpus to reframe the endpoint via the free-drug
+hypothesis and stress-test the polar-surface lead against a second chemotype).
 
 Phases 0–9 run on a normal workstation. Phases that generate raw QM/docking data
 need external binaries (CREST, xtb, Gaussian, AutoDock Vina); the Python scripts
