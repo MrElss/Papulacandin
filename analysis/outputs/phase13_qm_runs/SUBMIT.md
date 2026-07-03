@@ -19,9 +19,22 @@ Cost lever: these ~140-atom, 30+ rotatable-bond glycolipids are cheap at
 GFN-FF, intractable at full GFN2 search (~10 days/compound). Keep the search at
 GFN-FF; refine only finalists.
 
-## Step 2 — upload results
-Commit each `phase13_qm_runs/<name>/crest_conformers.xyz` back to the repo
-(that file is the only thing the parser needs).
+## Step 2 — upload results (which CREST files to keep)
+The Phase-6 parser reads exactly ONE file per candidate: `crest_conformers.xyz`
+(conformer energies are in its comment lines). Keep, per directory:
+- **`crest_conformers.xyz`** — REQUIRED (the only parser input).
+- `crest_best.xyz`, `run.log`, `crest.energies` — small; provenance / QC / finalist re-rank.
+Discard the bulky regenerable scratch (already in `.gitignore`):
+`crest_dynamics.trj`, `confcross.xyz`, `crest_rotamers.xyz`, `gfnff_topo`,
+`crest.restart`, `crestopt.log`, `*.xtbrestart`, `wbo`, the slurm `*.<jobid>.out`.
+One-liner to delete only the known bulky scratch (explicit denylist — safe):
+```
+find phase13_qm_runs -type f \( -name 'crest_dynamics.trj' -o -name 'confcross.xyz' \
+  -o -name 'crest_rotamers.xyz' -o -name 'gfnff_topo' -o -name 'crest.restart' \
+  -o -name 'crestopt.log' -o -name '*.xtbrestart' -o -name '*.xtbtopo.mol' \
+  -o -name 'wbo' -o -name '*.[0-9]*.out' -o -name '*.[0-9]*.err' \) -delete
+```
+Then commit each `phase13_qm_runs/<name>/crest_conformers.xyz` back to the repo.
 
 ## Step 3 — QM-quality exposed-surface descriptors (parse; CPU-cheap, local)
 Re-scores the tails at real-ensemble quality with the SAME descriptor engine
