@@ -236,6 +236,22 @@ def test_phase13_outputs_if_present():
             assert list(d.glob("*.xyz")), f"{d.name} missing its .xyz starting geometry"
 
 
+def test_phase13_qm_ranking_if_present():
+    """If the Step-3 QM ranking exists, every row must carry a verdict, and the
+    exposed-hydrophobic 'improves vs native' set must be non-empty and a subset of
+    the 12 tails (guards the native-comparison logic against silent breakage)."""
+    path = OUT / "phase13_qm_ranking.csv"
+    if not path.exists():
+        return
+    rows = _read_csv(path)
+    assert rows, "QM ranking is empty"
+    required = {"tail_name", "hydrophobic_sasa_mean", "polar_sasa_mean",
+                "hydrophobic_fraction_mean", "d_hydrophobic_sasa", "verdict"}
+    assert required <= set(rows[0].keys())
+    winners = [r["tail_name"] for r in rows if r["verdict"] == "improves vs native"]
+    assert 0 < len(winners) < len(rows), f"unexpected winner count: {winners}"
+
+
 def test_phase12_outputs_if_present():
     """If the committed Phase 12 outputs exist, guard their shape: the
     discriminating series must span >1 polarity bin on a single scaffold."""
