@@ -252,6 +252,19 @@ def test_phase13_qm_ranking_if_present():
     assert 0 < len(winners) < len(rows), f"unexpected winner count: {winners}"
 
 
+def test_phase13_gfn2_ranking_if_present():
+    """If the Step-4 GFN2 ranking exists, it must carry both the GFN-FF and GFN2
+    hydrophobic-fraction columns for the finalists (guards the re-rank parse)."""
+    path = OUT / "phase13_gfn2_ranking.csv"
+    if not path.exists():
+        return
+    rows = _read_csv(path)
+    assert rows, "GFN2 ranking is empty"
+    required = {"finalist", "gfnff_hydrophobic_fraction", "gfn2_hydrophobic_fraction",
+                "gfn2_hydrophobic_sasa", "gfn2_polar_sasa", "gfn2_beats_native"}
+    assert required <= set(rows[0].keys())
+
+
 def test_phase12_outputs_if_present():
     """If the committed Phase 12 outputs exist, guard their shape: the
     discriminating series must span >1 polarity bin on a single scaffold."""
