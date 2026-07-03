@@ -345,6 +345,172 @@ txt(s, Inches(0.9), Inches(6.2), Inches(11.6), Inches(0.6),
     [[("Full technical detail, code, and reproducible reports: project repository (Phases 1–14).",
        13, False, RGBColor(0x9C, 0xB4, 0xD8), True)]])
 
+# =========================================================== SPEAKER NOTES
+NOTES = [
+    # 1 TITLE
+    "[~30s] Good morning, and thank you for being here. Over the next fifteen minutes I'll "
+    "walk you through a drug-discovery program that combines artificial intelligence with "
+    "quantum chemistry to attack a stubborn problem in antifungal medicine. I'll keep the "
+    "chemistry light and focus on the ideas and the reasoning. The one-sentence version is on "
+    "the slide: we set out to design antifungal molecules that keep working in blood — and "
+    "along the way we built a complete, reusable computational platform and learned exactly "
+    "where AI can and cannot help. Let me start with why this matters.",
+    # 2 PROBLEM
+    "[~60s] Invasive fungal infections are a growing, under-appreciated threat — they kill "
+    "hundreds of thousands of people a year, often patients whose immune systems are already "
+    "compromised. Yet we have only a handful of antifungal drug classes, many with serious "
+    "side effects, and resistance is spreading. So there is a real need for genuinely new "
+    "structures. Our starting point is a natural-product family, the papulacandins. They hit a "
+    "target that is attractive because it is in the fungus but not in us — the machinery that "
+    "builds the fungal cell wall. The catch, in red: these molecules are potent in a test tube "
+    "but lose activity in blood serum. That single flaw is why they never became drugs. If we "
+    "can understand and fix it, we potentially revive an entire class.",
+    # 3 EVIDENCE BASE
+    "[~45s] Before any modeling we had to build the dataset. The results we needed were "
+    "scattered across decades of old papers, so we hand-curated them into one clean, "
+    "computer-readable database — 138 compounds and over a thousand activity measurements, each "
+    "traceable to its source. The heart of it is the 24 compounds with the matched measurement "
+    "we care about: activity with and without serum. Thirteen keep some activity; eleven are "
+    "switched off completely. We later imported an independent set of data on approved drugs "
+    "for cross-checking. I want to flag that this curated dataset is itself a lasting "
+    "contribution — it is the benchmark everything else is measured against, and others can reuse it.",
+    # 4 SERUM GAP
+    "[~50s] This is the problem in one picture. Every horizontal line is one compound. The blue "
+    "dot on the left is the dose needed to stop the fungus in clean broth — low, meaning potent. "
+    "Follow the line right to the dose needed in serum. Green compounds keep reasonable activity; "
+    "the red arrows are compounds pushed past our detection ceiling — serum has essentially "
+    "abolished them. The gap between the two ends is what we named the 'serum shift': serum dose "
+    "divided by broth dose. A shift near one is ideal; a large shift is the clinical failure. "
+    "Everything downstream is about lowering that shift without giving up potency. So the whole "
+    "project reduces to one number we are trying to design down.",
+    # 5 STRATEGY
+    "[~45s] Here is the overall strategy. Rather than one big experiment, we built a staged "
+    "funnel across four acts and fourteen documented steps. We start broad and cheap — curating "
+    "data and looking for simple patterns. Then we go three-dimensional with quantum chemistry. "
+    "Then — and this turned out to be pivotal — we borrow lessons from approved drugs. And "
+    "finally we let AI design molecules and stress-test them. The key discipline, shown by the "
+    "narrowing shape, is that each stage checks our reasoning before we spend effort on the next. "
+    "And because it is all documented and reproducible, the platform outlives this one question.",
+    # 6 QM FUNNEL
+    "[~55s] This is the engine at the heart of Act Two — the 'algorithm', in plain terms. These "
+    "molecules are floppy; think of a piece of cooked spaghetti that curls into many shapes. To "
+    "judge them fairly we compute the real 3-D shapes they adopt in water and measure how much "
+    "greasy versus water-friendly surface they expose. The trick is cost: each tier down the "
+    "funnel is more accurate and more expensive. So we generate many molecules, filter cheaply, "
+    "and spend the costly quantum methods only on the few survivors — using the same measurement "
+    "engine at every tier so comparisons stay fair. This funnel is reusable infrastructure, not "
+    "specific to this one question.",
+    # 7 HONESTY LADDER
+    "[~70s — the key slide] This is the most important methodological slide and the strongest "
+    "evidence of how we work. The vertical axis is the strength of the apparent signal linking "
+    "our 3-D descriptor to serum tolerance; read left to right as we increase rigor. Crude 2-D "
+    "chemistry: weak. A cheap 3-D method: it looks strong — genuinely tempting, you could write a "
+    "paper on that bar. But accurate quantum chemistry shrank it, and once we did the honest "
+    "thing and controlled for plain potency, it collapsed to essentially zero. The exciting early "
+    "result was largely an illusion. The message: at every rung, a less careful analysis would "
+    "have made a confident and wrong claim. We climbed the whole ladder and reported what was "
+    "actually there. Knowing precisely what is not true is a real, durable result — and it is "
+    "what stops us wasting years chasing a mirage. "
+    "[If asked 'so you found nothing?': we found what is NOT true — which saves years — plus one "
+    "honest lead and a validated platform. Rigorously established negatives are results.]",
+    # 8 CONFOUND
+    "[~55s] Here is the data behind that collapse — the decisive check. On the left, the dose "
+    "needed in serum plotted against the dose needed in broth. They track together tightly, "
+    "correlation 0.79. In plain terms, a compound's fate in serum is mostly explained by how "
+    "potent it was to begin with, not by a special serum-resistance property. On the right, once "
+    "we statistically remove that potency effect, the 3-D descriptor that looked so promising — "
+    "the greasy-surface one — drops to essentially zero. Only one weak signal survives: exposing "
+    "water-friendly rather than greasy surface. That survivor is faint, but it is the honest lead "
+    "we carried forward. This is what separates a real effect from a potency artifact.",
+    # 9 ELECTRONICS
+    "[~45s] We didn't stop at shape. We also examined a completely different property — the "
+    "molecules' electronic structure — as an independent check, and got the same story. The "
+    "descriptor that looks strongest here, polarizability, turns out to be another stand-in for "
+    "size and potency: it vanishes on the potency-free shift. But one quantity — a "
+    "quantum-computed measure of water-versus-oil preference — independently points the same way "
+    "as our surface lead. Two unrelated families of measurement converging on the same modest "
+    "conclusion. When independent methods agree you trust the direction, even while being honest "
+    "that the effect is small.",
+    # 10 ECHINOCANDINS
+    "[~65s] Here is where borrowing from approved drugs pays off. The echinocandins are "
+    "antifungals already on the market that hit the same target and carry the same kind of greasy "
+    "tail, so their well-documented serum behavior is a natural second opinion. Two lessons. "
+    "First: the tail is required for the drug to work at all — it anchors the molecule into the "
+    "membrane — so we cannot simply make it water-friendly or cut it off. Second, and more "
+    "useful: among drugs that keep their potency, the one with the smallest serum problem, "
+    "caspofungin, has a flexible, branched tail, while the worst offenders have rigid, flat, "
+    "aromatic tails — good zone lower-left, bad zone upper-right. Our native molecule's tail is a "
+    "rigid, flat chain, sitting squarely in the bad zone. That single observation redirected our "
+    "whole design.",
+    # 11 AI GENERATOR
+    "[~55s] Now the AI. We built a generator that invents new molecules on our scaffold. But — "
+    "discipline again — we did not let it optimize a made-up target. We first checked its scoring "
+    "rule against real measured data; that is the plot on the left, showing the reward genuinely "
+    "tracks serum tolerance across our known compounds, honestly reported as a weak-but-real "
+    "trend. And we designed it to produce a spread of molecules that would test our idea, not "
+    "just confirm it. So the AI here is not a black box making bold claims — it is a disciplined "
+    "design tool whose scoring we validated before trusting. "
+    "[If asked 'why not a bigger neural network?': with no measured labels yet, a bigger model "
+    "just learns our unvalidated guess faster — garbage in. That is why the next step is the lab.]",
+    # 12 TAIL RANKING
+    "[~45s] Round one: we asked the AI to redesign just the greasy tail, keeping the rest of the "
+    "molecule fixed — a clean, one-variable experiment. This shows all twelve designed tails "
+    "ranked by how much greasy surface they expose, lower being better, against the native "
+    "baseline in red. At this cheaper tier only two beat the native tail — the two green bars. "
+    "Encouraging. But we had learned not to trust the cheap tier, so we did the accurate "
+    "re-check — the next slide.",
+    # 13 ROUND-1 ARTIFACT
+    "[~55s] And here is the payoff of the funnel discipline. On the left, twelve designs down to "
+    "two, and then, at the most accurate quantum level, zero survivors. On the right is why. Our "
+    "top candidate looked better than native with the cheaper method — but the accurate method "
+    "showed its water-friendly group folds back and hides inside the molecule, leaving it "
+    "actually worse than where we started. A computational artifact. The important part: we "
+    "caught it before a single day of laboratory synthesis. That is exactly what the expensive "
+    "quantum tier is for — cheap insurance against making the wrong molecule.",
+    # 14 SHORTLIST
+    "[~55s] So computation told us the water-friendly route was a dead end — and the "
+    "approved-drug lesson told us the right route instead: don't make the tail water-friendly, "
+    "make it less rigid. This is our deliverable: a short, ranked set of molecules that keep the "
+    "tail the same length — so potency is preserved — and change only its shape, from rigid to "
+    "flexible. And here is the practical gift: these are also the easiest molecules to make — "
+    "cheap, off-the-shelf building blocks, one step — unlike the original or the exotic designs. "
+    "So the best scientific bet and the cheapest chemistry are the same molecules. We make the "
+    "flexible ones first.",
+    # 15 CONTRIBUTIONS
+    "[~50s] Stepping back, here is what the program delivered — and I want to stress it is a "
+    "platform, not a one-off. A curated benchmark dataset that is a resource for the field. A "
+    "validated quantum-chemistry method for these large, floppy natural products, which is "
+    "genuinely hard. An AI generator with a scoring rule checked against real data. A framework "
+    "for importing clinical drug knowledge into design. Reproducible engineering — documented "
+    "stages, automated tests, run scripts — so anyone can rebuild it. And a clear roadmap with a "
+    "concrete shortlist. Any one of these outlives the specific question we started with.",
+    # 16 WHERE AI HELPS + ROADMAP
+    "[~55s] I want to be direct about the honest conclusion, because it is often misunderstood. "
+    "This is not 'AI failed.' It is a precise statement of the critical path: AI drug design "
+    "needs a measured answer key to learn from, and we showed — rigorously — that physics-based "
+    "guesses alone can mislead. The good news is we now know exactly which few experiments unlock "
+    "the predictive AI, and the AI is already built to use them. The loop at the bottom is the "
+    "path: synthesize the four-molecule shortlist, measure their serum behavior, feed that back "
+    "to train the AI, and let it design the next, wider round. Each turn makes the AI a better "
+    "designer — and the immediate next step needs no more computing, just a lab experiment.",
+    # 17 SIGNIFICANCE
+    "[~55s] To summarize the significance. We took a stalled but high-value drug class and turned "
+    "it into a tractable design problem. We built an end-to-end AI-plus-quantum-chemistry "
+    "platform that is reusable. We demonstrated rigorous self-correction — the honesty ladder — "
+    "which is really the hallmark of trustworthy science. The work spans chemistry, machine "
+    "learning, quantum physics, and clinical pharmacology. And we defined the exact experiment "
+    "that unlocks predictive AI, which de-risks future investment. If I leave you with one line: "
+    "we set out to teach a computer to design a serum-tolerant antifungal — and along the way we "
+    "learned to tell a real signal from a flattering illusion. The computer is ready; it is "
+    "waiting for one clean experiment, narrowed to exactly four molecules.",
+    # 18 THANK YOU
+    "[~20s] Thank you. I am happy to take questions — about the biology, the computational "
+    "methods, the AI, or where this goes next. All the detail, the code, and the reproducible "
+    "reports live in the project repository, so anything I show can be independently checked.",
+]
+for _sl, _note in zip(prs.slides, NOTES):
+    _sl.notes_slide.notes_text_frame.text = _note
+
 path = os.path.join(OUT, "Papulacandin_promotion_report.pptx")
 prs.save(path)
-print(f"Wrote {path}  ({len(prs.slides._sldIdLst)} slides)")
+print(f"Wrote {path}  ({len(prs.slides._sldIdLst)} slides, {len(NOTES)} speaker notes)")
