@@ -52,3 +52,60 @@ GPU. Full protocol in `phase13_qm_runs/SUBMIT.md`; summary:
 Feed the measured serum shifts back as labels; that turns the reward from a
 hypothesis into data and seeds Track B (a generative network over tail space).
 The GPU on your platform is for THAT step, not for the CREST search here.
+
+
+---
+
+# Step 3 — QM confirmation (real CREST/GFN-FF ensembles)
+
+Parsed all 12 candidates' real CREST ensembles (75–528 conformers each) with the
+Phase-6 engine (Boltzmann-weighted at GFN-FF energies), and compared to the
+native tail **PAPU-0080** taken from the Phase-8 known set at identical quality
+and settings. Same core across all → whole-molecule SASA differences are the tail.
+
+**Native baseline:** exposed hydrophobic SASA **622 Å²**, polar
+**451 Å²**, hydrophobic fraction **0.58**.
+
+## Result — only two tails actually improve at QM quality
+- **C8_omega_sulfonate** (C8): hydrophobic SASA 530 (-93 vs native), polar 462 (+11), hydrophobic fraction 0.53 (-0.046)
+- **oxa_PEG3** (C8): hydrophobic SASA 543 (-80 vs native), polar 420 (-32), hydrophobic fraction 0.56 (-0.016)
+
+Every other tail is equal-or-WORSE than native on hydrophobic fraction once the
+full conformer ensemble is accounted for. The fast ETKDG proxy actually RANKED the
+tails well (Spearman ρ=0.82, p=0.00 vs the CREST hydrophobic fraction) — it
+is a valid cheap screen. What it got wrong was the NATIVE BASELINE: it scored
+native from a single ETKDG conformer (hydrophobic fraction ~0.73), which overstates
+exposed hydrophobe, so many tails looked like wins. Against the properly ensembled
+597-conformer CREST native (0.58), only two survive. Lesson (echoing Phase 7→8):
+screen with the proxy, but judge "beats native" only against a same-fidelity native
+— which is what this step does. Mechanistically, **chain SHORTENING + heteroatom /
+charged content wins; an ω-polar cap on a still-long C12 chain buries the cap and
+re-exposes hydrophobe** (the C12 ω-OH/NH2/COOH tails are all ≥ native).
+
+## Finalists to promote to GFN2 (+ xTB electronics)
+1. **t01_C8_omega_sulfonate** — the only tail that both cuts hydrophobic SASA
+   (~−90 Å²) and RAISES polar SASA above native; largest hydrophobic-fraction drop.
+2. **t02_oxa_PEG3** — second-best; C8-length ether backbone, lowers hydrophobic
+   SASA ~−80 Å² without a formal charge (a more conservative amphiphile than the
+   sulfonate).
+3. **t07_C8_saturated** — promote as a MECHANISTIC CONTROL: it isolates the pure
+   chain-shortening effect (C8, no polar head) from the polar-head contribution in
+   t01/t02. If t01 ≫ t07 the polar head matters; if similar, length is doing the work.
+
+## Exact next steps on your platform (Step 4)
+For each finalist directory, GFN2 re-rank the existing ensemble (no re-search),
+then GFN2-xTB electronics in water + octanol for QM logP:
+```
+cd analysis/outputs/phase13_qm_runs/t01_C8_omega_sulfonate
+crest --screen crest_conformers.xyz --gfn2 --alpb water -ewin 6 --T 52   # -> crest_ensemble.xyz
+# then Phase-9 electronics (see analysis/gen_known_xtb_inputs.py + phase9_electronic.py)
+```
+Upload `crest_ensemble.xyz` per finalist; re-run this ranking on the GFN2 set to
+confirm the ordering holds before committing to synthesis. Note the sulfonate/
+phosphocholine carry a formal charge — set `--chrg` accordingly in GFN2/xTB
+(the fast SASA proxy and GFN-FF ran them neutral).
+
+## Honest caveat
+These are exposed-surface descriptors — the *hypothesis* for serum tolerance, not
+the endpoint. Step 3 narrows 12 tails to 2 (+1 control) worth carrying forward; the
+serum SHIFT of that small set, measured in vitro, is what actually tests the lead.
