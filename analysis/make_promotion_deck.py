@@ -156,6 +156,12 @@ txt(s, ML + Inches(0.4), Inches(4.2), CW - Inches(0.8), Inches(1.95),
       (" — so they never became drugs.", 15, False, CORAL)],
      [("If we understand and fix that, we revive an entire drug class.", 14, True, INK)]])
 
+# =========================================================== EVIDENCE BASE (fig)
+s = header("Background · the data", "The evidence base: decades of scattered literature, curated")
+fig(s, "fig_dataset.png", ML, Inches(1.75), CW, Inches(3.95))
+strip(s, [[("A clean, provenance-tracked benchmark — itself a lasting resource for the field.",
+            15, True, WHITE)]], top=Inches(6.05))
+
 # =========================================================== 3 SERUM GAP (fig)
 s = header("The scientific question", "The serum gap, quantified: blood switches most analogs off")
 fig(s, "fig_serum_gap.png", ML, Inches(1.6), CW, Inches(4.35))
@@ -187,6 +193,26 @@ s = header("Key methodological result", "The “honesty ladder”: more rigor sh
 fig(s, "fig_honesty_ladder.png", ML, Inches(1.55), CW, Inches(4.35))
 strip(s, [[("A less careful analysis would have made a confident — and WRONG — claim at every rung. ",
             14, True, WHITE), ("Knowing what is NOT true is a real, durable result.", 14, False, RGBColor(0xC8, 0xD2, 0xDC))]])
+
+# =========================================================== CONFOUND (fig)
+s = header("Result · the decisive check", "Why the exciting signal collapsed: it was mostly potency")
+fig(s, "fig_confound.png", ML, Inches(1.6), CW, Inches(4.45))
+strip(s, [[("Serum outcome is governed by intrinsic potency (ρ=0.79); remove it and the 3-D signal vanishes — ",
+            14, True, WHITE), ("so we model the potency-free SHIFT.", 14, False, RGBColor(0xC8, 0xD2, 0xDC))]])
+
+# =========================================================== ELECTRONICS (fig+text)
+s = header("Result · independent check", "A different property (electronics) — the same honest story")
+fig(s, "fig_electronics.png", ML, Inches(1.6), Inches(7.5), Inches(5.0))
+tx = ML + Inches(7.75)
+txt(s, tx, Inches(2.05), Inches(4.3), Inches(4.4),
+    [[("What it shows", 16, True, BLUE)],
+     [("•  Polarizability looks like the strongest signal — but it is a ", 13.5, False, INK),
+      ("size / potency proxy", 13.5, True, INK), (" (vanishes on the shift).", 13.5, False, INK)],
+     [("•  ", 13.5, False, INK), ("QM logP", 13.5, True, TEAL),
+      (" independently corroborates the polar-surface lead (+0.30 on the shift).", 13.5, False, INK)],
+     [("", 8, False, INK)],
+     [("Two unrelated descriptor families converge on the same weak, honest conclusion.",
+       13.5, True, INK)]])
 
 # =========================================================== 7 ECHINOCANDIN (fig+text)
 s = header("Learning from approved drugs", "Echinocandins: same target, real clinical data")
@@ -221,6 +247,12 @@ txt(s, tx, Inches(2.0), Inches(5.0), Inches(4.6),
      [("", 8, False, INK)],
      [("Left: the reward tracks true serum tolerance on the 24 known compounds "
        "(a weak-but-real trend, honestly reported).", 12.5, False, GREY, True)]])
+
+# =========================================================== TAIL RANKING (fig)
+s = header("Result · round 1 (detail)", "AI-designed tails, ranked by the cheap 3-D screen")
+fig(s, "fig_tail_ranking.png", ML, Inches(1.55), CW, Inches(4.5))
+strip(s, [[("Only 2 of 12 beat the native tail here — and the accurate re-check (next slide) removed even those.",
+            14.5, True, WHITE)]])
 
 # =========================================================== 9 ROUND-1 RESULT (fig)
 s = header("Result · round 1", "The quantum funnel caught a false positive before synthesis")

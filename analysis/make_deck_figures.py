@@ -289,6 +289,120 @@ def fig_tail_ladder():
     save(fig, "fig_tail_ladder.png")
 
 
+# ------------------------------------------------------------- 8. potency confound
+def fig_confound():
+    df = pd.read_csv(os.path.join(OUT, "serum_gap_pairs.csv")).drop_duplicates("compound_id")
+    fig, (axA, axB) = plt.subplots(1, 2, figsize=(11.4, 5.2), gridspec_kw={"width_ratios": [1, 1]})
+    # A: serum-free vs serum MIC
+    for _, r in df.iterrows():
+        f, _ = _parse_mic(r["serumfree_mic_ugml"]); sv, rel = _parse_mic(r["serum_mic_ugml"])
+        if np.isfinite(f) and np.isfinite(sv):
+            col = GREEN if r["serum_active"] == "yes" else CORAL
+            axA.scatter([f], [sv], s=70, color=col, alpha=0.8, edgecolor="white", lw=0.6,
+                        marker=("^" if rel == ">" else "o"), zorder=3)
+    lims = [0.3, 200]
+    axA.plot(lims, lims, ls="--", color=GREY, lw=1, zorder=1)
+    axA.set_xscale("log"); axA.set_yscale("log"); axA.set_xlim(*lims); axA.set_ylim(*lims)
+    axA.set_xlabel("serum-FREE MIC  (potency, log)")
+    axA.set_ylabel("serum MIC  (log)")
+    axA.set_title("Serum outcome ≈ intrinsic potency", fontsize=13.5)
+    axA.text(0.5, 130, "ρ = +0.79\n(potency dominates)", color=INK, fontsize=12,
+             fontweight="bold", va="top")
+    # B: partial correlation after controlling potency
+    cf = pd.read_csv(os.path.join(OUT, "phase8_confound_analysis.csv"))
+    names = {"hydrophobic_sasa_mean": "greasy surface", "hydrophobic_fraction_mean": "greasy fraction",
+             "hydrophobic_sasa_std": "rigidity", "polar_sasa_mean": "POLAR surface", "rg_mean": "size (Rg)"}
+    cf = cf[cf["descriptor"].isin(names)].copy()
+    cf["label"] = cf["descriptor"].map(names)
+    cf = cf.sort_values("partial_rho_vs_serumMIC")
+    cols = [GREEN if l == "POLAR surface" else GREY for l in cf["label"]]
+    axB.barh(cf["label"], cf["partial_rho_vs_serumMIC"], color=cols, zorder=3, edgecolor="white")
+    axB.axvline(0, color=INK, lw=1)
+    axB.set_xlim(-0.5, 0.5)
+    axB.set_xlabel("correlation after removing potency  (partial ρ)")
+    axB.set_title("After removing potency: signal ≈ 0", fontsize=13.5)
+    labs = list(cf["label"])
+    axB.annotate("greasy surface — the\nPhase-7 lead → now ≈ 0",
+                 xy=(0.02, labs.index("greasy surface")), xytext=(0.14, labs.index("greasy surface") - 0.9),
+                 color=GREY, fontsize=9.5, arrowprops=dict(arrowstyle="->", color=GREY, lw=1))
+    axB.annotate("← polar surface:\nthe one weak survivor", xy=(-0.31, labs.index("POLAR surface")),
+                 xytext=(0.03, labs.index("POLAR surface") + 0.15), color=GREEN, fontsize=10,
+                 fontweight="bold", va="center")
+    fig.suptitle("The decisive check: the exciting 3-D signal was mostly just potency",
+                 fontsize=15, fontweight="bold", y=1.02)
+    save(fig, "fig_confound.png")
+
+
+# ------------------------------------------------------------- 9. all-12 tail ranking
+def fig_tail_ranking():
+    df = pd.read_csv(os.path.join(OUT, "phase13_qm_ranking.csv")).sort_values(
+        "hydrophobic_fraction_mean", ascending=False)
+    native = 0.58
+    fig, ax = plt.subplots(figsize=(10.2, 5.8))
+    y = np.arange(len(df))
+    cols = [GREEN if v < native else GREY for v in df["hydrophobic_fraction_mean"]]
+    ax.barh(y, df["hydrophobic_fraction_mean"], color=cols, zorder=3, edgecolor="white")
+    ax.set_yticks(y); ax.set_yticklabels(df["tail_name"], fontsize=10.5)
+    ax.axvline(native, ls="--", color=CORAL, lw=1.8)
+    ax.text(native + 0.004, len(df) - 0.5, "native\nbaseline", color=CORAL, fontsize=10.5, va="top")
+    ax.set_xlim(0.45, 0.72)
+    ax.set_xlabel("exposed GREASY surface (fraction) — lower is better")
+    ax.set_title("Round-1 screen: only 2 of 12 tails beat native (cheap 3-D tier)")
+    for yi, v in zip(y, df["hydrophobic_fraction_mean"]):
+        if v < native:
+            ax.text(v - 0.004, yi, "✓", color="white", fontsize=13, va="center", ha="right", fontweight="bold")
+    save(fig, "fig_tail_ranking.png")
+
+
+# ------------------------------------------------------------- 10. electronics (Phase 9)
+def fig_electronics():
+    df = pd.read_csv(os.path.join(OUT, "phase9_electronic_stats.csv"))
+    names = {"alpha_au": "polarizability α", "logP_xtb": "QM logP", "dipole_D": "dipole",
+             "homo_lumo_gap_eV": "HOMO–LUMO gap", "gsolv_water_kcal": "solvation"}
+    df = df[df["descriptor"].isin(names)].copy(); df["label"] = df["descriptor"].map(names)
+    df = df.sort_values("rho_serumMIC")
+    fig, ax = plt.subplots(figsize=(10.0, 5.4))
+    yy = np.arange(len(df)); h = 0.38
+    ax.barh(yy + h / 2, df["rho_serumMIC"], height=h, color=BLUE, label="vs serum MIC (raw)", zorder=3, edgecolor="white")
+    ax.barh(yy - h / 2, df["rho_shift"], height=h, color=TEAL, label="vs serum SHIFT (potency-free)", zorder=3, edgecolor="white")
+    ax.set_yticks(yy); ax.set_yticklabels(df["label"], fontsize=11)
+    ax.axvline(0, color=INK, lw=1); ax.set_xlim(-0.7, 0.5)
+    ax.set_xlabel("Spearman correlation")
+    ax.set_title("Electronics: α is a size/potency proxy; QM logP corroborates polar-surface")
+    ax.legend(loc="lower left", fontsize=10, frameon=True)
+    # annotate the two key points
+    a = df[df["label"] == "polarizability α"].iloc[0]
+    ax.annotate("big raw signal (−0.54)\nbut a SIZE proxy (shift ≈ 0)", (a["rho_serumMIC"], list(df["label"]).index("polarizability α") + h / 2),
+                xytext=(-0.66, list(df["label"]).index("polarizability α") - 1.2), fontsize=9.5, color=GREY,
+                arrowprops=dict(arrowstyle="->", color=GREY, lw=1))
+    save(fig, "fig_electronics.png")
+
+
+# ------------------------------------------------------------- 11. evidence base
+def fig_dataset():
+    fig, ax = plt.subplots(figsize=(11.2, 4.6)); ax.axis("off")
+    ax.set_xlim(0, 12); ax.set_ylim(0, 5)
+    def stat(x, w, num, lab, col):
+        ax.add_patch(FancyBboxPatch((x, 1.5), w, 2.4, boxstyle="round,pad=0.02,rounding_size=0.08",
+                                    fc=col, ec="none"))
+        ax.text(x + w / 2, 3.1, num, ha="center", va="center", color="white", fontsize=30, fontweight="bold")
+        ax.text(x + w / 2, 2.05, lab, ha="center", va="center", color="white", fontsize=12)
+    stat(0.3, 2.5, "138", "curated\ncompounds", BLUE)
+    stat(3.05, 2.5, "1,042", "activity\nrecords", TEAL)
+    stat(5.8, 2.5, "24", "matched serum\npairs (the target)", INK)
+    # split of the 24
+    ax.add_patch(FancyBboxPatch((8.6, 2.75), 3.1, 1.15, boxstyle="round,pad=0.02,rounding_size=0.08", fc=GREEN, ec="none"))
+    ax.text(10.15, 3.32, "13 serum-tolerant", ha="center", va="center", color="white", fontsize=13, fontweight="bold")
+    ax.add_patch(FancyBboxPatch((8.6, 1.5), 3.1, 1.15, boxstyle="round,pad=0.02,rounding_size=0.08", fc=CORAL, ec="none"))
+    ax.text(10.15, 2.07, "11 serum-killed", ha="center", va="center", color="white", fontsize=13, fontweight="bold")
+    ax.add_patch(FancyArrowPatch((8.35, 2.7), (8.58, 2.7), arrowstyle="-|>", mutation_scale=15, color=GREY, lw=2))
+    ax.text(6.07, 0.75, "+ an independent echinocandin drug corpus (3 approved drugs, 279 serum measurements) "
+            "imported for cross-validation", ha="center", fontsize=11, color=INK, fontstyle="italic")
+    ax.text(6.07, 4.55, "The evidence base — curated from decades of scattered literature",
+            ha="center", fontsize=15, fontweight="bold", color=INK)
+    save(fig, "fig_dataset.png")
+
+
 if __name__ == "__main__":
     fig_serum_gap()
     fig_pipeline()
@@ -297,4 +411,8 @@ if __name__ == "__main__":
     fig_echinocandin()
     fig_round1()
     fig_tail_ladder()
+    fig_confound()
+    fig_tail_ranking()
+    fig_electronics()
+    fig_dataset()
     print("\nAll deck figures written to", os.path.relpath(FIG, HERE))
