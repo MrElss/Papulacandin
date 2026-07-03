@@ -1,0 +1,4 @@
+finalist,gfnff_conformers,gfn2_conformers,gfnff_hydrophobic_sasa,gfn2_hydrophobic_sasa,gfnff_polar_sasa,gfn2_polar_sasa,gfnff_hydrophobic_fraction,gfn2_hydrophobic_fraction,gfn2_d_hydrophobic_sasa_vs_native,gfn2_d_polar_sasa_vs_native,gfn2_beats_native
+t01_C8_omega_sulfonate,199,60,529.5,684.7,462.4,390.7,0.534,0.636,62.4,-60.3,False
+t02_oxa_PEG3,528,367,542.6,593.2,419.5,420.0,0.564,0.586,-29.1,-31.0,False
+t07_C8_saturated,203,124,593.8,591.2,341.4,397.2,0.635,0.598,-31.1,-53.8,False

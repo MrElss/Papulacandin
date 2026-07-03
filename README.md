@@ -28,7 +28,7 @@ antifungal drug candidates for invasive fungal infections.
 |---|---|
 | [`curated/`](curated/) | Clean, human-QC'd source data: `compounds_master.csv` (138 compounds), `activity_table.csv` (1042 MIC/assay records), enzyme assays, synthesis-feasibility notes, and structure files (SDF/MOL/CDX). Packaged "data-only" so a downstream tool can re-derive SAR independently. |
 | [`external/`](external/) | External FKS / glucan-synthase inhibitor datasets (source exports, curation notes, processed model-ready + pretraining matrices). |
-| [`analysis/`](analysis/) | The pipeline: self-contained, ordered Python scripts `phase1…phase13` writing to `analysis/outputs/`. See [`analysis/README.md`](analysis/README.md) for the phase-by-phase narrative. |
+| [`analysis/`](analysis/) | The pipeline: self-contained, ordered Python scripts `phase1…phase14` writing to `analysis/outputs/`. See [`analysis/README.md`](analysis/README.md) for the phase-by-phase narrative. |
 | [`analysis/outputs/`](analysis/outputs/) | Results: CSVs, figures, QM run artifacts, per-phase `*_findings.md`, the cross-phase [`SYNTHESIS_phases1-12.md`](analysis/outputs/SYNTHESIS_phases1-12.md), and slide decks. |
 | [`tests/`](tests/) | Smoke tests (curated-data integrity + fast pipeline entry points). |
 | [`DATA_PROVENANCE.md`](DATA_PROVENANCE.md) | Data sources, curation dates, toolchain versions, endpoint/censoring conventions. |
@@ -46,8 +46,9 @@ SASA, Boltzmann weighting, Gaussian DFT I/O) → **7–8** retrospective validat
 hypothesis and stress-test the polar-surface lead against a second chemotype) →
 **12** serum-tolerance-biased generative design (rewards 3D exposed polar surface;
 emits a discriminating series + an ibrexafungerp-inspired tail-free branch) →
-**13** round-1 campaign: fatty-tail optimization with the core frozen, plus the
-exact CREST/xtb cluster protocol to confirm the designs.
+**13** round-1 fatty-tail optimization (core frozen) + the exact CREST/xtb cluster
+protocol → **14** echinocandin-guided redirect: a rigidity/saturation tail ladder
+(de-rigidify rather than polarize) as the round-1 synthesis shortlist.
 
 Phases 0–9 run on a normal workstation. Phases that generate raw QM/docking data
 need external binaries (CREST, xtb, Gaussian, AutoDock Vina); the Python scripts
@@ -80,7 +81,8 @@ The full run order and every output is documented in
 3. `analysis/outputs/phase8_findings.md` … `phase10_findings.md` — the decisive confound analysis and null results.
 4. `analysis/outputs/phase11_findings.md` — the echinocandin cross-chemotype read-across and free-drug reframe.
 5. `analysis/outputs/phase12_findings.md` — the serum-tolerance-biased generator, its validated reward, and the discriminating series.
-6. [`analysis/README.md`](analysis/README.md) — how each phase was run (incl. the real CREST/xtb settings used).
+6. `analysis/outputs/phase13_findings.md` / `phase14_findings.md` — round-1 fatty-tail results (QM funnel) and the echinocandin-guided synthesis shortlist.
+7. [`analysis/README.md`](analysis/README.md) — how each phase was run (incl. the real CREST/xtb settings used).
 
 ## Limitations (in one breath)
 

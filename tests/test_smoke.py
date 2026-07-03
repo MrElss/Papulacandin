@@ -252,6 +252,35 @@ def test_phase13_qm_ranking_if_present():
     assert 0 < len(winners) < len(rows), f"unexpected winner count: {winners}"
 
 
+def test_phase13_gfn2_ranking_if_present():
+    """If the Step-4 GFN2 ranking exists, it must carry both the GFN-FF and GFN2
+    hydrophobic-fraction columns for the finalists (guards the re-rank parse)."""
+    path = OUT / "phase13_gfn2_ranking.csv"
+    if not path.exists():
+        return
+    rows = _read_csv(path)
+    assert rows, "GFN2 ranking is empty"
+    required = {"finalist", "gfnff_hydrophobic_fraction", "gfn2_hydrophobic_fraction",
+                "gfn2_hydrophobic_sasa", "gfn2_polar_sasa", "gfn2_beats_native"}
+    assert required <= set(rows[0].keys())
+
+
+def test_phase14_tail_series_if_present():
+    """If the Phase-14 echinocandin ladder exists, it must hold chain length
+    ~constant while varying rigidity: the native tail carries the most C=C and the
+    saturated targets carry zero (the axis the series is built to isolate)."""
+    path = OUT / "phase14_tail_series.csv"
+    if not path.exists():
+        return
+    rows = {r["name"]: r for r in _read_csv(path)}
+    assert "native_C16_polyene" in rows and "C16_0_palmitoyl" in rows
+    native_db = int(rows["native_C16_polyene"]["tail_CC_double_bonds"])
+    sat_db = int(rows["C16_0_palmitoyl"]["tail_CC_double_bonds"])
+    assert native_db >= 2 and sat_db == 0, "rigidity axis not isolated"
+    carbons = {int(r["tail_n_carbon"]) for r in rows.values()}
+    assert max(carbons) - min(carbons) <= 1, "chain length not held ~constant"
+
+
 def test_phase12_outputs_if_present():
     """If the committed Phase 12 outputs exist, guard their shape: the
     discriminating series must span >1 polarity bin on a single scaffold."""
