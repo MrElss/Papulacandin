@@ -309,6 +309,39 @@ python3 analysis/phase13_fatty_tail_optimization.py
 4. **Finalists only** — GFN2 re-rank (`crest --screen … --gfn2`) + Phase-9 xtb
    electronics (QM logP, water/octanol) before synthesis.
 
+**Step-4 outcome (GFN2 re-rank of t01/t02/t07):** `phase13_gfn2_rank.py` re-scored
+the finalists at GFN2 and **overturned the sulfonate lead** — 0/3 beat native;
+t01's flexible –SO₃H folds and buries its polar head (GFN2 captures the
+intramolecular H-bond GFN-FF missed), so hydrophobic fraction rose 0.53→0.64. The
+funnel caught a force-field artifact before synthesis. Outputs:
+`phase13_gfn2_ranking.csv`, Step-4 section of `phase13_findings.md`. Conclusion:
+the computed exposed-surface descriptor does not discriminate tails on this
+scaffold — the decision moves to experiment.
+
+## Phase 14 — echinocandin-guided tail redesign (round-1 synthesis shortlist)
+`phase14_echinocandin_tail_series.py` — after Phase 13's polarity axis failed at
+GFN2, this redirects using the echinocandins' clinical SAR (Phase 11): the tail is
+**required for potency**, and the marketed drug with the smallest serum shift
+(caspofungin) has a **branched saturated** tail while the largest-shift drugs
+(anidulafungin, micafungin) have **rigid extended aromatic** tails. The native
+papulacandin tail is a rigid conjugated polyene — the high-shift regime. So the
+hypothesis flips from "polarize the tail" to "**de-rigidify** it": at matched C16
+length (lipophilicity/potency held), saturate/branch the tail. Not a bulk-clogP
+play — the saturated analogs have *higher* clogP than the native polyene yet are
+predicted to bind serum less (rigidity, not lipophilicity; cf. Phase 11).
+
+Emits a 4-member ladder (native polyene → C16:1 palmitoleoyl → C16:0 palmitoyl →
+branched-saturated caspofungin-like) as the round-1 shortlist — which is also the
+*easiest* chemistry (commodity fatty acids, one esterification, vs the native
+polyene or Phase-13's charged/PEG tails). Reads out via the free-drug framing
+(measure serum shift AND fraction-unbound; keep serum-free potency in view).
+
+### Phase 14 outputs
+- `outputs/phase14_tail_series.csv` — the 4 targets + tail rigidity descriptors + rationale
+- `outputs/phase14_top_candidates.sdf` — 3D structures (CREST-ready; names match QM dirs)
+- `outputs/phase14_qm_runs/<name>/<name>.xyz` + `run_crest.sbatch` — optional QM pre-check
+- `outputs/phase14_findings.md` — rationale, priority order (palmitoyl first), free-drug caveat
+
 ### Submitting the 12 CREST screening jobs
 `outputs/qm_runs/<candidate_name>/<candidate_name>.xyz` — one starting geometry
 per Phase-5 candidate (atom order matches `phase5_top_candidates.sdf`, required

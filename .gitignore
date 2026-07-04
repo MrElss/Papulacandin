@@ -48,3 +48,17 @@ analysis/outputs/phase13_qm_runs/**/*.xtbtopo.mol
 analysis/outputs/phase13_qm_runs/**/wbo
 analysis/outputs/phase13_qm_runs/**/*.[0-9]*.out
 analysis/outputs/phase13_qm_runs/**/*.[0-9]*.err
+
+# Phase 14 echinocandin-tail CREST runs: keep crest_conformers.xyz + small
+# provenance; ignore the bulky regenerable scratch (mirrors phase13):
+analysis/outputs/phase14_qm_runs/**/crest_dynamics.trj
+analysis/outputs/phase14_qm_runs/**/confcross.xyz
+analysis/outputs/phase14_qm_runs/**/crest_rotamers.xyz
+analysis/outputs/phase14_qm_runs/**/gfnff_topo
+analysis/outputs/phase14_qm_runs/**/crest.restart
+analysis/outputs/phase14_qm_runs/**/crestopt.log
+analysis/outputs/phase14_qm_runs/**/*.xtbrestart
+analysis/outputs/phase14_qm_runs/**/*.xtbtopo.mol
+analysis/outputs/phase14_qm_runs/**/wbo
+analysis/outputs/phase14_qm_runs/**/*.[0-9]*.out
+analysis/outputs/phase14_qm_runs/**/*.[0-9]*.err

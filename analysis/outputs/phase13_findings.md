@@ -109,3 +109,46 @@ phosphocholine carry a formal charge — set `--chrg` accordingly in GFN2/xTB
 These are exposed-surface descriptors — the *hypothesis* for serum tolerance, not
 the endpoint. Step 3 narrows 12 tails to 2 (+1 control) worth carrying forward; the
 serum SHIFT of that small set, measured in vitro, is what actually tests the lead.
+
+
+---
+
+# Step 4 — GFN2 re-rank confirmation
+
+Re-scored the three finalists on their GFN2-reranked ensembles (`crest --screen
+--gfn2 --alpb water`), same Phase-6 engine as Step 3 — only the conformer
+populations change (GFN2 ranks the many intramolecular H-bonds better than
+GFN-FF). Native reference (PAPU-0080) is GFN-FF quality; treat the vs-native
+deltas as cross-method (the finalist↔finalist contrast below is pure GFN2).
+
+**Native (GFN-FF ref):** hydrophobic SASA 622 Å², polar 451,
+hydrophobic fraction 0.58.
+
+## Finalists (GFN-FF → GFN2)
+- **t01 C8 ω-sulfonate**: hydrophobic fraction 0.534 (GFN-FF) → **0.636** (GFN2); hydrophobic SASA 685 Å² (+62 vs native), polar 391 (-60); beats native: no
+- **t02 oxa-PEG3**: hydrophobic fraction 0.564 (GFN-FF) → **0.586** (GFN2); hydrophobic SASA 593 Å² (-29 vs native), polar 420 (-31); beats native: no
+- **t07 C8 saturated (control)**: hydrophobic fraction 0.635 (GFN-FF) → **0.598** (GFN2); hydrophobic SASA 591 Å² (-31 vs native), polar 397 (-54); beats native: no
+
+## Decisive contrast — is the sulfonate head doing work?
+t01 (C8 + SO₃H) minus t07 (C8, no head) at GFN2: Δhydrophobic_fraction = **+0.038**, Δpolar_SASA = **-6 Å²**. Interpretation: the sulfonate head is **counterproductive at GFN2** — t01 is MORE hydrophobic than the head-less C8 control. GFN2 captures the intramolecular H-bonding that GFN-FF missed: the flexible –SO₃H folds against the sugar polyols and buries its polar group, re-exposing hydrophobe. The Step-3 GFN-FF win was a force-field artifact.
+
+## Read
+**0/3 finalists beat native at GFN2.** GFN2 does NOT preserve the Step-3 GFN-FF ordering: the sulfonate winner collapses (hydrophobic fraction 0.53→0.64, now worse than native), because GFN2's better treatment of intramolecular H-bonding folds its polar head inward. This repeats the project's recurring lesson at one more rung of the ladder — 2D→MMFF→GFN-FF→GFN2 each shrinks or kills the apparent effect. On this scaffold, tail modification gives at best a MARGINAL exposed-surface change at QM quality; the computed descriptor no longer cleanly favors any tail.
+
+These remain exposed-surface descriptors — the *hypothesis*, not the serum
+endpoint. What Step 4 establishes is that **no tail in this round is a compute-only
+win**: the decision cannot be made on computed surface and must go to experiment.
+
+## Recommended next step (honest)
+The QM funnel has done its job — it killed a screening-tier artifact (t01) before
+synthesis and shows the rest are marginal. So:
+1. **Do not crown a computational winner.** Take a small MATCHED set to the bench —
+   native (C16), **t02 oxa-PEG3** (most robust: lowest GFN2 hydrophobic SASA), and
+   **t07 C8-saturated** (isolates pure chain-shortening) — and MEASURE the serum
+   shift (protein-adjusted MIC + equilibrium-dialysis fu, the Phase-11 assay). That
+   3–4 compound experiment resolves what compute cannot.
+2. Keep t01 only if you test the **anion** explicitly (rebuild –SO₃⁻, `--chrg -1`):
+   the deprotonated sulfonate cannot form the neutral-acid intramolecular H-bond
+   that buried it here, so its exposed-surface behavior may differ — a separate calc.
+3. Optional before synthesis: finalists' Gaussian DFT single points (inputs under
+   `phase13_qm_gaussian/`) + Phase-9 xTB water/octanol QM-logP for ESP descriptors.
