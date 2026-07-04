@@ -2,7 +2,7 @@
 #SBATCH -p cpu-256G
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --cpus-per-task=35
+#SBATCH --cpus-per-task=52
 #SBATCH --mem=64G
 #SBATCH -J t02_oxa_PEG3_gfn2
 #SBATCH -o %x.%j.out

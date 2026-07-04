@@ -2,7 +2,7 @@
 #SBATCH -p cpu-256G
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --cpus-per-task=35
+#SBATCH --cpus-per-task=52
 #SBATCH --mem=64G
 #SBATCH -J t01_C8_omega_sulfonate_gfn2
 #SBATCH -o %x.%j.out
