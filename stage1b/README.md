@@ -57,6 +57,27 @@ and random-forest error bars collapse toward the training mean under
 extrapolation — which is why the distance-based AD flag, not the tree spread, is
 the trustworthy guide here.
 
+### Is the AD "successful" because more echinocandins pass it?
+
+No — that reading is a trap; see `outputs/applicability_domain_analysis.md`
+(`analyze_applicability_domain.py`). The echinocandin/papulacandin gap is a
+**molecular-size gradient**, not chemotype discrimination: the AD admits small
+molecules of either class (MW<500: 73% of echinocandins, 22% of papulacandins)
+and rejects large ones of either class (MW>700: 0% of both). Every **approved**
+echinocandin — caspofungin, anidulafungin, micafungin, cilofungin, ibrexafungerp,
+the serum-tolerant drugs we'd use as the *teacher* — is out-of-domain, exactly
+like the papulacandins. The in-domain echinocandins are small synthetic analogs,
+not the serum-tolerance exemplars.
+
+The AD *does* work, but the evidence is the error test, not the head-count: on
+held-out labelled data, in-domain MAE = 0.47 vs out-of-domain 0.80 log-units, MAE
+rises monotonically across distance quartiles (0.32→0.43→0.49→0.69), and
+Spearman(distance, |error|) = +0.33. So the AD is a valid **reliability flag** —
+and it says target compounds *and* the large-molecule teachers are both
+out-of-domain for a drug-trained PPB oracle. (This does not threaten the strategy:
+Stage 1c's serum transfer-learning uses the echinocandins' own measured serum /
+in-vivo data, not this oracle.)
+
 This is exactly **guardrail #4** (off-the-shelf QSAR does not transfer to this
 bRo5 chemotype) made quantitative, and it operationalizes **guardrails #5 and #8**:
 for the real design targets, free fraction must be **measured** (equilibrium
@@ -71,6 +92,7 @@ fu to a full-size papulacandin.
 | `free_fraction_predictions.csv` | per-compound fu + tree-SD uncertainty + AD flag, all papulacandins & echinocandins |
 | `applicability_domain_report.csv` | in-domain fractions by chemotype |
 | `ppb_oracle_metrics.md` | validation, anchor check, and the AD finding |
+| `applicability_domain_analysis.md` | why the echinocandin in-domain rate is a size effect, and the error-vs-distance validation of the AD |
 
 ## Next
 

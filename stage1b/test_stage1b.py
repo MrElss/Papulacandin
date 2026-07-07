@@ -94,3 +94,16 @@ def test_predictions_carry_uncertainty_and_ad_flag():
     r = rows[0]
     assert {"pred_fu", "tree_sd_log", "in_domain", "knn_distance"} <= set(r)
     assert 0.0 <= float(r["pred_fu"]) <= 1.0
+
+
+def test_ad_is_a_valid_reliability_flag_not_a_chemotype_split():
+    # the AD's success is that distance predicts error, and it is a size gradient:
+    # approved echinocandins (large) are out-of-domain just like papulacandins.
+    import analyze_applicability_domain as A
+    v = A.ad_validity()
+    assert v["in_mae"] < v["out_mae"], "in-domain should be more accurate"
+    assert v["spearman"] > 0.15, "distance should track error"
+    _, _, _, approved = A.size_breakdown()
+    if approved:
+        in_dom = sum(1 for r in approved if r["in_domain"] == "True")
+        assert in_dom == 0, "approved echinocandins are large -> out-of-domain"
