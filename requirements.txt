@@ -1,0 +1,20 @@
+# Environment for the Papulacandin serum-tolerant antifungal project.
+# Stage 0 (data unification / serum-shift endpoint) is pure stdlib and needs
+# nothing here — it runs on a bare Python 3.11+. These support the later stages
+# (oracles, descriptors, generation) and the test tooling.
+
+# --- core scientific stack (verified installed in this environment) ---
+pandas==3.0.3
+numpy==2.4.6
+scipy==1.17.1
+pytest==8.4.1
+
+# --- added as the stages that need them are built (floor constraints; pin
+#     exact versions once installed and tested) ---
+scikit-learn>=1.5      # Stage 1 QSAR / free-fraction oracle
+rdkit>=2024.3          # Stage 1a potency / descriptors
+
+# Later stages will also add:
+#   a generative framework (e.g. REINVENT) for scaffold-constrained decoration
+#   xtb / crest for physics descriptors
+#   a docking engine for structure-based potency
