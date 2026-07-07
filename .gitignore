@@ -1,64 +1,21 @@
+# Python
 __pycache__/
 *.pyc
 .pytest_cache/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
 
 # OS / editor cruft
 .DS_Store
 Thumbs.db
 desktop.ini
 
-# phase6 self-test scratch (regenerated on every run, not real QM data)
-analysis/outputs/_selftest_*
-# phase7 known-set MMFF ensembles: deterministically regenerable from
-# phase7_retrospective_qm.py (fixed seed); results captured in the CSVs
-analysis/outputs/qm_runs_known_rdkit/
-# NOTE: qm_runs/*_gfn2/ finalist re-rank folders ARE tracked (input pool +
-# run_gfn2_rerank.sbatch + the GFN2 results crest_ensemble.xyz / crest_best.xyz
-# / rerank.log). Only CREST scratch in those folders is ignored:
-analysis/outputs/qm_runs/*_gfn2/pool_gfnff.xyz
-analysis/outputs/qm_runs/*_gfn2/crest.restart
-analysis/outputs/qm_runs/*_gfn2/crestopt.log
-analysis/outputs/qm_runs/*_gfn2/*.out
-# Phase 9 xtb namespace scratch (keep *.out results, *.charges, inputs, sbatch)
-analysis/outputs/qm_runs_known_xtb/**/*.xtbtopo.mol
-analysis/outputs/qm_runs_known_xtb/**/*.xtbrestart
-analysis/outputs/qm_runs_known_xtb/**/*.wbo
-analysis/outputs/qm_runs_known_xtb/xtb_elec.*.out
-analysis/outputs/qm_runs_known_xtb/xtb_elec.*.err
-# Phase 10 docking: bulky regenerable artifacts (receptor/ligand pdbqt, raw PDB)
-analysis/outputs/phase10_docking/1AO6.pdb
-analysis/outputs/phase10_docking/hsa_chainA.pdb
-analysis/outputs/phase10_docking/hsa_receptor.pdbqt
-analysis/outputs/phase10_docking/ligands/
-analysis/outputs/phase10_docking/*.log
-analysis/outputs/phase10_docking/test_*.pdbqt
-analysis/outputs/deck_assets/
-# Phase 13 fatty-tail CREST runs: KEEP crest_conformers.xyz (the only file the
-# Phase-6 parser needs; energies are in its comment lines), plus small provenance
-# (crest_best.xyz, run.log, crest.energies, the <name>.xyz input, sbatch/SUBMIT.md).
-# Everything below is bulky/regenerable CREST scratch — never commit it:
-analysis/outputs/phase13_qm_runs/**/crest_dynamics.trj
-analysis/outputs/phase13_qm_runs/**/confcross.xyz
-analysis/outputs/phase13_qm_runs/**/crest_rotamers.xyz
-analysis/outputs/phase13_qm_runs/**/gfnff_topo
-analysis/outputs/phase13_qm_runs/**/crest.restart
-analysis/outputs/phase13_qm_runs/**/crestopt.log
-analysis/outputs/phase13_qm_runs/**/*.xtbrestart
-analysis/outputs/phase13_qm_runs/**/*.xtbtopo.mol
-analysis/outputs/phase13_qm_runs/**/wbo
-analysis/outputs/phase13_qm_runs/**/*.[0-9]*.out
-analysis/outputs/phase13_qm_runs/**/*.[0-9]*.err
-
-# Phase 14 echinocandin-tail CREST runs: keep crest_conformers.xyz + small
-# provenance; ignore the bulky regenerable scratch (mirrors phase13):
-analysis/outputs/phase14_qm_runs/**/crest_dynamics.trj
-analysis/outputs/phase14_qm_runs/**/confcross.xyz
-analysis/outputs/phase14_qm_runs/**/crest_rotamers.xyz
-analysis/outputs/phase14_qm_runs/**/gfnff_topo
-analysis/outputs/phase14_qm_runs/**/crest.restart
-analysis/outputs/phase14_qm_runs/**/crestopt.log
-analysis/outputs/phase14_qm_runs/**/*.xtbrestart
-analysis/outputs/phase14_qm_runs/**/*.xtbtopo.mol
-analysis/outputs/phase14_qm_runs/**/wbo
-analysis/outputs/phase14_qm_runs/**/*.[0-9]*.out
-analysis/outputs/phase14_qm_runs/**/*.[0-9]*.err
+# Large / regenerable model & compute artifacts (keep source + small results;
+# add specific paths as the new pipeline defines them)
+*.ckpt
+*.pt
+*.joblib
