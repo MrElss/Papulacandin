@@ -36,14 +36,42 @@ def test_serum_shift_arithmetic_is_correct():
         )
 
 
-def test_censored_serum_mic_is_flagged_as_lower_bound():
+def test_activity_ceiling_rule():
+    # point 1: MIC > 100 ug/mL is a categorical INACTIVE call.
+    assert s0.activity_call(50.0, "=") == "active"
+    assert s0.activity_call(100.0, "=") == "inactive"
+    assert s0.activity_call(250.0, ">") == "inactive"
+    assert s0.activity_call(40.0, ">") == "ambiguous"   # tested ceiling < 100
+    assert s0.activity_call(None, "=") == "unknown"
+
+
+def test_serum_tolerance_call_is_consistent_with_activity():
+    for p in s0.build_papulacandin_pairs():
+        if p["serum_tolerance"] == "retained":
+            assert p["free_activity"] == "active" and p["serum_activity"] == "active"
+        elif p["serum_tolerance"] == "lost":
+            assert p["free_activity"] == "active" and p["serum_activity"] == "inactive"
+        elif p["serum_tolerance"] == "uninformative":
+            assert p["free_activity"] != "active"
+    # a meaningful continuous shift only when serum MIC is a real active number
+    for p in s0.build_papulacandin_pairs():
+        if p["serum_shift_meaningful"]:
+            assert p["serum_activity"] == "active"
+
+
+def test_invivo_proxy_excludes_cellular_only_and_flags_conflicts():
     pairs = s0.build_papulacandin_pairs()
-    censored = [p for p in pairs if p["serum_censored"]]
-    assert censored, "expected some censored (>) serum MICs in the curated data"
-    # a serum-only censored pair must be a lower bound on the true shift
-    for p in censored:
-        if not p["free_censored"]:
-            assert p["shift_relation"] == ">="
+    proxies = s0.build_invivo_proxies(s0._direct_calls_by_compound(pairs))
+    assert proxies, "expected in-vivo efficacy proxies"
+    # every proxy is in-vivo derived (never cellular-only)
+    assert all(p["evidence"] == "in_vivo_efficacy" for p in proxies)
+    # canonical echinocandin anchors are present (caspofungin etc.)
+    names = {p["compound_name"].upper() for p in proxies}
+    assert names & s0.CANONICAL_FKS
+    # a proxy conflicting with a direct 'lost'/'mixed' call is down-weighted
+    for p in proxies:
+        if p["direct_pair_evidence"] in ("lost", "mixed"):
+            assert p["confidence"] == "low"
 
 
 def test_intrinsic_potency_covariate_present():
@@ -74,10 +102,13 @@ def _load(name):
         return list(csv.DictReader(fh))
 
 
-def test_unified_table_holds_only_legitimate_matched_shifts():
-    rows = _load("unified_serum_shift_table.csv")
+def test_unified_labels_combine_direct_and_proxy():
+    rows = _load("serum_tolerance_labels.csv")
     if rows is None:
         return  # pipeline not yet run; builder tests already cover the logic
-    # today only the papulacandin class yields legitimate matched shifts
-    assert {r["chemotype"] for r in rows} == {"papulacandin"}
-    assert len({r["compound_id"] for r in rows}) == 24
+    sources = {r["label_source"] for r in rows}
+    assert sources == {"direct_serum_pair", "in_vivo_proxy"}
+    tol = {r["serum_tolerance"] for r in rows}
+    assert tol == {"retained", "lost", "retained_presumed"}
+    # in-vivo proxies bring the echinocandin anchors into the label set
+    assert any(r["chemotype"] == "echinocandin" for r in rows)

@@ -1,29 +1,33 @@
-# Stage 0 — unify data and fix the endpoint
+# Stage 0 — unify data & fix the serum-tolerance endpoint
 
-Endpoint: **serum shift = MIC(serum-containing) / MIC(serum-free)** for the *same compound in the same organism* — a potency-independent measure. Intrinsic potency (the serum-free MIC) is carried as a covariate.
+Endpoint = whether a compound **keeps activity in serum**. Two faces: a categorical call (`retained` / `lost`) plus a continuous serum shift where meaningful. Intrinsic potency (serum-free MIC) is kept as a covariate.
 
-## Papulacandin (curated) — the serum-shift labels
+## Curation rules applied
 
-- **24 compounds** carry matched serum-free + serum-containing MIC — the ~24 anchor labels referenced in START_HERE.
-- **143 matched pairs** total (a compound recurs across organisms / strains); 143 are strain-matched within a single study (high confidence).
-- **70/143 pairs are right-censored** (serum MIC reported as ">"), so their shift is a LOWER BOUND, flagged in `shift_relation` (`>=`). They must be modelled as censored, never as point values.
+- **Activity ceiling (point 1):** MIC > 100 ug/mL = no detectable activity (a categorical INACTIVE call, not a censored number to model). So a compound active serum-free but above the ceiling in serum has simply **lost** serum activity.
+- **In-vivo efficacy proxy (point 2):** in-vivo efficacy implies activity in the bloodstream (serum present) -> a **presumed serum-tolerant** positive. Whole-cell / cellular activity alone is NOT counted (losing serum activity despite a good broth MIC is this class's failure mode).
 
-## Echinocandin (external) — teacher corpus, NOT fabricated pairs
+## Papulacandin direct labels (matched pairs)
 
-**Key data-reality finding:** the external echinocandin table contains **no within-study matched serum pairs**. Serum-containing and serum-free MICs never share a source study, and pooling across studies mixes wild-type with FKS-resistant mutants (one drug's free MIC spans 0.0001–512 ug/mL). A ratio built from that is a cross-study, resistance-confounded artifact. Honoring the project's guardrails, we do **not** manufacture echinocandin serum shifts. Instead:
+- 24 compounds, 143 matched pairs. Categorical calls: **61 retained, 74 lost**, 0 ambiguous, 8 uninformative (inactive serum-free).
+- The 'lost' pairs are the class's signature failure (potent in broth, dead in serum). Continuous serum shift is retained only where the serum MIC is a real active number (61 pairs).
 
-- `echinocandin_serum_context.csv`: 6238 whole-cell MIC rows (121 explicitly serum-present, 1125 canonical-FKS), kept UNPAIRED with their source study — the corpus for a Stage-1 hierarchical / transfer model with `study` and `serum_state` as effects.
-- `echinocandin_free_fraction_seed.csv`: 9 Fu / PPB rows — the seed for the Stage-1b free-fraction oracle.
+## In-vivo efficacy proxies (presumed positives)
+
+- 52 compounds flagged presumed serum-tolerant from in-vivo efficacy: 47 papulacandin, 5 canonical echinocandin (the caspofungin / anidulafungin / micafungin anchors). Labelled `retained_presumed`, confidence medium.
+
+## Unified label set: 187 rows -> serum_tolerance_labels.csv
 
 ## Applicability domain
 
-- **papulacandin_curated_matched_pairs** (serum_shift_labels): 143 rows / 24 compounds; shift 1.0–500.0x (median 16.03x); 3 refs. legitimate within-study matched serum-free/serum MIC.
-- **echinocandin_external_serum_context** (teacher_corpus_unpaired): 6238 rows / 185 compounds; 2944 refs. 121 serum-present rows; 1125 canonical-FKS rows; UNPAIRED (no within-study serum pairs exist).
+- **papulacandin_curated_matched_pairs** (direct_serum_tolerance_labels): 143 rows / 24 compounds; 3 refs. within-study matched serum-free/serum MIC; ceiling rule applied.
+- **invivo_efficacy_proxies** (presumed_positive_labels): 52 rows / 49 compounds; 9 refs. in-vivo efficacy -> presumed serum-tolerant; cellular-only excluded.
+- **echinocandin_external_serum_context** (teacher_corpus_unpaired): 6238 rows / 185 compounds; 2944 refs. 121 serum-present, 1126 canonical-FKS; UNPAIRED.
 - **echinocandin_external_free_fraction** (free_fraction_oracle_seed): 9 rows / 1 compounds; 9 refs. Fu + PPB rows; seed for Stage-1b free-fraction oracle.
 
 ## Guardrails honored
-1. Endpoint is the serum SHIFT, not the raw serum MIC (guardrail #1).
-2. Intrinsic potency retained as a covariate (dominant confound).
-3. Censoring tracked explicitly (`shift_relation`, `serum_censored`).
-4. Applicability domain recorded per dataset.
-5. No fabricated cross-study pairs — DATA is the binding constraint (guardrail #8).
+1. Endpoint is serum TOLERANCE (retained/lost), not raw serum MIC.
+2. Intrinsic potency retained as a covariate.
+3. Ceiling rule: >100 ug/mL = inactive (point 1); no chasing numbers above it.
+4. In-vivo efficacy is a flagged proxy; cellular-only is not a serum label (point 2).
+5. No fabricated cross-study echinocandin pairs — DATA is the binding constraint.

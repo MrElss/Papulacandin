@@ -1,0 +1,188 @@
+compound_id,compound_name,chemotype,organism,serum_tolerance,label_source,confidence,serum_shift,reference_id,direct_pair_evidence
+PAPU-0002,Papulacandin B,papulacandin,C. albicans,retained,direct_serum_pair,high,26.0,PAPER-1979-BAGULEY,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Candida tropicalis,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida tropicalis,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Candida kefyr,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida kefyr,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Torulopsis glabrata,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Torulopsis glabrata,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Cryptococcus albidus,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Saccharomyces cerevisiae,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Saccharomyces cerevisiae,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0066,Fusacandin A,papulacandin,Aspergillus niger,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Aspergillus niger,lost,direct_serum_pair,high,,PAPER-1995-JACKSON,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0066,Fusacandin A,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0067,Fusacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0067,Fusacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0067,Fusacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0067,Fusacandin B,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0071,Fusacandin analog 6a,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0071,Fusacandin analog 6a,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0071,Fusacandin analog 6a,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0071,Fusacandin analog 6a,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0071,Fusacandin analog 6a,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0073,Fusacandin analog 6c,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0073,Fusacandin analog 6c,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0073,Fusacandin analog 6c,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0073,Fusacandin analog 6c,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0073,Fusacandin analog 6c,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0074,Fusacandin analog 6d,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0074,Fusacandin analog 6d,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0074,Fusacandin analog 6d,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0074,Fusacandin analog 6d,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0074,Fusacandin analog 6d,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0075,Fusacandin analog 6e,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0075,Fusacandin analog 6e,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0075,Fusacandin analog 6e,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0075,Fusacandin analog 6e,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0075,Fusacandin analog 6e,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0076,Fusacandin analog 6f,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0076,Fusacandin analog 6f,papulacandin,Candida albicans,retained,direct_serum_pair,high,64.1026,PAPER-1996-YEUNG,self
+PAPU-0076,Fusacandin analog 6f,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0076,Fusacandin analog 6f,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0076,Fusacandin analog 6f,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0077,Fusacandin analog 6g,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0077,Fusacandin analog 6g,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0077,Fusacandin analog 6g,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0077,Fusacandin analog 6g,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0077,Fusacandin analog 6g,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0078,Fusacandin analog 6h,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0078,Fusacandin analog 6h,papulacandin,Candida albicans,retained,direct_serum_pair,high,64.1026,PAPER-1996-YEUNG,self
+PAPU-0078,Fusacandin analog 6h,papulacandin,Candida albicans,retained,direct_serum_pair,high,64.1026,PAPER-1996-YEUNG,self
+PAPU-0078,Fusacandin analog 6h,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0078,Fusacandin analog 6h,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0079,Fusacandin analog 6i,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0079,Fusacandin analog 6i,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0079,Fusacandin analog 6i,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0079,Fusacandin analog 6i,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0079,Fusacandin analog 6i,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0080,Fusacandin analog 6j,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0080,Fusacandin analog 6j,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0080,Fusacandin analog 6j,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0080,Fusacandin analog 6j,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0080,Fusacandin analog 6j,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0081,Fusacandin analog 6k,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0081,Fusacandin analog 6k,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0081,Fusacandin analog 6k,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0081,Fusacandin analog 6k,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0081,Fusacandin analog 6k,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0082,Fusacandin analog 6l,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0082,Fusacandin analog 6l,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0082,Fusacandin analog 6l,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0082,Fusacandin analog 6l,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0082,Fusacandin analog 6l,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0083,Fusacandin analog 6m,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0083,Fusacandin analog 6m,papulacandin,Candida albicans,retained,direct_serum_pair,high,125.0,PAPER-1996-YEUNG,self
+PAPU-0083,Fusacandin analog 6m,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0083,Fusacandin analog 6m,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0083,Fusacandin analog 6m,papulacandin,Candida albicans,retained,direct_serum_pair,high,64.1026,PAPER-1996-YEUNG,self
+PAPU-0084,Fusacandin analog 6n,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0084,Fusacandin analog 6n,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0084,Fusacandin analog 6n,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0084,Fusacandin analog 6n,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0084,Fusacandin analog 6n,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0085,Fusacandin analog 6o,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0085,Fusacandin analog 6o,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0085,Fusacandin analog 6o,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0085,Fusacandin analog 6o,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0085,Fusacandin analog 6o,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0086,Fusacandin analog 6p,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0086,Fusacandin analog 6p,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0086,Fusacandin analog 6p,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0086,Fusacandin analog 6p,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0086,Fusacandin analog 6p,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0087,Fusacandin analog 6q,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0087,Fusacandin analog 6q,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0087,Fusacandin analog 6q,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0087,Fusacandin analog 6q,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0087,Fusacandin analog 6q,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0088,Fusacandin analog 6r,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0088,Fusacandin analog 6r,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0088,Fusacandin analog 6r,papulacandin,Candida albicans,retained,direct_serum_pair,high,4.0064,PAPER-1996-YEUNG,self
+PAPU-0088,Fusacandin analog 6r,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0088,Fusacandin analog 6r,papulacandin,Candida albicans,retained,direct_serum_pair,high,16.0256,PAPER-1996-YEUNG,self
+PAPU-0089,Fusacandin analog 6s,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0089,Fusacandin analog 6s,papulacandin,Candida albicans,retained,direct_serum_pair,high,64.1026,PAPER-1996-YEUNG,self
+PAPU-0089,Fusacandin analog 6s,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0089,Fusacandin analog 6s,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0089,Fusacandin analog 6s,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0128,PAPER-1996-YEUNG,self
+PAPU-0090,Fusacandin analog 6t,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0,PAPER-1996-YEUNG,self
+PAPU-0090,Fusacandin analog 6t,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0090,Fusacandin analog 6t,papulacandin,Candida albicans,retained,direct_serum_pair,high,8.0,PAPER-1996-YEUNG,self
+PAPU-0090,Fusacandin analog 6t,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0090,Fusacandin analog 6t,papulacandin,Candida albicans,retained,direct_serum_pair,high,32.0513,PAPER-1996-YEUNG,self
+PAPU-0091,Fusacandin analog 6u,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0091,Fusacandin analog 6u,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0091,Fusacandin analog 6u,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0091,Fusacandin analog 6u,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0091,Fusacandin analog 6u,papulacandin,Candida albicans,lost,direct_serum_pair,high,,PAPER-1996-YEUNG,self
+PAPU-0001,Papulacandin A,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1977-TRAXLER,none
+PAPU-0002,Papulacandin B,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,low,,PAPER-1977-TRAXLER,mixed
+PAPU-0016,Papulacandin B 12-OCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0031,Papulacandin B 12-OCH2CH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0018,Papulacandin B 12-OCH2CH2CH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0033,Papulacandin B 12-OCH2CH2CH2I derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0034,Papulacandin B 12-p-nitrobenzyl ether,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0035,Papulacandin B 12-OCH2COCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0021,Papulacandin B 12-OCH2COOH derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0036,Papulacandin B 12-OCH2COOCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0017,"Papulacandin B 10,12-OCH3 derivative",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0040,"Papulacandin B 10,12-di-OCH2COCH3 derivative",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0041,"Papulacandin B 10,12-di-OCH2COOH derivative",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0042,"Papulacandin B 10,12-di-OCH2COOCH3 derivative",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0043,Papulacandin B 10-OCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0020,Papulacandin B 10-OCH2COCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0022,Papulacandin B 10-OCH2COOH derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0023,Papulacandin B 10-OCH2COOCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0044,Papulacandin B 10-OCH2COOCH2CH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0024,Papulacandin B 10-OCH2COOCH2CH(OH)CH2OH derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0045,Papulacandin B 10-OCH2CONH2 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0046,Papulacandin B 10-OCH2CONHCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0047,Papulacandin B 10-OCH2CON(CH3)2 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0048,Papulacandin B 10-OCH2CO-thienyl derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0049,"Papulacandin B 11,13-dimorpholinomethylene derivative",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0050,Papulacandin B 11-dimethylaminomethylene 12-OCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0025,Papulacandin B 11-CH2-morpholine 12-OCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0051,Papulacandin B 11-morpholinomethylene derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0052,Papulacandin B 11-piperidinomethylene derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0027,Papulacandin B 11-NH2 12-OCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0028,Papulacandin B 11-NHCOCH3 12-OCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0029,Papulacandin B 11-NHCOCH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0054,Papulacandin B 11-NHSO2CH3 derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0055,Papulacandin B 11-amino-imidazolidone derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0057,Papulacandin B 6-azido derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0013,Papulacandin B 6-Br derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0012,Papulacandin B 6-I derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0015,Papulacandin B 6-CH2-morpholine derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0058,Papulacandin B 6-N-methylpiperazinyl derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0059,Papulacandin B 6-N-formylpiperazinyl derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0060,Papulacandin B 6-N-methylthiotetrazolinyl derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0061,Papulacandin B 6-acetyl derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0062,Papulacandin B 6-succinyl derivative,papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1987-TRAXLER,none
+PAPU-0063,"L-687,781",papulacandin,Pneumocystis carinii,retained_presumed,in_vivo_proxy,medium,,PAPER-1991-VANMIDDLESWORTH,none
+PAPU-0063,"L-687,781",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1992-BARTIZAL,none
+PAPU-0063,"L-687,781",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1992-BARTIZAL,none
+PAPU-0063,"L-687,781",papulacandin,Candida albicans,retained_presumed,in_vivo_proxy,medium,,PAPER-1992-BARTIZAL,none
+EXT-FKS-0001,CASPOFUNGIN,echinocandin,,retained_presumed,in_vivo_proxy,medium,,CHEMBL1153830;Antimicrob Agents Chemother 2007;CHEMBL963314,none
+EXT-FKS-0018,CILOFUNGIN,echinocandin,,retained_presumed,in_vivo_proxy,medium,,CHEMBL1134173;Bioorg Med Chem Lett 2001;CHEMBL656190,none
+EXT-FKS-0002,ANIDULAFUNGIN,echinocandin,,retained_presumed,in_vivo_proxy,medium,,CHEMBL1128519;J Med Chem 1995;CHEMBL716114,none
+EXT-FKS-0028,IBREXAFUNGERP,echinocandin,,retained_presumed,in_vivo_proxy,medium,,CHEMBL4680287;Bioorg Med Chem Lett 2021;CHEMBL4687957,none
+EXT-FKS-0003,MICAFUNGIN,echinocandin,,retained_presumed,in_vivo_proxy,medium,,CHEMBL1142085;Antimicrob Agents Chemother 2007;CHEMBL915902,none

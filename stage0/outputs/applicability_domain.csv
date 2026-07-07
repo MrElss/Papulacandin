@@ -1,4 +1,5 @@
-dataset,role,chemotype,n_rows,n_compounds,n_organisms,organisms,n_censored,pct_censored,shift_min,shift_median,shift_max,n_references,notes
-papulacandin_curated_matched_pairs,serum_shift_labels,papulacandin,143,24,8,Aspergillus niger; C. albicans; Candida albicans; Candida kefyr; Candida tropicalis; Cryptococcus albidus; Saccharomyces cerevisiae; Torulopsis glabrata,70,49.0,1.0,16.03,500.0,3,legitimate within-study matched serum-free/serum MIC
-echinocandin_external_serum_context,teacher_corpus_unpaired,echinocandin,6238,185,1,1 distinct,522,,,,,2944,121 serum-present rows; 1125 canonical-FKS rows; UNPAIRED (no within-study serum pairs exist)
-echinocandin_external_free_fraction,free_fraction_oracle_seed,echinocandin,9,1,0,,0,,,,,9,Fu + PPB rows; seed for Stage-1b free-fraction oracle
+dataset,role,chemotype,n_rows,n_compounds,n_informative,n_retained,n_lost,n_references,notes
+papulacandin_curated_matched_pairs,direct_serum_tolerance_labels,papulacandin,143,24,135,61,74,3,within-study matched serum-free/serum MIC; ceiling rule applied
+invivo_efficacy_proxies,presumed_positive_labels,papulacandin+echinocandin,52,49,52,52,0,9,in-vivo efficacy -> presumed serum-tolerant; cellular-only excluded
+echinocandin_external_serum_context,teacher_corpus_unpaired,echinocandin,6238,185,121,,,2944,"121 serum-present, 1126 canonical-FKS; UNPAIRED"
+echinocandin_external_free_fraction,free_fraction_oracle_seed,echinocandin,9,1,9,,,9,Fu + PPB rows; seed for Stage-1b free-fraction oracle
