@@ -1,6 +1,0 @@
-descriptor,rho_serumMIC,p_serumMIC,partial_rho,partial_p,rho_shift,p_shift
-dipole_D,-0.14,0.507,-0.25,0.241,-0.15,0.487
-logP_xtb,-0.31,0.142,0.09,0.668,0.3,0.149
-gsolv_water_kcal,0.05,0.804,0.19,0.373,0.13,0.55
-alpha_au,-0.54,0.007,-0.37,0.071,-0.02,0.941
-homo_lumo_gap_eV,-0.13,0.541,-0.02,0.916,0.14,0.506

@@ -1,7 +1,0 @@
-cv,roc_auc_mean,roc_auc_std,pr_auc_mean,note
-random_kfold,0.9968847367909868,0.004318137867814028,0.9973047694428473,optimistic: analogs leak across folds
-scaffold_groupkfold,0.9970244523868939,0.0027786173968421574,0.9972002160143271,honest: whole scaffolds held out
-single_descriptor::mol_wt_rdkit,0.6985464186991106,,,trivial baseline; high value => easy class split
-single_descriptor::tpsa_rdkit,0.6979634818255326,,,trivial baseline; high value => easy class split
-single_descriptor::heavy_atom_count_rdkit,0.6890689933996502,,,trivial baseline; high value => easy class split
-single_descriptor::rotb_rdkit,0.6669644032418812,,,trivial baseline; high value => easy class split
