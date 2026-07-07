@@ -9,10 +9,9 @@ numpy==2.4.6
 scipy==1.17.1
 pytest==8.4.1
 
-# --- added as the stages that need them are built (floor constraints; pin
-#     exact versions once installed and tested) ---
-scikit-learn>=1.5      # Stage 1 QSAR / free-fraction oracle
-rdkit>=2024.3          # Stage 1a potency / descriptors
+# --- Stage 1b free-fraction / PPB oracle (verified installed & tested) ---
+scikit-learn==1.9.0    # random-forest PPB regressor
+rdkit==2026.3.3        # shared physicochemical featurization
 
 # Later stages will also add:
 #   a generative framework (e.g. REINVENT) for scaffold-constrained decoration
