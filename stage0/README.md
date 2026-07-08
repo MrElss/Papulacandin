@@ -71,6 +71,27 @@ shifts. That data is staged **unpaired** for a Stage-1 hierarchical/transfer
 model, and the echinocandins' serum signal is instead borrowed through their
 in-vivo efficacy proxies (point 2).
 
+## Binary reframe (serum-active / inactive)
+
+`build_binary_serum_activity.py` reframes the endpoint to **binary
+`serum_active`** (retains activity in serum: yes/no) — the discovery-relevant
+form, and robust to the finding that serum inactivation isn't fully computable
+(`planning/serum_mechanism_evidence.md`). It pools papulacandin serum MICs,
+echinocandin serum MICs, in-vivo efficacy, and clinical use.
+
+- **Trustworthy training set: 31 compounds** (20 active / 11 inactive) — direct
+  serum-MIC evidence + echinocandin in-vivo/clinical positives.
+- **43 papulacandin in-vivo-only compounds are held out as _test candidates_,
+  not training labels** — an in-vivo ED50 does not prove serum activity for this
+  class (papulacandin B has one yet is serum-lost), so pooling them would inject
+  likely-false positives.
+- Only 6 echinocandins have direct serum evidence in-repo → the **ChEMBL pull is
+  the real expansion path**. Drop a CSV at `stage0/data/chembl_echinocandin_serum.csv`
+  (`compound_name, serum_active, source_ref`) and re-run to merge it automatically.
+
+Outputs: `binary_serum_activity_labels.csv`, `binary_serum_activity_observations.csv`,
+`binary_serum_activity_summary.md`.
+
 ## Next (Stage 1)
 
 - **1a** potency oracle (structure-based + pooled-MIC QSAR).
