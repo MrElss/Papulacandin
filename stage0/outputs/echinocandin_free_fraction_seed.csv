@@ -1,0 +1,10 @@
+chemotype,external_compound_id,compound_name,endpoint_type,value,unit,serum_state,source_reference,source_database
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,PPB,84.0,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1058392,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,PPB,99.0,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1058395,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,PPB,80.0,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1061714,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,Fu,0.01,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1055058,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,Fu,0.01,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1055059,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,Fu,0.01,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1055060,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,Fu,0.01,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1055061,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,Fu,0.01,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1055062,ChEMBL
+echinocandin,EXT-FKS-0002,ANIDULAFUNGIN,Fu,0.01,%,serum_present,CHEMBL1153564;Antimicrob Agents Chemother 2008;CHEMBL1055063,ChEMBL

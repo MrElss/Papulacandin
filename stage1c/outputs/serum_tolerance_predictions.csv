@@ -1,0 +1,24 @@
+compound_id,name,label_retained,loo_pred_prob_retained,pmic,aromatic_rings,fsp3,modification
+PAPU-0002,Papulacandin B,0,0.244,5.76,1,0.532,main natural component
+PAPU-0066,Fusacandin A,0,0.089,5.52,1,0.608,natural fusacandin trisaccharide analog with C-1 ether and t
+PAPU-0067,Fusacandin B,0,0.003,4.39,1,0.634,natural Fusacandin B congener lacking the C-6' side chain re
+PAPU-0071,Fusacandin analog 6a,0,0.187,5.82,1,0.615,"E,E-decadienoyl C-6' ester; Fusacandin A C-3 side chain reta"
+PAPU-0073,Fusacandin analog 6c,0,0.005,4.91,1,0.686,decanoyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0074,Fusacandin analog 6d,0,0.095,4.89,2,0.542,benzoyl C-6' ester; Fusacandin A C-3 side chain retained
+PAPU-0075,Fusacandin analog 6e,0,0.418,5.82,2,0.577,p-butylbenzoyl C-6' ester; Fusacandin A C-3 side chain retai
+PAPU-0076,Fusacandin analog 6f,1,0.686,5.82,3,0.5,naphthoyl-type fused aromatic C-6' ester; Fusacandin A C-3 s
+PAPU-0077,Fusacandin analog 6g,1,0.492,5.52,3,0.5,methyl-naphthoyl-type fused aromatic C-6' ester; Fusacandin 
+PAPU-0078,Fusacandin analog 6h,1,0.87,6.13,3,0.481,tricyclic fused aromatic C-6' ester; Fusacandin A C-3 side c
+PAPU-0079,Fusacandin analog 6i,0,0.938,5.54,4,0.464,extended tricyclic aromatic C-6' ester; Fusacandin A C-3 sid
+PAPU-0080,Fusacandin analog 6j,1,0.867,6.13,3,0.481,biphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain ret
+PAPU-0081,Fusacandin analog 6k,1,0.963,6.16,4,0.433,terphenylcarbonyl C-6' ester; Fusacandin A C-3 side chain re
+PAPU-0082,Fusacandin analog 6l,1,0.615,5.53,3,0.481,phenoxyphenylcarbonyl C-6' ester; Fusacandin A C-3 side chai
+PAPU-0083,Fusacandin analog 6m,1,0.845,6.14,3,0.5,ethylbiphenylcarbonyl C-6' ester; Fusacandin A C-3 side chai
+PAPU-0084,Fusacandin analog 6n,1,0.878,6.14,3,0.491,methoxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side ch
+PAPU-0085,Fusacandin analog 6o,1,0.839,6.15,3,0.509,propoxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side ch
+PAPU-0086,Fusacandin analog 6p,1,0.836,6.16,3,0.517,isopropoxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side
+PAPU-0087,Fusacandin analog 6q,0,0.163,4.67,3,0.548,octyloxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side c
+PAPU-0088,Fusacandin analog 6r,1,0.928,5.87,4,0.443,benzyloxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side 
+PAPU-0089,Fusacandin analog 6s,1,0.779,5.84,3,0.491,methoxybiphenylcarbonyl regioisomer C-6' ester; Fusacandin A
+PAPU-0090,Fusacandin analog 6t,1,0.396,5.24,3,0.491,methoxybiphenylcarbonyl regioisomer C-6' ester; Fusacandin A
+PAPU-0091,Fusacandin analog 6u,0,0.611,5.23,3,0.481,hydroxybiphenylcarbonyl C-6' ester; Fusacandin A C-3 side ch

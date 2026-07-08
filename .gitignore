@@ -19,3 +19,6 @@ desktop.ini
 *.ckpt
 *.pt
 *.joblib
+
+# Downloaded third-party training data (regenerable; the pipeline re-fetches it)
+stage1b/data/
