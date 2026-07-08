@@ -53,6 +53,24 @@ def test_ceiling_rule_sets_active_inactive():
     assert any(r["endpoint_type"] == "PPB" for r in ppb)
 
 
+def test_pk_plasma_reading_is_not_a_serum_mic():
+    # a "Plasma concentration in mouse ..." row is a PK reading mislabeled MIC in
+    # ChEMBL — it must not become a serum label.
+    assert cx._is_serum("Plasma concentration in mouse infected with C. albicans") is False
+    assert cx._is_serum("serum concentration after iv dose") is False
+    assert cx._is_serum("MIC in 50% human serum") is True
+    pk = ("Molecule ChEMBL ID;Molecule Name;Standard Type;Standard Relation;"
+          "Standard Value;Standard Units;Assay Description;Document ChEMBL ID\n"
+          "CHEMBL2;ANIDULAFUNGIN;MIC;=;4.0;ug.mL-1;"
+          "Plasma concentration in mouse at 10 mg/kg after 1 hr;DOC9\n")
+    path = _write_tmp(pk)
+    try:
+        serum, _ = cx.convert([path])
+    finally:
+        os.remove(path)
+    assert serum == []
+
+
 def test_output_matches_drop_in_schema():
     path = _write_tmp(WEB_CSV)
     try:

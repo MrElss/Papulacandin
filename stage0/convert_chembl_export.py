@@ -43,6 +43,10 @@ SERUM_WORDS = ("serum", "plasma", "albumin", "protein binding", "protein-binding
 SERUM_NEGATIONS = ("no serum", "without serum", "serum-free", "serum free",
                    "absence of serum", "no plasma", "protein-free", "protein free",
                    "serum-deficient", "minus serum")
+# pharmacokinetic phrases: a plasma/serum DRUG-LEVEL reading, not a serum-medium MIC
+PK_PHRASES = ("plasma concentration", "serum concentration", "plasma level",
+              "serum level", "concentration in", "drug level", "drug concentration",
+              "plasma exposure", "pharmacokinet", "plasma auc", "half-life")
 UGML_UNITS = {"ug.ml-1", "ug/ml", "µg/ml", "ug ml-1", "mg/l", "mg.l-1"}
 
 # ChEMBL uses different header spellings across web vs API exports; normalise.
@@ -91,6 +95,8 @@ def _is_serum(desc):
     d = (desc or "").lower()
     if any(neg in d for neg in SERUM_NEGATIONS):
         return False        # e.g. "RPMI, no serum" is a serum-FREE assay
+    if any(pk in d for pk in PK_PHRASES):
+        return False        # e.g. "Plasma concentration in mouse ..." is a PK reading
     return any(w in d for w in SERUM_WORDS)
 
 

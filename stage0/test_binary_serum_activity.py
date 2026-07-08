@@ -52,6 +52,19 @@ def test_direct_evidence_is_usable_and_balanced_enough():
     assert calls == {0, 1}
 
 
+def test_same_drug_from_different_sources_merges():
+    # ChEMBL uses CHEMBL... ids, in-repo uses EXT-FKS... ids; the same-named drug
+    # must become ONE compound, not two phantoms.
+    obs = [
+        b._obs("echinocandin", "EXT-FKS-1", "CASPOFUNGIN", 1, "echinocandin_serum_mic", "high", "x"),
+        b._obs("echinocandin", "CHEMBL999", "CASPOFUNGIN", 1, "chembl_serum", "high", "y"),
+    ]
+    labels = b.consensus(obs)
+    caspo = [r for r in labels if r["compound_name"].upper() == "CASPOFUNGIN"]
+    assert len(caspo) == 1
+    assert caspo[0]["n_active_obs"] == 2
+
+
 def test_chembl_drop_in_is_optional():
     # pipeline must run whether or not the ChEMBL CSV is present
     obs, used = b.chembl_drop_in()

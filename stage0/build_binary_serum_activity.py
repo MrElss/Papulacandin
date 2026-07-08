@@ -174,10 +174,13 @@ def chembl_drop_in():
 # consensus per compound
 # --------------------------------------------------------------------------- #
 def consensus(observations):
+    # Key on normalized NAME so the same drug from different sources merges
+    # (ChEMBL uses CHEMBL... ids, the in-repo tables use EXT-FKS.../PAPU... ids —
+    # keying on id would split e.g. caspofungin into two phantom compounds).
     by = defaultdict(list)
     for o in observations:
-        key = (o["chemotype"], o["compound_id"] or o["compound_name"].upper())
-        by[key].append(o)
+        name_key = (o["compound_name"] or o["compound_id"]).strip().upper()
+        by[(o["chemotype"], name_key)].append(o)
 
     # high-confidence = direct serum MIC / ChEMBL serum / clinical-approved
     DIRECT_SOURCES = {"papulacandin_serum_mic", "echinocandin_serum_mic",
@@ -276,15 +279,38 @@ def _summary(path, obs, labels, chembl_used):
         f"pooling them would inject ~{len(weak)} likely-false positives.\n"
         f"- {sum(1 for r in labels if r['mixed'])} compounds are mixed (active in "
         f"some serum assays, lost in others).\n\n")
-    L.append("## Where the real expansion comes from: ChEMBL\n\n")
-    L.append(
-        f"- Only {n_cpd([r for r in labels if r['label_tier']=='direct_serum'], 'echinocandin')} "
-        "echinocandins have direct serum-MIC evidence in-repo. The binary endpoint "
-        "can absorb many more echinocandin/FKS serum-shift records — that is the "
-        "high-value ChEMBL pull (see drop-in below), the path to a genuinely larger "
-        "serum-labelled set.\n"
-        f"- {len(obs)} total observations. By source: "
-        + ", ".join(f"{k} {v}" for k, v in src.most_common()) + ".\n\n")
+    chembl_obs = src.get("chembl_serum", 0)
+    if chembl_used:
+        # richest-evidence echinocandins after the ChEMBL merge
+        rich = sorted(
+            (r for r in labels if r["chemotype"] == "echinocandin"
+             and "chembl_serum" in r["sources"]),
+            key=lambda r: r["n_active_obs"] + r["n_inactive_obs"], reverse=True)[:3]
+        rich_txt = "; ".join(
+            f"{r['compound_name']} {r['n_active_obs']}+{r['n_inactive_obs']}"
+            for r in rich)
+        L.append("## What the ChEMBL pull added (ingested)\n\n")
+        L.append(
+            f"- **{chembl_obs} serum-context observations** merged. Its value is "
+            "DEPTH, not width: the echinocandin labels are now data-rich, robust "
+            f"calls rather than single points ({rich_txt} active+inactive obs).\n"
+            "- It did **not** add many new distinct compounds — serum-context "
+            "antifungal data clusters on the approved echinocandins, which we "
+            "already had. The path to more *distinct* serum-labelled compounds "
+            "remains the wet-lab panel (papulacandins).\n"
+            "- Bonus: `stage0/data/chembl_free_fraction.csv` PPB/Fu rows enlarge the "
+            "Stage-1b free-fraction seed beyond the original anidulafungin-only set.\n"
+            f"- {len(obs)} total observations. By source: "
+            + ", ".join(f"{k} {v}" for k, v in src.most_common()) + ".\n\n")
+    else:
+        L.append("## Where the real expansion comes from: ChEMBL\n\n")
+        L.append(
+            f"- Only {n_cpd([r for r in labels if r['label_tier']=='direct_serum'], 'echinocandin')} "
+            "echinocandins have direct serum-MIC evidence in-repo. The binary "
+            "endpoint can absorb many more echinocandin/FKS serum-shift records — "
+            "the high-value ChEMBL pull (see drop-in below).\n"
+            f"- {len(obs)} total observations. By source: "
+            + ", ".join(f"{k} {v}" for k, v in src.most_common()) + ".\n\n")
     L.append("## ChEMBL drop-in\n\n")
     L.append(
         f"- ChEMBL echinocandin serum records: "
