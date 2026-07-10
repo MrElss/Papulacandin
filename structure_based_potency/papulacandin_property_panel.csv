@@ -1,0 +1,8 @@
+id,role,ADME_permeability(model units),ADME_lipophilicity(model units),ADME_solubility_confidence,LogD_pH7.4,LogD_flag,acidic_pKa,basic_pKa,note
+papB_native,reference (native),0.0134,0.367,high,1.39,OOD/low-conf,8.21,2.0,C18 tetraene hydroxy tail; 2 esters
+papB_A1_caspo,analog (branched-sat),0.304,0.854,med,2.81,in-domain,8.19,2.0,caspofungin's own branched-saturated acyl grafted on
+papB_A2_palmitoyl,analog (flexible-sat),0.287,1.113,med,2.98,in-domain,8.14,2.0,straight C16 palmitoyl; fully flexible
+papB_A3_one_kink,analog (mono-unsat),0.245,0.723,med,2.76,in-domain,8.11,2.0,C16:1 single cis kink (rigidity control)
+ibrexafungerp,reference (oral drug),0.093,2.025,med,2.96,OOD/low-conf,3.9,7.84,approved oral GS inhibitor; low-affinity/reversible PPB
+caspofungin,reference (IV drug),,,,0.47,in-domain,7.6,8.45,ADME failed: too ionizable (252 microstates > 128 cap)
+fluconazole,reference (small oral),1.605,0.65,high,0.73,in-domain,11.9,3.09,small well-absorbed oral anchor

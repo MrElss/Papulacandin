@@ -1,0 +1,14 @@
+id,class,linkage,LogD_pH7.4,LogD_flag,ADME_permeability,ADME_lipophilicity,solubility_conf,rationale
+papB_native,native,di-ester,1.39,OOD,0.0344,0.367,high,native rigid polyene tail
+A1_caspo_ester,aliphatic,ester,2.81,,0.318,0.854,med,pos1 caspofungin branched-sat
+A2_palmitoyl_ester,aliphatic,ester,2.98,,0.289,1.113,med,pos1 palmitoyl straight-sat
+A3_onekink_ester,aliphatic,ester,2.76,,0.259,0.723,med,pos1 C16:1 one-kink control
+G_anidula_ester,aromatic,ester,3.22,,0.129,1.229,med,pos1 anidulafungin terphenyl (rigid)
+G_mica_ester,aromatic,ester,3.0,,0.205,0.921,med,pos1 micafungin isoxazole-diaryl (rigid)
+M_palmitoyl_amide,aliphatic,amide,2.99,,0.497,2.031,med,A2 with ester->amide
+M_caspo_amide,aliphatic,amide,2.82,,0.486,1.726,med,A1 with ester->amide
+M_anidula_amide,aromatic,amide,3.14,,0.153,1.962,med,G_anidula with ester->amide
+D_caspo_both_ester,dual,di-ester,3.96,OOD,0.749,3.772,med,"caspo at both positions, di-ester"
+D_caspo_both_amide,dual,di-amide,3.92,,0.617,3.236,med,"caspo at both positions, di-amide (hardened)"
+ref_ibrexafungerp,reference,-,2.96,OOD,0.0634,2.025,med,approved oral GS inhibitor
+ref_fluconazole,reference,-,0.73,,1.605,0.65,high,small oral anchor
