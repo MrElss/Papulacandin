@@ -1,0 +1,14 @@
+id,smiles,rationale,sanity,nC,nO,nN
+papB_native,CCC(C)CC/C=C/C=C(C)/C(O)C/C=C/C=C/C(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,"reference: native rigid polyene tail, di-ester",OK,47,17,0
+A1_caspo_ester,CC[C@H](C)C[C@H](C)CCCCCCCCC(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,"pos1 caspofungin branched-sat tail, ester",OK,45,16,0
+A2_palmitoyl_ester,CCCCCCCCCCCCCCCC(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,"pos1 palmitoyl straight-sat tail, ester",OK,45,16,0
+A3_onekink_ester,CCCCCC/C=C\CCCCCCCC(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,"pos1 C16:1 one-kink control, ester",OK,45,16,0
+G_anidula_ester,CCCCCOc5ccc(-c6ccc(-c7ccc(C(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O)cc7)cc6)cc5,"pos1 anidulafungin terphenyl (rigid aromatic), ester",OK,53,17,0
+G_mica_ester,CCCCCOc5ccc(-c6cc(-c7ccc(C(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O)cc7)no6)cc5,"pos1 micafungin isoxazole-diaryl (rigid aromatic), ester",OK,50,18,1
+M_palmitoyl_amide,CCCCCCCCCCCCCCCC(=O)N[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,"pos1 palmitoyl, ESTER->AMIDE (esterase-hardened)",OK,45,15,1
+M_caspo_amide,CC[C@H](C)C[C@H](C)CCCCCCCCC(=O)N[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,"pos1 caspo branched, ESTER->AMIDE",OK,45,15,1
+M_anidula_amide,CCCCCOc5ccc(-c6ccc(-c7ccc(C(=O)N[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O)cc7)cc6)cc5,"pos1 anidulafungin terphenyl, ESTER->AMIDE",OK,53,16,1
+D_caspo_both_ester,CC[C@H](C)C[C@H](C)CCCCCCCCC(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)CCCCCCCCCC(C)CC(C)CC)[C@H](O)[C@H](O)[C@H]4O,"caspo branched at BOTH positions, di-ester",OK,52,15,0
+D_caspo_both_amide,CC[C@H](C)C[C@H](C)CCCCCCCCC(=O)N[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](CNC(=O)CCCCCCCCCC(C)CC(C)CC)[C@H](O)[C@H](O)[C@H]4O,"caspo branched at BOTH positions, di-AMIDE (fully hardened)",OK,52,13,2
+ref_ibrexafungerp,CC(C)[C@@H](C)[C@@]1(C)CC[C@]2(C)[C@H]3CC[C@@H]4[C@@]5(COC[C@@]4(C)[C@@H](OC[C@](C)(N)C(C)(C)C)[C@H](n4ncnc4-c4ccncc4)C5)C3=CC[C@@]2(C)[C@@H]1C(=O)O,reference oral drug,OK,44,4,5
+ref_fluconazole,OC(Cn1cncn1)(Cn1cncn1)c1ccc(F)cc1F,reference small oral drug,OK,13,1,6
