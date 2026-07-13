@@ -1,0 +1,4 @@
+complex_name,protein_path,ligand_description,protein_sequence
+papB_9WZU_apo,/home/share/zhangz/Jobs/docking_pipeline_20260713/receptors/9WZU_apo_diffdock.pdb,CCC(C)CC/C=C/C=C(C)/C(O)C/C=C/C=C/C(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,
+papB_apo_8WL6,/home/share/zhangz/Jobs/docking_pipeline_20260713/receptors/apo_8WL6_diffdock.pdb,CCC(C)CC/C=C/C=C(C)/C(O)C/C=C/C=C/C(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,
+papB_caspo_T2,/home/share/zhangz/Jobs/docking_pipeline_20260713/receptors/caspo_T2_diffdock.pdb,CCC(C)CC/C=C/C=C(C)/C(O)C/C=C/C=C/C(=O)O[C@@H]1[C@@H](O)[C@@]2(OCc3cc(O)cc(O)c23)O[C@H](CO)[C@H]1O[C@@H]4O[C@H](COC(=O)/C=C/C=C/C=C/C(O)CC)[C@H](O)[C@H](O)[C@H]4O,
