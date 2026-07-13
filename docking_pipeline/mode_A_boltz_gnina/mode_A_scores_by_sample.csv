@@ -1,0 +1,6 @@
+﻿source,n,CNNscore_mean,CNNscore_min,CNNscore_max,CNNaffinity_mean,CNNaffinity_min,CNNaffinity_max,minimizedAffinity_mean,minimizedAffinity_min,minimizedAffinity_max,minimizedRMSD_A_mean,minimizedRMSD_A_min,minimizedRMSD_A_max
+boltz_sample_0_predicted_structure,3,0.354815,0.145107,0.556402,6.057986,5.403633,6.653392,-5.938503,-7.223470,-4.999710,2.977003,2.504500,3.421720
+boltz_sample_1_predicted_structure,3,0.183310,0.131120,0.216862,6.001552,5.589341,6.271109,-4.629800,-6.393510,-3.640330,2.592740,1.877280,3.043940
+boltz_sample_2_predicted_structure,3,0.345189,0.256082,0.403842,5.869544,5.525422,6.075831,-4.424400,-5.718590,-2.272070,5.248840,4.079080,6.024270
+boltz_sample_3_predicted_structure,3,0.174085,0.136963,0.245030,6.124822,5.790335,6.403574,-5.955617,-6.689020,-4.820030,2.965777,2.829870,3.149610
+boltz_sample_4_predicted_structure,3,0.217636,0.039139,0.379860,5.904202,5.682147,6.083884,-4.499943,-6.541870,-2.599600,3.278720,2.418640,4.152940

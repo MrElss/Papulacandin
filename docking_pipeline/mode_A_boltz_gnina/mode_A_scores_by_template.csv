@@ -1,0 +1,4 @@
+﻿template,n,CNNscore_mean,CNNscore_min,CNNscore_max,CNNaffinity_mean,CNNaffinity_min,CNNaffinity_max,minimizedAffinity_mean,minimizedAffinity_min,minimizedAffinity_max,minimizedRMSD_A_mean,minimizedRMSD_A_min,minimizedRMSD_A_max
+9WZU_apo,5,0.298674,0.201948,0.556402,6.256405,5.946574,6.653392,-5.637628,-7.223470,-2.599600,3.194860,1.877280,6.024270
+apo_8WL6,5,0.295112,0.140261,0.379860,6.120282,6.075831,6.180558,-4.707404,-5.718590,-3.640330,3.620864,2.857000,5.643170
+caspo_T2,5,0.171234,0.039139,0.403842,5.598176,5.403633,5.790335,-4.923926,-6.541870,-2.272070,3.422124,2.829870,4.152940

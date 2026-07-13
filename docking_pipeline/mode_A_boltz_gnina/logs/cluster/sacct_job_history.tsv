@@ -1,0 +1,26 @@
+JobIDRaw|JobName|Partition|AllocCPUS|State|ExitCode|Elapsed|NodeList
+524823|install_gnina|cpu-256G|2|FAILED|4:0|00:01:00|cpu16
+524823.batch|batch||2|FAILED|4:0|00:01:00|cpu16
+524823.extern|extern||2|COMPLETED|0:0|00:01:00|cpu16
+524824|modeA_gnina|gpu|10|CANCELLED by 7561575|0:0|00:00:00|None assigned
+524825|install_gnina|cpu-256G|2|FAILED|2:0|00:00:00|cpu16
+524825.batch|batch||2|FAILED|2:0|00:00:00|cpu16
+524825.extern|extern||2|COMPLETED|0:0|00:00:00|cpu16
+524826|modeA_gnina|gpu|10|CANCELLED by 7561575|0:0|00:00:00|None assigned
+524827|install_gnina|cpu-256G|2|CANCELLED by 7561575|0:0|00:04:37|cpu16
+524827.batch|batch||2|CANCELLED|0:15|00:04:38|cpu16
+524827.extern|extern||2|COMPLETED|0:0|00:04:37|cpu16
+524828|modeA_gnina|gpu|10|CANCELLED by 7561575|0:0|00:00:00|None assigned
+524829|install_gnina|cpu-256G|2|CANCELLED by 7561575|0:0|00:04:30|cpu16
+524829.batch|batch||2|CANCELLED|0:15|00:04:31|cpu16
+524829.extern|extern||2|COMPLETED|0:0|00:04:30|cpu16
+524830|modeA_gnina|gpu|10|CANCELLED by 7561575|0:0|00:00:00|None assigned
+524831|verify_gnina11|cpu-256G|2|COMPLETED|0:0|00:00:01|cpu16
+524831.batch|batch||2|COMPLETED|0:0|00:00:01|cpu16
+524831.extern|extern||2|COMPLETED|0:0|00:00:01|cpu16
+524832|modeA_gnina11|gpu|10|FAILED|127:0|00:00:00|gpu1
+524832.batch|batch||10|FAILED|127:0|00:00:00|gpu1
+524832.extern|extern||10|COMPLETED|0:0|00:00:00|gpu1
+524833|modeA_gnina11|gpu|10|COMPLETED|0:0|00:02:52|gpu1
+524833.batch|batch||10|COMPLETED|0:0|00:02:52|gpu1
+524833.extern|extern||10|COMPLETED|0:0|00:02:52|gpu1

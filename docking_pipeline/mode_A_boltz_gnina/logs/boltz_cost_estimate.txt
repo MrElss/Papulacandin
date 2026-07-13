@@ -1,0 +1,9 @@
+{
+  "estimated_cost_usd": "0.8000",
+  "breakdown": {
+    "application": "structure_and_binding",
+    "num_units": 5,
+    "cost_per_unit_usd": "0.1600"
+  },
+  "disclaimer": "This is an estimate only and may differ from your actual charges. Final billing is based on exact token counts computed at run time. For large library screens, the estimate is extrapolated from a sample and may be less accurate for highly variable inputs."
+}
